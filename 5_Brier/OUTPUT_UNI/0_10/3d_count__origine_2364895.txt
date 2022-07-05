@@ -1,0 +1,928 @@
+#######################################################################
+Evaluation de la capacité prédictive d'un acide aminé voisin (méthode1)
+#######################################################################
+
+
+##########################
+context : (10, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.01777 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:37<00:00, 258.88it/s]
+nb ex test selectionnés : 999_982
+Selection des ex test: time: 37.93 s | 258.78 it/s
+nombre d'exemples tirés: 999982
+score_brier_naive_bayes   : 0.9284487826460226
+---> Selection du nombre d'exemples par seed: 0.0359 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 322.52it/s]
+nb ex test selectionnés : 999_994
+Selection des ex test: time: 30.44 s | 322.51 it/s
+nombre d'exemples tirés: 999994
+score_brier_naive_bayes   : 0.9281790889621534
+---> Selection du nombre d'exemples par seed: 0.02468 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 359.59it/s]
+nb ex test selectionnés : 1_000_025
+Selection des ex test: time: 27.30 s | 359.58 it/s
+nombre d'exemples tirés: 1000025
+score_brier_naive_bayes   : 0.9283051091879017
+---> Selection du nombre d'exemples par seed: 0.02325 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 355.48it/s]
+nb ex test selectionnés : 1_000_002
+Selection des ex test: time: 27.61 s | 355.46 it/s
+nombre d'exemples tirés: 1000002
+score_brier_naive_bayes   : 0.9284127515716705
+---> Selection du nombre d'exemples par seed: 0.00969 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:29<00:00, 331.84it/s]
+nb ex test selectionnés : 999_986
+Selection des ex test: time: 29.58 s | 331.83 it/s
+nombre d'exemples tirés: 999986
+score_brier_naive_bayes   : 0.9284091410199572
+
+##########################
+context : (9, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00745 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 372.77it/s]
+nb ex test selectionnés : 999_990
+Selection des ex test: time: 26.33 s | 372.76 it/s
+nombre d'exemples tirés: 999990
+score_brier_naive_bayes   : 0.9283363957895301
+---> Selection du nombre d'exemples par seed: 0.0074 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:32<00:00, 302.48it/s]
+nb ex test selectionnés : 1_000_023
+Selection des ex test: time: 32.45 s | 302.47 it/s
+nombre d'exemples tirés: 1000023
+score_brier_naive_bayes   : 0.9283367367864142
+---> Selection du nombre d'exemples par seed: 0.02145 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 379.44it/s]
+nb ex test selectionnés : 1_000_009
+Selection des ex test: time: 25.87 s | 379.42 it/s
+nombre d'exemples tirés: 1000009
+score_brier_naive_bayes   : 0.9283845310029387
+---> Selection du nombre d'exemples par seed: 0.0272 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:31<00:00, 308.96it/s]
+nb ex test selectionnés : 999_973
+Selection des ex test: time: 32.05 s | 306.23 it/s
+nombre d'exemples tirés: 999973
+score_brier_naive_bayes   : 0.928324418818755
+---> Selection du nombre d'exemples par seed: 0.00899 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 351.93it/s]
+nb ex test selectionnés : 999_980
+Selection des ex test: time: 27.89 s | 351.91 it/s
+nombre d'exemples tirés: 999980
+score_brier_naive_bayes   : 0.928262666969341
+
+##########################
+context : (8, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00758 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 367.58it/s]
+nb ex test selectionnés : 999_964
+Selection des ex test: time: 26.71 s | 367.56 it/s
+nombre d'exemples tirés: 999964
+score_brier_naive_bayes   : 0.9283819632649636
+---> Selection du nombre d'exemples par seed: 0.02913 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 321.70it/s]
+nb ex test selectionnés : 999_997
+Selection des ex test: time: 30.51 s | 321.69 it/s
+nombre d'exemples tirés: 999997
+score_brier_naive_bayes   : 0.9283157388039551
+---> Selection du nombre d'exemples par seed: 0.00747 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 318.03it/s]
+nb ex test selectionnés : 999_989
+Selection des ex test: time: 30.87 s | 318.02 it/s
+nombre d'exemples tirés: 999989
+score_brier_naive_bayes   : 0.9281795716777185
+---> Selection du nombre d'exemples par seed: 0.0267 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 320.10it/s]
+nb ex test selectionnés : 1_000_025
+Selection des ex test: time: 30.67 s | 320.09 it/s
+nombre d'exemples tirés: 1000025
+score_brier_naive_bayes   : 0.9282595136696428
+---> Selection du nombre d'exemples par seed: 0.02785 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 371.20it/s]
+nb ex test selectionnés : 1_000_015
+Selection des ex test: time: 26.45 s | 371.18 it/s
+nombre d'exemples tirés: 1000015
+score_brier_naive_bayes   : 0.9282776866389416
+
+##########################
+context : (7, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00747 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:29<00:00, 333.31it/s]
+nb ex test selectionnés : 1_000_018
+Selection des ex test: time: 29.45 s | 333.28 it/s
+nombre d'exemples tirés: 1000018
+score_brier_naive_bayes   : 0.9282144733428823
+---> Selection du nombre d'exemples par seed: 0.02525 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 380.86it/s]
+nb ex test selectionnés : 999_994
+Selection des ex test: time: 25.77 s | 380.85 it/s
+nombre d'exemples tirés: 999994
+score_brier_naive_bayes   : 0.9282591123004524
+---> Selection du nombre d'exemples par seed: 0.02621 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 349.14it/s]
+nb ex test selectionnés : 1_000_012
+Selection des ex test: time: 28.12 s | 349.11 it/s
+nombre d'exemples tirés: 1000012
+score_brier_naive_bayes   : 0.928222075600648
+---> Selection du nombre d'exemples par seed: 0.00848 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 360.88it/s]
+nb ex test selectionnés : 999_995
+Selection des ex test: time: 27.20 s | 360.86 it/s
+nombre d'exemples tirés: 999995
+score_brier_naive_bayes   : 0.9282945922421719
+---> Selection du nombre d'exemples par seed: 0.00774 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 376.53it/s]
+nb ex test selectionnés : 999_979
+Selection des ex test: time: 26.07 s | 376.51 it/s
+nombre d'exemples tirés: 999979
+score_brier_naive_bayes   : 0.9284084456511297
+
+##########################
+context : (6, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00705 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 385.12it/s]
+nb ex test selectionnés : 999_980
+Selection des ex test: time: 25.49 s | 385.10 it/s
+nombre d'exemples tirés: 999980
+score_brier_naive_bayes   : 0.9281727657410787
+---> Selection du nombre d'exemples par seed: 0.00905 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 355.77it/s]
+nb ex test selectionnés : 1_000_008
+Selection des ex test: time: 27.59 s | 355.75 it/s
+nombre d'exemples tirés: 1000008
+score_brier_naive_bayes   : 0.9282666688188828
+---> Selection du nombre d'exemples par seed: 0.02553 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 344.85it/s]
+nb ex test selectionnés : 1_000_061
+Selection des ex test: time: 28.47 s | 344.84 it/s
+nombre d'exemples tirés: 1000061
+score_brier_naive_bayes   : 0.9283478230357685
+---> Selection du nombre d'exemples par seed: 0.00736 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 380.86it/s]
+nb ex test selectionnés : 999_992
+Selection des ex test: time: 25.77 s | 380.84 it/s
+nombre d'exemples tirés: 999992
+score_brier_naive_bayes   : 0.9281434252484028
+---> Selection du nombre d'exemples par seed: 0.00966 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 357.04it/s]
+nb ex test selectionnés : 1_000_005
+Selection des ex test: time: 27.49 s | 357.01 it/s
+nombre d'exemples tirés: 1000005
+score_brier_naive_bayes   : 0.928308683130523
+
+##########################
+context : (5, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00926 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 357.75it/s]
+nb ex test selectionnés : 999_988
+Selection des ex test: time: 27.44 s | 357.74 it/s
+nombre d'exemples tirés: 999988
+score_brier_naive_bayes   : 0.9282438355505453
+---> Selection du nombre d'exemples par seed: 0.00969 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 398.61it/s]
+nb ex test selectionnés : 999_990
+Selection des ex test: time: 24.63 s | 398.59 it/s
+nombre d'exemples tirés: 999990
+score_brier_naive_bayes   : 0.9284043128364541
+---> Selection du nombre d'exemples par seed: 0.00979 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 372.91it/s]
+nb ex test selectionnés : 1_000_010
+Selection des ex test: time: 26.32 s | 372.89 it/s
+nombre d'exemples tirés: 1000010
+score_brier_naive_bayes   : 0.9282561993842321
+---> Selection du nombre d'exemples par seed: 0.00809 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:33<00:00, 292.68it/s]
+nb ex test selectionnés : 1_000_010
+Selection des ex test: time: 33.54 s | 292.67 it/s
+nombre d'exemples tirés: 1000010
+score_brier_naive_bayes   : 0.9284887843759818
+---> Selection du nombre d'exemples par seed: 0.00796 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 398.48it/s]
+nb ex test selectionnés : 1_000_004
+Selection des ex test: time: 24.64 s | 398.44 it/s
+nombre d'exemples tirés: 1000004
+score_brier_naive_bayes   : 0.9282905091532078
+
+##########################
+context : (4, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00793 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 356.81it/s]
+nb ex test selectionnés : 999_989
+Selection des ex test: time: 27.51 s | 356.79 it/s
+nombre d'exemples tirés: 999989
+score_brier_naive_bayes   : 0.9283282468591504
+---> Selection du nombre d'exemples par seed: 0.00889 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 406.63it/s]
+nb ex test selectionnés : 999_987
+Selection des ex test: time: 24.14 s | 406.58 it/s
+nombre d'exemples tirés: 999987
+score_brier_naive_bayes   : 0.9281368938212017
+---> Selection du nombre d'exemples par seed: 0.00722 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 393.69it/s]
+nb ex test selectionnés : 999_982
+Selection des ex test: time: 24.93 s | 393.67 it/s
+nombre d'exemples tirés: 999982
+score_brier_naive_bayes   : 0.9281216204155704
+---> Selection du nombre d'exemples par seed: 0.02308 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 398.04it/s]
+nb ex test selectionnés : 1_000_028
+Selection des ex test: time: 24.66 s | 398.02 it/s
+nombre d'exemples tirés: 1000028
+score_brier_naive_bayes   : 0.928243474376838
+---> Selection du nombre d'exemples par seed: 0.03437 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 353.21it/s]
+nb ex test selectionnés : 1_000_002
+Selection des ex test: time: 27.79 s | 353.19 it/s
+nombre d'exemples tirés: 1000002
+score_brier_naive_bayes   : 0.92809474777401
+
+##########################
+context : (3, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00801 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 407.31it/s]
+nb ex test selectionnés : 1_000_000
+Selection des ex test: time: 24.10 s | 407.29 it/s
+nombre d'exemples tirés: 1000000
+score_brier_naive_bayes   : 0.9282091075672604
+---> Selection du nombre d'exemples par seed: 0.00919 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 413.92it/s]
+nb ex test selectionnés : 1_000_027
+Selection des ex test: time: 23.72 s | 413.90 it/s
+nombre d'exemples tirés: 1000027
+score_brier_naive_bayes   : 0.9281233973409527
+---> Selection du nombre d'exemples par seed: 0.01028 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 358.75it/s]
+nb ex test selectionnés : 999_999
+Selection des ex test: time: 27.36 s | 358.73 it/s
+nombre d'exemples tirés: 999999
+score_brier_naive_bayes   : 0.928197836040319
+---> Selection du nombre d'exemples par seed: 0.00897 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 400.30it/s]
+nb ex test selectionnés : 1_000_024
+Selection des ex test: time: 24.52 s | 400.28 it/s
+nombre d'exemples tirés: 1000024
+score_brier_naive_bayes   : 0.9281700943927906
+---> Selection du nombre d'exemples par seed: 0.02697 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 388.56it/s]
+nb ex test selectionnés : 999_975
+Selection des ex test: time: 25.41 s | 386.25 it/s
+nombre d'exemples tirés: 999975
+score_brier_naive_bayes   : 0.9282037570473283
+
+##########################
+context : (2, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00694 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 415.87it/s]
+nb ex test selectionnés : 1_000_030
+Selection des ex test: time: 23.60 s | 415.85 it/s
+nombre d'exemples tirés: 1000030
+score_brier_naive_bayes   : 0.9283030030082339
+---> Selection du nombre d'exemples par seed: 0.00875 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 419.31it/s]
+nb ex test selectionnés : 999_987
+Selection des ex test: time: 23.41 s | 419.29 it/s
+nombre d'exemples tirés: 999987
+score_brier_naive_bayes   : 0.9282617541473142
+---> Selection du nombre d'exemples par seed: 0.00792 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:22<00:00, 426.81it/s]
+nb ex test selectionnés : 1_000_014
+Selection des ex test: time: 23.00 s | 426.79 it/s
+nombre d'exemples tirés: 1000014
+score_brier_naive_bayes   : 0.9282625346349413
+---> Selection du nombre d'exemples par seed: 0.00732 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:21<00:00, 448.50it/s]
+nb ex test selectionnés : 999_962
+Selection des ex test: time: 21.89 s | 448.47 it/s
+nombre d'exemples tirés: 999962
+score_brier_naive_bayes   : 0.9282696492260573
+---> Selection du nombre d'exemples par seed: 0.00797 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 395.10it/s]
+nb ex test selectionnés : 1_000_003
+Selection des ex test: time: 24.85 s | 395.07 it/s
+nombre d'exemples tirés: 1000003
+score_brier_naive_bayes   : 0.9284019611520168
+
+##########################
+context : (1, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00883 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 352.60it/s]
+nb ex test selectionnés : 1_000_002
+Selection des ex test: time: 27.84 s | 352.59 it/s
+nombre d'exemples tirés: 1000002
+score_brier_naive_bayes   : 0.9281896193642853
+---> Selection du nombre d'exemples par seed: 0.02875 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:21<00:00, 465.60it/s]
+nb ex test selectionnés : 1_000_008
+Selection des ex test: time: 21.09 s | 465.53 it/s
+nombre d'exemples tirés: 1000008
+score_brier_naive_bayes   : 0.928297566363808
+---> Selection du nombre d'exemples par seed: 0.02788 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 392.11it/s]
+nb ex test selectionnés : 1_000_009
+Selection des ex test: time: 25.04 s | 392.09 it/s
+nombre d'exemples tirés: 1000009
+score_brier_naive_bayes   : 0.9281974857037613
+---> Selection du nombre d'exemples par seed: 0.02558 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 425.56it/s]
+nb ex test selectionnés : 999_993
+Selection des ex test: time: 23.07 s | 425.53 it/s
+nombre d'exemples tirés: 999993
+score_brier_naive_bayes   : 0.928117614755122
+---> Selection du nombre d'exemples par seed: 0.0248 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 416.42it/s]
+nb ex test selectionnés : 999_990
+Selection des ex test: time: 23.57 s | 416.39 it/s
+nombre d'exemples tirés: 999990
+score_brier_naive_bayes   : 0.9281075018553995
+
+##########################
+context : (0, 0, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00875 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:22<00:00, 434.69it/s]
+nb ex test selectionnés : 999_969
+Selection des ex test: time: 22.58 s | 434.66 it/s
+nombre d'exemples tirés: 999969
+score_brier_naive_bayes   : 0.9279423366250632
+---> Selection du nombre d'exemples par seed: 0.0279 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:21<00:00, 459.09it/s]
+nb ex test selectionnés : 1_000_006
+Selection des ex test: time: 21.38 s | 459.06 it/s
+nombre d'exemples tirés: 1000006
+score_brier_naive_bayes   : 0.9280159270761538
+---> Selection du nombre d'exemples par seed: 0.03058 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:18<00:00, 517.17it/s]
+nb ex test selectionnés : 1_000_029
+Selection des ex test: time: 18.98 s | 517.12 it/s
+nombre d'exemples tirés: 1000029
+score_brier_naive_bayes   : 0.9280656704189956
+---> Selection du nombre d'exemples par seed: 0.02562 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:20<00:00, 469.43it/s]
+nb ex test selectionnés : 1_000_018
+Selection des ex test: time: 20.91 s | 469.40 it/s
+nombre d'exemples tirés: 1000018
+score_brier_naive_bayes   : 0.9281084330808885
+---> Selection du nombre d'exemples par seed: 0.05294 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:22<00:00, 434.26it/s]
+nb ex test selectionnés : 999_985
+Selection des ex test: time: 22.61 s | 434.24 it/s
+nombre d'exemples tirés: 999985
+score_brier_naive_bayes   : 0.9280395474453361
+
+##########################
+context : (0, 1, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00719 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 410.88it/s]
+nb ex test selectionnés : 999_959
+Selection des ex test: time: 23.89 s | 410.86 it/s
+nombre d'exemples tirés: 999959
+score_brier_naive_bayes   : 0.9282715229390118
+---> Selection du nombre d'exemples par seed: 0.02937 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:20<00:00, 471.41it/s]
+nb ex test selectionnés : 1_000_029
+Selection des ex test: time: 20.82 s | 471.39 it/s
+nombre d'exemples tirés: 1000029
+score_brier_naive_bayes   : 0.9281737847753643
+---> Selection du nombre d'exemples par seed: 0.02855 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:22<00:00, 427.46it/s]
+nb ex test selectionnés : 999_967
+Selection des ex test: time: 22.97 s | 427.43 it/s
+nombre d'exemples tirés: 999967
+score_brier_naive_bayes   : 0.9283168603742316
+---> Selection du nombre d'exemples par seed: 0.02825 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 407.03it/s]
+nb ex test selectionnés : 999_991
+Selection des ex test: time: 24.12 s | 407.00 it/s
+nombre d'exemples tirés: 999991
+score_brier_naive_bayes   : 0.9282037912209862
+---> Selection du nombre d'exemples par seed: 0.05142 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 366.73it/s]
+nb ex test selectionnés : 999_978
+Selection des ex test: time: 26.77 s | 366.71 it/s
+nombre d'exemples tirés: 999978
+score_brier_naive_bayes   : 0.9283754528575702
+
+##########################
+context : (0, 2, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00812 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 400.20it/s]
+nb ex test selectionnés : 1_000_031
+Selection des ex test: time: 24.53 s | 400.12 it/s
+nombre d'exemples tirés: 1000031
+score_brier_naive_bayes   : 0.9283375718656376
+---> Selection du nombre d'exemples par seed: 0.00865 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 423.49it/s]
+nb ex test selectionnés : 1_000_008
+Selection des ex test: time: 23.18 s | 423.47 it/s
+nombre d'exemples tirés: 1000008
+score_brier_naive_bayes   : 0.9282868856505859
+---> Selection du nombre d'exemples par seed: 0.00705 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 342.20it/s]
+nb ex test selectionnés : 1_000_027
+Selection des ex test: time: 28.69 s | 342.18 it/s
+nombre d'exemples tirés: 1000027
+score_brier_naive_bayes   : 0.9282720212866218
+---> Selection du nombre d'exemples par seed: 0.0092 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:23<00:00, 417.56it/s]
+nb ex test selectionnés : 1_000_040
+Selection des ex test: time: 23.51 s | 417.53 it/s
+nombre d'exemples tirés: 1000040
+score_brier_naive_bayes   : 0.9284251252321581
+---> Selection du nombre d'exemples par seed: 0.00881 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 375.68it/s]
+nb ex test selectionnés : 1_000_015
+Selection des ex test: time: 26.13 s | 375.66 it/s
+nombre d'exemples tirés: 1000015
+score_brier_naive_bayes   : 0.928294253106244
+
+##########################
+context : (0, 3, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00954 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:33<00:00, 290.10it/s]
+nb ex test selectionnés : 1_000_025
+Selection des ex test: time: 33.84 s | 290.08 it/s
+nombre d'exemples tirés: 1000025
+score_brier_naive_bayes   : 0.9281609576143033
+---> Selection du nombre d'exemples par seed: 0.02616 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 408.11it/s]
+nb ex test selectionnés : 999_980
+Selection des ex test: time: 24.05 s | 408.08 it/s
+nombre d'exemples tirés: 999980
+score_brier_naive_bayes   : 0.9281812915845347
+---> Selection du nombre d'exemples par seed: 0.03067 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:29<00:00, 331.65it/s]
+nb ex test selectionnés : 1_000_015
+Selection des ex test: time: 29.60 s | 331.64 it/s
+nombre d'exemples tirés: 1000015
+score_brier_naive_bayes   : 0.9283263745825548
+---> Selection du nombre d'exemples par seed: 0.0319 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:29<00:00, 336.04it/s]
+nb ex test selectionnés : 999_979
+Selection des ex test: time: 29.21 s | 336.02 it/s
+nombre d'exemples tirés: 999979
+score_brier_naive_bayes   : 0.9282715047352333
+---> Selection du nombre d'exemples par seed: 0.03212 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 320.41it/s]
+nb ex test selectionnés : 1_000_028
+Selection des ex test: time: 30.64 s | 320.39 it/s
+nombre d'exemples tirés: 1000028
+score_brier_naive_bayes   : 0.9281683641906039
+
+##########################
+context : (0, 4, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00796 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 340.16it/s]
+nb ex test selectionnés : 999_982
+Selection des ex test: time: 28.86 s | 340.14 it/s
+nombre d'exemples tirés: 999982
+score_brier_naive_bayes   : 0.9281819428024657
+---> Selection du nombre d'exemples par seed: 0.0288 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 375.51it/s]
+nb ex test selectionnés : 999_976
+Selection des ex test: time: 26.14 s | 375.49 it/s
+nombre d'exemples tirés: 999976
+score_brier_naive_bayes   : 0.9281345323109599
+---> Selection du nombre d'exemples par seed: 0.0078 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 369.56it/s]
+nb ex test selectionnés : 1_000_014
+Selection des ex test: time: 26.56 s | 369.54 it/s
+nombre d'exemples tirés: 1000014
+score_brier_naive_bayes   : 0.9282463338821796
+---> Selection du nombre d'exemples par seed: 0.03781 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 350.24it/s]
+nb ex test selectionnés : 1_000_009
+Selection des ex test: time: 28.03 s | 350.22 it/s
+nombre d'exemples tirés: 1000009
+score_brier_naive_bayes   : 0.9282538536763846
+---> Selection du nombre d'exemples par seed: 0.00954 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:24<00:00, 401.72it/s]
+nb ex test selectionnés : 1_000_000
+Selection des ex test: time: 24.44 s | 401.69 it/s
+nombre d'exemples tirés: 1000000
+score_brier_naive_bayes   : 0.9282340885656212
+
+##########################
+context : (0, 5, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.0085 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 353.78it/s]
+nb ex test selectionnés : 1_000_007
+Selection des ex test: time: 27.75 s | 353.76 it/s
+nombre d'exemples tirés: 1000007
+score_brier_naive_bayes   : 0.9284414663528295
+---> Selection du nombre d'exemples par seed: 0.00853 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 367.67it/s]
+nb ex test selectionnés : 999_992
+Selection des ex test: time: 26.70 s | 367.64 it/s
+nombre d'exemples tirés: 999992
+score_brier_naive_bayes   : 0.9282917588139418
+---> Selection du nombre d'exemples par seed: 0.07788 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:59<00:00, 165.89it/s]
+nb ex test selectionnés : 1_000_012
+Selection des ex test: time: 59.17 s | 165.88 it/s
+nombre d'exemples tirés: 1000012
+score_brier_naive_bayes   : 0.9283412532754908
+---> Selection du nombre d'exemples par seed: 0.00785 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 385.94it/s]
+nb ex test selectionnés : 999_993
+Selection des ex test: time: 25.44 s | 385.92 it/s
+nombre d'exemples tirés: 999993
+score_brier_naive_bayes   : 0.9283132191849345
+---> Selection du nombre d'exemples par seed: 0.00919 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 340.07it/s]
+nb ex test selectionnés : 1_000_017
+Selection des ex test: time: 28.87 s | 340.05 it/s
+nombre d'exemples tirés: 1000017
+score_brier_naive_bayes   : 0.9284944500361508
+
+##########################
+context : (0, 6, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00793 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:29<00:00, 336.35it/s]
+nb ex test selectionnés : 999_991
+Selection des ex test: time: 29.19 s | 336.33 it/s
+nombre d'exemples tirés: 999991
+score_brier_naive_bayes   : 0.9283955105200935
+---> Selection du nombre d'exemples par seed: 0.00998 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 321.92it/s]
+nb ex test selectionnés : 1_000_003
+Selection des ex test: time: 30.49 s | 321.90 it/s
+nombre d'exemples tirés: 1000003
+score_brier_naive_bayes   : 0.9283205177453567
+---> Selection du nombre d'exemples par seed: 0.01111 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:31<00:00, 315.99it/s]
+nb ex test selectionnés : 1_000_013
+Selection des ex test: time: 31.07 s | 315.97 it/s
+nombre d'exemples tirés: 1000013
+score_brier_naive_bayes   : 0.9284378942875503
+---> Selection du nombre d'exemples par seed: 0.00938 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 356.98it/s]
+nb ex test selectionnés : 999_999
+Selection des ex test: time: 27.50 s | 356.96 it/s
+nombre d'exemples tirés: 999999
+score_brier_naive_bayes   : 0.928345933000001
+---> Selection du nombre d'exemples par seed: 0.01195 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:25<00:00, 391.46it/s]
+nb ex test selectionnés : 999_957
+Selection des ex test: time: 25.08 s | 391.43 it/s
+nombre d'exemples tirés: 999957
+score_brier_naive_bayes   : 0.9283417336542524
+
+##########################
+context : (0, 7, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00799 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 355.29it/s]
+nb ex test selectionnés : 999_988
+Selection des ex test: time: 27.63 s | 355.27 it/s
+nombre d'exemples tirés: 999988
+score_brier_naive_bayes   : 0.9285117881602366
+---> Selection du nombre d'exemples par seed: 0.00989 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:26<00:00, 371.21it/s]
+nb ex test selectionnés : 999_982
+Selection des ex test: time: 26.45 s | 371.18 it/s
+nombre d'exemples tirés: 999982
+score_brier_naive_bayes   : 0.9283521739461409
+---> Selection du nombre d'exemples par seed: 0.04228 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:31<00:00, 309.98it/s]
+nb ex test selectionnés : 999_982
+Selection des ex test: time: 31.67 s | 309.96 it/s
+nombre d'exemples tirés: 999982
+score_brier_naive_bayes   : 0.9282921302510927
+---> Selection du nombre d'exemples par seed: 0.02705 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:32<00:00, 306.12it/s]
+nb ex test selectionnés : 999_999
+Selection des ex test: time: 32.18 s | 305.00 it/s
+nombre d'exemples tirés: 999999
+score_brier_naive_bayes   : 0.9283012073495984
+---> Selection du nombre d'exemples par seed: 0.02986 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 355.44it/s]
+nb ex test selectionnés : 1_000_025
+Selection des ex test: time: 27.62 s | 355.42 it/s
+nombre d'exemples tirés: 1000025
+score_brier_naive_bayes   : 0.9282843723893647
+
+##########################
+context : (0, 8, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00787 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:29<00:00, 334.63it/s]
+nb ex test selectionnés : 1_000_017
+Selection des ex test: time: 29.34 s | 334.61 it/s
+nombre d'exemples tirés: 1000017
+score_brier_naive_bayes   : 0.9283777326887597
+---> Selection du nombre d'exemples par seed: 0.02823 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 348.59it/s]
+nb ex test selectionnés : 1_000_007
+Selection des ex test: time: 28.16 s | 348.57 it/s
+nombre d'exemples tirés: 1000007
+score_brier_naive_bayes   : 0.928444716031178
+---> Selection du nombre d'exemples par seed: 0.00843 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 348.23it/s]
+nb ex test selectionnés : 999_979
+Selection des ex test: time: 28.19 s | 348.21 it/s
+nombre d'exemples tirés: 999979
+score_brier_naive_bayes   : 0.9283453063734697
+---> Selection du nombre d'exemples par seed: 0.00789 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 326.97it/s]
+nb ex test selectionnés : 999_978
+Selection des ex test: time: 30.02 s | 326.95 it/s
+nombre d'exemples tirés: 999978
+score_brier_naive_bayes   : 0.928192564244939
+---> Selection du nombre d'exemples par seed: 0.00926 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 355.91it/s]
+nb ex test selectionnés : 999_975
+Selection des ex test: time: 27.58 s | 355.89 it/s
+nombre d'exemples tirés: 999975
+score_brier_naive_bayes   : 0.9283450264591808
+
+##########################
+context : (0, 9, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.0074 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 354.81it/s]
+nb ex test selectionnés : 1_000_013
+Selection des ex test: time: 27.67 s | 354.80 it/s
+nombre d'exemples tirés: 1000013
+score_brier_naive_bayes   : 0.9283940616939863
+---> Selection du nombre d'exemples par seed: 0.00778 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 345.10it/s]
+nb ex test selectionnés : 1_000_060
+Selection des ex test: time: 28.45 s | 345.07 it/s
+nombre d'exemples tirés: 1000060
+score_brier_naive_bayes   : 0.9283772883761864
+---> Selection du nombre d'exemples par seed: 0.02864 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:31<00:00, 313.33it/s]
+nb ex test selectionnés : 999_992
+Selection des ex test: time: 31.33 s | 313.31 it/s
+nombre d'exemples tirés: 999992
+score_brier_naive_bayes   : 0.9282477247354807
+---> Selection du nombre d'exemples par seed: 0.02344 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:29<00:00, 328.96it/s]
+nb ex test selectionnés : 1_000_002
+Selection des ex test: time: 29.84 s | 328.94 it/s
+nombre d'exemples tirés: 1000002
+score_brier_naive_bayes   : 0.9281171847880635
+---> Selection du nombre d'exemples par seed: 0.02637 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:28<00:00, 344.94it/s]
+nb ex test selectionnés : 1_000_033
+Selection des ex test: time: 28.46 s | 344.92 it/s
+nombre d'exemples tirés: 1000033
+score_brier_naive_bayes   : 0.928238550793903
+
+##########################
+context : (0, 10, 0, 0)
+##########################
+---> Selection du nombre d'exemples par seed: 0.00843 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:35<00:00, 279.82it/s]
+nb ex test selectionnés : 999_983
+Selection des ex test: time: 35.76 s | 274.52 it/s
+nombre d'exemples tirés: 999983
+score_brier_naive_bayes   : 0.9282960723201915
+---> Selection du nombre d'exemples par seed: 0.01007 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:33<00:00, 293.38it/s]
+nb ex test selectionnés : 999_968
+Selection des ex test: time: 33.46 s | 293.36 it/s
+nombre d'exemples tirés: 999968
+score_brier_naive_bayes   : 0.9283079712415104
+---> Selection du nombre d'exemples par seed: 0.00797 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 320.36it/s]
+nb ex test selectionnés : 1_000_017
+Selection des ex test: time: 30.64 s | 320.34 it/s
+nombre d'exemples tirés: 1000017
+score_brier_naive_bayes   : 0.9282963853128436
+---> Selection du nombre d'exemples par seed: 0.00833 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:27<00:00, 355.08it/s]
+nb ex test selectionnés : 999_970
+Selection des ex test: time: 28.83 s | 340.46 it/s
+nombre d'exemples tirés: 999970
+score_brier_naive_bayes   : 0.9284045426388966
+---> Selection du nombre d'exemples par seed: 0.03014 s
+nb ex test demandés: 1_000_000
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|█████████████████████████████| 9816/9816 [00:30<00:00, 327.12it/s]
+nb ex test selectionnés : 1_000_006
+Selection des ex test: time: 30.01 s | 327.10 it/s
+nombre d'exemples tirés: 1000006
+score_brier_naive_bayes   : 0.9282908656227137

@@ -1,0 +1,15 @@
+#######################################################################
+                             Calcul table 2d                           
+#######################################################################
+
+table_2d (90,100)
+calcul de table_2d_count:   0%|                                            | 0/9816 [00:00<?, ?it/s]calcul de table_2d_count:  84%|██████████████████████████▉     | 8263/9816 [01:00<00:11, 137.71it/s]calcul de table_2d_count:  84%|██████████████████████████▉     | 8263/9816 [01:10<00:11, 137.71it/s]calcul de table_2d_count: 100%|████████████████████████████████| 9816/9816 [01:11<00:00, 137.21it/s]
+Count of amino acid and couple of amino acids: 71.55s | 137.19it/s
+Pourcentage de couples d'acides aminés non estimés: 4.5 %
+Nombre d'exemples d'apprentissage : 374_686
+
+---> calcul de table_2d_freq: 0.0002 s
+
+---> calcul de table_2d_score: 0.00042 s
+
+---> calcul de table_2d_proba: 0.00021 s

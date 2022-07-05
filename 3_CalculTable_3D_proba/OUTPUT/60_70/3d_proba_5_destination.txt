@@ -1,0 +1,7 @@
+#######################################################################
+    Calcul table 3d proba à partir de la table 3d count associée       
+#######################################################################
+
+Table 3d proba (5,destination) de la tranche de pid [60,70]
+
+---> temps de calcul: 0.1969 s

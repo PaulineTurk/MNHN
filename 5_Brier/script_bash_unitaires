@@ -1,0 +1,1 @@
+python3 4_main_brier.py 90 100 uni origine > brier_90_100_$$.out 2>&1

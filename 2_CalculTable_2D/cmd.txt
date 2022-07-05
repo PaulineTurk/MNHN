@@ -1,0 +1,12 @@
+# calcul de tables_2d de count, freq, score, proba 
+# exemple de l'intervalle de pid: [95, 100]
+
+python3 2_main_table_2d.py 90 100 > 2d_90_100_$$.txt 2>&1
+
+
+
+
+# visualisation associée
+# exemple de l'intervalle de pid: [95, 100]
+
+python3 2_main_table_2d_visu.py 95 100 > OUT/2d_95_100_visu.txt 2>&1

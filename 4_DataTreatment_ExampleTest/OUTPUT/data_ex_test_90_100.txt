@@ -1,0 +1,9 @@
+#######################################################################
+     Pré-traitement pour la selection des exemples de test             
+#######################################################################
+
+Nombre d'alignements multiples:  9816
+Selection des alignements valides:   0%|                                   | 0/9816 [00:00<?, ?it/s]Selection des alignements valides:  71%|████████████████▎      | 6954/9816 [01:00<00:24, 115.61it/s]Selection des alignements valides:  71%|████████████████▎      | 6954/9816 [01:18<00:24, 115.61it/s]Selection des alignements valides: 100%|███████████████████████| 9816/9816 [01:31<00:00, 106.90it/s]
+
+nb de seed valides, invalides: 440, 9376
+Selection des alignements valides: 93.42s | 105.07it/s

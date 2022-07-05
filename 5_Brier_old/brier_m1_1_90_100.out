@@ -1,0 +1,404 @@
+#######################################################################
+Evaluation de la capacité prédictive d'un acide aminé voisin (méthode1)
+#######################################################################
+
+
+##########################
+context : (0, 0, 3, 0)
+##########################
+
+---> Selection du nombre d'exemples par seed: 0.026 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 63229.74it/s]
+nb ex test selectionnés : 151
+Selection des ex test: time: 0.26 s | 38456.96 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/151 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 151/151 [00:00<00:00, 63321.33it/s]
+score_brier : 0.04217877399925828
+nb d'exemples utilisés pour le calcul du score de Brier: 100
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 100 (66.23 %)
+nb ex invalid              (% total ex): 51 (33.77 %)
+nb ex nb_ex_char_exclus (% ex invalide): 45 (88.24 %)
+nb ex nb_ex_bord        (% ex invalide): 6 (11.76 %)
+Calcul du score de Brier: 0.00 s | 28286.38 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00518 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 65141.35it/s]
+nb ex test selectionnés : 154
+Selection des ex test: time: 0.15 s | 64801.57 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/154 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 154/154 [00:00<00:00, 74950.43it/s]
+score_brier : 0.16974759351740545
+nb d'exemples utilisés pour le calcul du score de Brier: 102
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 102 (66.23 %)
+nb ex invalid              (% total ex): 52 (33.77 %)
+nb ex nb_ex_char_exclus (% ex invalide): 48 (92.31 %)
+nb ex nb_ex_bord        (% ex invalide): 4 (7.69 %)
+Calcul du score de Brier: 0.00 s | 37643.56 it/s
+
+---> Selection du nombre d'exemples par seed: 0.05503 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 80477.27it/s]
+nb ex test selectionnés : 154
+Selection des ex test: time: 0.12 s | 79911.51 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/154 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 154/154 [00:00<00:00, 78541.20it/s]
+score_brier : 0.12119835187162648
+nb d'exemples utilisés pour le calcul du score de Brier: 98
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 98 (63.64 %)
+nb ex invalid              (% total ex): 56 (36.36 %)
+nb ex nb_ex_char_exclus (% ex invalide): 54 (96.43 %)
+nb ex nb_ex_bord        (% ex invalide): 2 (3.57 %)
+Calcul du score de Brier: 0.00 s | 36651.07 it/s
+
+##########################
+context : (0, 0, 2, 0)
+##########################
+
+---> Selection du nombre d'exemples par seed: 0.01825 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 68032.82it/s]
+nb ex test selectionnés : 159
+Selection des ex test: time: 0.15 s | 67637.73 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/159 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 159/159 [00:00<00:00, 73108.35it/s]
+score_brier : 0.1382032009045895
+nb d'exemples utilisés pour le calcul du score de Brier: 113
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 113 (71.07 %)
+nb ex invalid              (% total ex): 46 (28.93 %)
+nb ex nb_ex_char_exclus (% ex invalide): 43 (93.48 %)
+nb ex nb_ex_bord        (% ex invalide): 3 (6.52 %)
+Calcul du score de Brier: 0.00 s | 39374.96 it/s
+
+---> Selection du nombre d'exemples par seed: 0.0174 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 81540.70it/s]
+nb ex test selectionnés : 140
+Selection des ex test: time: 0.12 s | 80796.30 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/140 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 140/140 [00:00<00:00, 68255.56it/s]
+score_brier : 0.15259106826562843
+nb d'exemples utilisés pour le calcul du score de Brier: 101
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 101 (72.14 %)
+nb ex invalid              (% total ex): 39 (27.86 %)
+nb ex nb_ex_char_exclus (% ex invalide): 37 (94.87 %)
+nb ex nb_ex_bord        (% ex invalide): 2 (5.13 %)
+Calcul du score de Brier: 0.00 s | 37264.66 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00926 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 81975.49it/s]
+nb ex test selectionnés : 149
+Selection des ex test: time: 0.12 s | 81334.84 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/149 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 149/149 [00:00<00:00, 63107.27it/s]
+score_brier : 0.1327114828022913
+nb d'exemples utilisés pour le calcul du score de Brier: 102
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 102 (68.46 %)
+nb ex invalid              (% total ex): 47 (31.54 %)
+nb ex nb_ex_char_exclus (% ex invalide): 42 (89.36 %)
+nb ex nb_ex_bord        (% ex invalide): 5 (10.64 %)
+Calcul du score de Brier: 0.00 s | 33159.12 it/s
+
+##########################
+context : (0, 0, 1, 0)
+##########################
+
+---> Selection du nombre d'exemples par seed: 0.01423 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 80910.78it/s]
+nb ex test selectionnés : 148
+Selection des ex test: time: 0.12 s | 80367.47 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/148 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 148/148 [00:00<00:00, 68470.88it/s]
+score_brier : 0.0706040828867797
+nb d'exemples utilisés pour le calcul du score de Brier: 114
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 114 (77.03 %)
+nb ex invalid              (% total ex): 34 (22.97 %)
+nb ex nb_ex_char_exclus (% ex invalide): 33 (97.06 %)
+nb ex nb_ex_bord        (% ex invalide): 1 (2.94 %)
+Calcul du score de Brier: 0.00 s | 40704.07 it/s
+
+---> Selection du nombre d'exemples par seed: 0.0071 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 81457.78it/s]
+nb ex test selectionnés : 148
+Selection des ex test: time: 0.12 s | 80888.21 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/148 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 148/148 [00:00<00:00, 68820.07it/s]
+score_brier : 0.05327522485619945
+nb d'exemples utilisés pour le calcul du score de Brier: 111
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 111 (75.0 %)
+nb ex invalid              (% total ex): 37 (25.0 %)
+nb ex nb_ex_char_exclus (% ex invalide): 37 (100.0 %)
+nb ex nb_ex_bord        (% ex invalide): 0 (0.0 %)
+Calcul du score de Brier: 0.00 s | 38457.60 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00336 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 82583.39it/s]
+nb ex test selectionnés : 149
+Selection des ex test: time: 0.12 s | 82011.74 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/149 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 149/149 [00:00<00:00, 71300.78it/s]
+score_brier : 0.06995407222356884
+nb d'exemples utilisés pour le calcul du score de Brier: 111
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 111 (74.5 %)
+nb ex invalid              (% total ex): 38 (25.5 %)
+nb ex nb_ex_char_exclus (% ex invalide): 38 (100.0 %)
+nb ex nb_ex_bord        (% ex invalide): 0 (0.0 %)
+Calcul du score de Brier: 0.00 s | 40417.38 it/s
+
+##########################
+context : (0, 0, 0, 0)
+##########################
+
+---> Selection du nombre d'exemples par seed: 0.01966 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 80580.76it/s]
+nb ex test selectionnés : 157
+Selection des ex test: time: 0.12 s | 80074.70 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/157 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 157/157 [00:00<00:00, 64724.37it/s]
+score_brier : 0.05217227011480049
+nb d'exemples utilisés pour le calcul du score de Brier: 157
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 157 (100.0 %)
+nb ex invalid              (% total ex): 0 (0.0 %)
+Calcul du score de Brier: 0.00 s | 51732.71 it/s
+
+---> Selection du nombre d'exemples par seed: 0.02105 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 86767.00it/s]
+nb ex test selectionnés : 138
+Selection des ex test: time: 0.11 s | 86165.75 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/138 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 138/138 [00:00<00:00, 68216.14it/s]
+score_brier : 0.08545358312185035
+nb d'exemples utilisés pour le calcul du score de Brier: 138
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 138 (100.0 %)
+nb ex invalid              (% total ex): 0 (0.0 %)
+Calcul du score de Brier: 0.00 s | 52405.07 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00209 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 44945.74it/s]
+nb ex test selectionnés : 158
+Selection des ex test: time: 0.22 s | 44770.23 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/158 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 158/158 [00:00<00:00, 66919.12it/s]
+score_brier : 0.09913117522667429
+nb d'exemples utilisés pour le calcul du score de Brier: 158
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 158 (100.0 %)
+nb ex invalid              (% total ex): 0 (0.0 %)
+Calcul du score de Brier: 0.00 s | 52766.94 it/s
+
+##########################
+context : (0, 0, 0, 1)
+##########################
+
+---> Selection du nombre d'exemples par seed: 0.00205 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 84326.96it/s]
+nb ex test selectionnés : 144
+Selection des ex test: time: 0.12 s | 83767.80 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/144 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 144/144 [00:00<00:00, 70873.01it/s]
+score_brier : 0.13481562151172422
+nb d'exemples utilisés pour le calcul du score de Brier: 112
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 112 (77.78 %)
+nb ex invalid              (% total ex): 32 (22.22 %)
+nb ex nb_ex_char_exclus (% ex invalide): 29 (90.62 %)
+nb ex nb_ex_bord        (% ex invalide): 3 (9.38 %)
+Calcul du score de Brier: 0.00 s | 41538.78 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00206 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 80647.05it/s]
+nb ex test selectionnés : 160
+Selection des ex test: time: 0.12 s | 80140.01 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/160 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 160/160 [00:00<00:00, 70737.71it/s]
+score_brier : 0.13895325116016957
+nb d'exemples utilisés pour le calcul du score de Brier: 127
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 127 (79.38 %)
+nb ex invalid              (% total ex): 33 (20.62 %)
+nb ex nb_ex_char_exclus (% ex invalide): 31 (93.94 %)
+nb ex nb_ex_bord        (% ex invalide): 2 (6.06 %)
+Calcul du score de Brier: 0.00 s | 43391.71 it/s
+
+---> Selection du nombre d'exemples par seed: 0.0021 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 85073.43it/s]
+nb ex test selectionnés : 146
+Selection des ex test: time: 0.12 s | 84425.52 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/146 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 146/146 [00:00<00:00, 69642.71it/s]
+score_brier : 0.11484752310063409
+nb d'exemples utilisés pour le calcul du score de Brier: 120
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 120 (82.19 %)
+nb ex invalid              (% total ex): 26 (17.81 %)
+nb ex nb_ex_char_exclus (% ex invalide): 24 (92.31 %)
+nb ex nb_ex_bord        (% ex invalide): 2 (7.69 %)
+Calcul du score de Brier: 0.00 s | 43892.60 it/s
+
+##########################
+context : (0, 0, 0, 2)
+##########################
+
+---> Selection du nombre d'exemples par seed: 0.00207 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 80340.96it/s]
+nb ex test selectionnés : 159
+Selection des ex test: time: 0.12 s | 79823.35 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/159 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 159/159 [00:00<00:00, 75534.53it/s]
+score_brier : 0.16590913180644015
+nb d'exemples utilisés pour le calcul du score de Brier: 114
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 114 (71.7 %)
+nb ex invalid              (% total ex): 45 (28.3 %)
+nb ex nb_ex_char_exclus (% ex invalide): 43 (95.56 %)
+nb ex nb_ex_bord        (% ex invalide): 2 (4.44 %)
+Calcul du score de Brier: 0.00 s | 41603.64 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00211 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 82899.66it/s]
+nb ex test selectionnés : 149
+Selection des ex test: time: 0.12 s | 82378.99 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/149 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 149/149 [00:00<00:00, 80816.15it/s]
+score_brier : 0.0948222574199586
+nb d'exemples utilisés pour le calcul du score de Brier: 102
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 102 (68.46 %)
+nb ex invalid              (% total ex): 47 (31.54 %)
+nb ex nb_ex_char_exclus (% ex invalide): 45 (95.74 %)
+nb ex nb_ex_bord        (% ex invalide): 2 (4.26 %)
+Calcul du score de Brier: 0.00 s | 41025.99 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00206 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 84396.45it/s]
+nb ex test selectionnés : 152
+Selection des ex test: time: 0.12 s | 83790.48 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/152 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 152/152 [00:00<00:00, 75761.64it/s]
+score_brier : 0.1268728234142059
+nb d'exemples utilisés pour le calcul du score de Brier: 108
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 108 (71.05 %)
+nb ex invalid              (% total ex): 44 (28.95 %)
+nb ex nb_ex_char_exclus (% ex invalide): 41 (93.18 %)
+nb ex nb_ex_bord        (% ex invalide): 3 (6.82 %)
+Calcul du score de Brier: 0.00 s | 40622.80 it/s
+
+##########################
+context : (0, 0, 0, 3)
+##########################
+
+---> Selection du nombre d'exemples par seed: 0.00206 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 83581.59it/s]
+nb ex test selectionnés : 151
+Selection des ex test: time: 0.12 s | 83049.66 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/151 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 151/151 [00:00<00:00, 83487.99it/s]
+score_brier : 0.09034259138549143
+nb d'exemples utilisés pour le calcul du score de Brier: 91
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 91 (60.26 %)
+nb ex invalid              (% total ex): 60 (39.74 %)
+nb ex nb_ex_char_exclus (% ex invalide): 57 (95.0 %)
+nb ex nb_ex_bord        (% ex invalide): 3 (5.0 %)
+Calcul du score de Brier: 0.00 s | 36675.47 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00208 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 79635.60it/s]
+nb ex test selectionnés : 152
+Selection des ex test: time: 0.12 s | 79074.43 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/152 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 152/152 [00:00<00:00, 85540.62it/s]
+score_brier : 0.10182161451821965
+nb d'exemples utilisés pour le calcul du score de Brier: 94
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 94 (61.84 %)
+nb ex invalid              (% total ex): 58 (38.16 %)
+nb ex nb_ex_char_exclus (% ex invalide): 52 (89.66 %)
+nb ex nb_ex_bord        (% ex invalide): 6 (10.34 %)
+Calcul du score de Brier: 0.00 s | 37431.37 it/s
+
+---> Selection du nombre d'exemples par seed: 0.00213 s
+nb ex test demandés: 150
+
+Selection des ex test /seed:   0%|                                         | 0/9816 [00:00<?, ?it/s]Selection des ex test /seed: 100%|███████████████████████████| 9816/9816 [00:00<00:00, 84175.24it/s]
+nb ex test selectionnés : 148
+Selection des ex test: time: 0.12 s | 83591.26 it/s
+
+Calcul du score de Brier M1.1:   0%|                                        | 0/148 [00:00<?, ?it/s]Calcul du score de Brier M1.1: 100%|███████████████████████████| 148/148 [00:00<00:00, 81123.50it/s]
+score_brier : 0.10338602157329045
+nb d'exemples utilisés pour le calcul du score de Brier: 96
+
+Bilan de la valdité des exemples
+nb ex valid                (% total ex): 96 (64.86 %)
+nb ex invalid              (% total ex): 52 (35.14 %)
+nb ex nb_ex_char_exclus (% ex invalide): 46 (88.46 %)
+nb ex nb_ex_bord        (% ex invalide): 6 (11.54 %)
+Calcul du score de Brier: 0.00 s | 38960.15 it/s
