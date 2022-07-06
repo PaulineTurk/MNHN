@@ -2,7 +2,7 @@ def read_multi_fasta(nomFi):
     seq=""
     nom=""
     lesSeq=[]
-    with open(nomFi,"r") as f:  
+    with open(nomFi,"r") as f:
         for l in f:
             if l[0] == '>':
                 if seq != "":
@@ -16,3 +16,4 @@ def read_multi_fasta(nomFi):
         tmp=(nom,seq)
         lesSeq.append(tmp)
     return lesSeq
+    

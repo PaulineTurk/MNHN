@@ -96,13 +96,13 @@ path_dico_seed_normalised = f"{path_file_dico_seed}/seed_normalised.npy"  # frac
 
 
 
-CODE = {"A":1, "R":2, "N":3, "D":4, "C":5,
-        "Q":6, "E":7, "G":8, "H":9, "I":10,
-        "L":11, "K":12, "M":13, "F":14, "P":15,
-        "S":16, "T":17, "W":18, "Y":19, "V":20,
-        "B":21,"Z":22, "X":23, "O":24, "U":25,
-        "-": 26,
-        "*": 27}
+CODE = {"A":0, "R":1, "N":2, "D":3, "C":4,
+        "Q":5, "E":6, "G":7, "H":8, "I":9,
+        "L":10, "K":11, "M":12, "F":13, "P":14,
+        "S":15, "T":16, "W":17, "Y":18, "V":19,
+        "B":20,"Z":21, "X":22, "O":23, "U":24,
+        "-": 25,
+        "*": 26}
 
 def encoding(example, code):
     """Encode a sequence according to the code transformation

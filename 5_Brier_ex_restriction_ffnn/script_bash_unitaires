@@ -5,3 +5,6 @@ nohup python3 -u 4_main_brier.py 0 10 multi origine > OUTPUT_MULTI/0_10/3d_count
 
 
 nohup python3 -u 4_main_brier.py 20 30 uni origine > OUTPUT_UNI/20_30/3d_count_origine_20_30_$$.txt 2>&1
+
+
+python3 ffnn.py > FFNN_ID_$$.txt 2>&1
