@@ -1,6 +1,8 @@
-################################################################################
-#                                  Importations                                #    
-################################################################################
+"""
+FUNCTIONS FOR NON-CONTEXTUAL INFORMATION
+"""
+
+# IMPORTS
 
 import pandas as pd
 from math import log2
@@ -15,21 +17,18 @@ import time
 
 import sys  
 from pathlib import Path  
-file = Path(__file__).resolve()   
-sys.path.append(file.parents[1])  
+file = Path(__file__).resolve()
+sys.path.append(file.parents[1])
 from utils.timer import Timer
 import utils.fastaReader as fastaReader
 import utils.folder as folder
 
 
-################################################################################
-#                                    Fonctions                                 #    
-################################################################################
-
+# FUNCTIONS
 def count_for_table_2d(num_accession, path_folder_pid, seed, pid_inf, pid_sup,
-                     count_AA, nb_AA, count_coupleAA, nb_coupleAA, nb_ex_train, list_residu):   
+                     count_AA, nb_AA, count_coupleAA, nb_coupleAA, nb_ex_train, list_residu):
     """
-    In the seed with id num_accession, count the number of each valid amino acid 
+    In the seed with id num_accession, count the number of each valid amino acid
     and the number of valid couple
     
     num_accession: pid of the seed
@@ -71,7 +70,7 @@ def count_for_table_2d(num_accession, path_folder_pid, seed, pid_inf, pid_sup,
 
 
 
-def multi_count_for_table_2d(path_folder_fasta, path_folder_pid, 
+def multi_count_for_table_2d(path_folder_fasta, path_folder_pid,
                            list_residu, pid_inf, pid_sup,
                            path_folder_Result,
                            pseudo_compte):
@@ -81,7 +80,7 @@ def multi_count_for_table_2d(path_folder_fasta, path_folder_pid,
 
     nb_ex_train = 0
     nb_AA = 0
-    nb_coupleAA = 0 
+    nb_coupleAA = 0
     len_alphabet = len(list_residu)
  
     # intialisation avec pseudo-compte de la table_2d de comptage
@@ -90,13 +89,13 @@ def multi_count_for_table_2d(path_folder_fasta, path_folder_pid,
         count_coupleAA[aa_1] = {}
         for aa_2 in list_residu:
             count_coupleAA[aa_1][aa_2] = pseudo_compte
-            nb_coupleAA += pseudo_compte  
+            nb_coupleAA += pseudo_compte
 
     # intialisation avec pseudo-compte du compte de chaque acide aminé dans la table_2d de comptage
-    count_AA = {}  
+    count_AA = {}
     for aa in list_residu:
-        count_AA[aa] = len_alphabet*pseudo_compte 
-        nb_AA += len_alphabet*pseudo_compte 
+        count_AA[aa] = len_alphabet*pseudo_compte
+        nb_AA += len_alphabet*pseudo_compte
 
 
 
@@ -106,7 +105,7 @@ def multi_count_for_table_2d(path_folder_fasta, path_folder_pid,
     # liste des PosixPath des alignements d'apprentissage
     files = [x for x in Path(path_folder_fasta).iterdir()]
     start = time.time()
-    for file_counter in tqdm(range(nb_files), desc = "calcul de table_2d_count", 
+    for file_counter in tqdm(range(nb_files), desc = "calcul de table_2d_count",
                              ncols= 100, mininterval=60):
         file = files[file_counter]
         accession_num = folder.get_accession_number(file)
@@ -145,7 +144,7 @@ def multi_count_for_table_2d(path_folder_fasta, path_folder_pid,
 
 def freq_for_table_2d(count_AA, nb_AA, count_coupleAA, nb_coupleAA, path_folder_Result):
     """
-    Compute and save the frequences of each valid amino acid 
+    Compute and save the frequences of each valid amino acid
     and each valid couple of amino acids.
     """
     # get the list of valid residus
@@ -175,7 +174,7 @@ def freq_for_table_2d(count_AA, nb_AA, count_coupleAA, nb_coupleAA, path_folder_
     t.stop("calcul de table_2d_freq")
 
     path_freqAA = f"{path_folder_Result}/table_2d_freq"
-    np.save(path_freqAA, freq_AA) 
+    np.save(path_freqAA, freq_AA)
 
     return freq_AA, freq_coupleAA
 
@@ -193,10 +192,10 @@ def table_2d_score(freq_AA, freq_coupleAA, path_folder_Result, scale_factor = 2)
         table_2d[aa_1] = {}
         for aa_2 in list_residu:
             if freq_coupleAA[aa_1][aa_2] != 0:
-                table_2d[aa_1][aa_2] = round(scale_factor * log2(freq_coupleAA[aa_1][aa_2]    
+                table_2d[aa_1][aa_2] = round(scale_factor * log2(freq_coupleAA[aa_1][aa_2]
                                                             / (freq_AA[aa_1] * freq_AA[aa_2])))
             else:
-                table_2d[aa_1][aa_2] = 0 
+                table_2d[aa_1][aa_2] = 0
     print("")
     t.stop("calcul de table_2d_score")
 
@@ -263,7 +262,7 @@ def table_2d_visualisation_transposition(table_2d):
 
 def sum_line_transposition(table_2d):
     """
-    To check that the sum of a line is equal to one 
+    To check that the sum of a line is equal to one
     for the conditional probability matrix
     """
     df_table_2d= np.transpose(pd.DataFrame.from_dict(table_2d))

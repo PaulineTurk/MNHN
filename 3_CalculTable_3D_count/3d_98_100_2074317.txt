@@ -1,10 +1,0 @@
-#######################################################################
-                         Calcul table 3d de comptage                   
-#######################################################################
-
-1, destination
-
-compte des triplets:   0%|          | 0/9816 [00:00<?, ?it/s]compte des triplets:  85%|████████▍ | 8325/9816 [01:00<00:10, 138.73it/s]compte des triplets:  85%|████████▍ | 8325/9816 [01:10<00:10, 138.73it/s]compte des triplets: 100%|██████████| 9816/9816 [01:11<00:00, 137.30it/s]
-Compte des triplets : 71.50s | 137.28it/s
-Pourcentage de triplets d'acides aminés non estimés: 91.85 %
-Nombre d'exemples d'apprentissage : 19_035

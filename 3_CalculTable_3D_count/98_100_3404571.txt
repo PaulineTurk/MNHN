@@ -1,0 +1,12 @@
+_______________________________________________________________________
+                           3D_TABLE COUNT                              
+                          BY RANGE OF PID                              
+_______________________________________________________________________
+PID_INF: 98
+PID_SUP: 100
+CONTEXT RELATIVE POSITION: 1
+REFERENCE:d
+3D count:   0%|          | 0/9816 [00:00<?, ?it/s]3D count: 100%|██████████| 9816/9816 [00:34<00:00, 281.37it/s]
+Compte des triplets : 34.90s | 281.30it/s
+PARAMETERS NOT ESTIMATED: 91.85 %
+N_TRAIN_EXAMPLES : 19_035

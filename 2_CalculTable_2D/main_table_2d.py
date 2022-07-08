@@ -26,7 +26,7 @@ args = parser.parse_args()
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 DATA = f"{file.parents[2]}/MNHN_RESULT/1_DATA"
-DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_TABLE_2D"
+DATA_RESULT_2D_COUNT = f"{file.parents[2]}/MNHN_RESULT/2_TABLE_2D"
 NAME_FASTA_TRAIN_FOLDER = "Pfam_split/Pfam_train"
 NAME_PID_FOLDER = "PID"
 PSEUDO_COUNTER = 1
@@ -38,9 +38,9 @@ print("                      INDIVIDUALLY AND BY PAIR                         ")
 print("_______________________________________________________________________")
 
 # output folder management: global
-IS_EXIST = os.path.exists(DATA_RESULT)
+IS_EXIST = os.path.exists(DATA_RESULT_2D_COUNT)
 if not IS_EXIST:
-    os.makedirs(DATA_RESULT)
+    os.makedirs(DATA_RESULT_2D_COUNT)
 
 path_folder_fasta = f"{DATA}/{NAME_FASTA_TRAIN_FOLDER}"
 path_folder_pid = f"{DATA}/{NAME_PID_FOLDER}"
@@ -48,7 +48,7 @@ path_folder_pid = f"{DATA}/{NAME_PID_FOLDER}"
 
 print(f"2D_TABLE {args.pid_inf},{args.pid_sup}")
 # output folder management: pid range
-path_folder_Result = f"{DATA_RESULT}/table_2d_{args.pid_inf}_{args.pid_sup}_{PSEUDO_COUNTER}"
+path_folder_Result = f"{DATA_RESULT_2D_COUNT}/{args.pid_inf}_{args.pid_sup}_{PSEUDO_COUNTER}"
 path_folder_Result = folder.creat_folder(path_folder_Result)
 
 

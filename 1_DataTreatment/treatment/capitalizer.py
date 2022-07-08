@@ -8,7 +8,7 @@ from pickle import FALSE
 import sys  
 from pathlib import Path 
 file = Path(__file__).resolve()
-sys.path.append(file.parents[1]) 
+sys.path.append(file.parents[1])
 from utils.timer import Timer
 import utils.folder as folder
 

@@ -1,7 +1,7 @@
 # calcul de tables_2d de count, freq, score, proba 
 # exemple de l'intervalle de pid: [95, 100]
 
-python3 3_main_table_3d_count.py 98 100 1 "destination" > 3d_98_100_$$.txt 2>&1
+python3 main_table_3d_count.py 98 100 0 "d" > 98_100_$$.txt 2>&1
 
 
 
@@ -9,4 +9,4 @@ python3 3_main_table_3d_count.py 98 100 1 "destination" > 3d_98_100_$$.txt 2>&1
 # visualisation associée
 # exemple de l'intervalle de pid: [90, 100]
 
-python3 3_main_table_3d_count_visu.py 90 100 1 "origine" > OUT/3d_90_100_count_visu_$$.txt 2>&1
+python3 main_table_3d_count_visu.py 90 100 1 "o" > OUT/90_100_count_visu_$$.txt 2>&1
