@@ -10,7 +10,6 @@ The dataset used is the multiple sequence alignments called "seed" from the Pfam
 
 The proof of concept is realized by following two different implementations:
 
-> *IMPLEMENTATION 1*: the calculation of probabilistic substitution matrices with or without a contextual amino acids.
-
+> *IMPLEMENTATION 1*: calculation of probabilistic substitution matrices with or without a contextual amino acid.
 > *IMPLEMENTATION 2*: deep learning with a Feed Forward Neural Network.
 
