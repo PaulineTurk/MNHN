@@ -1,4 +1,4 @@
-# Internship at the National Museum of Natural History on amino-acid mutation prediction
+# Internship at the National Museum of Natural History (MNHN) on amino-acid mutation prediction
 
 Project still under development.
 
