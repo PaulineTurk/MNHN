@@ -1,10 +1,12 @@
 """
-Preprocessing of data selection
+Preprocessing of data selection:
+python3 main_data_exemple_test.py 90 100 > 90_100_$$.txt 2>&1
 """
 
 # IMPORTS
 import os
 import argparse
+import csv
 
 import sys
 from pathlib import Path
@@ -40,23 +42,29 @@ print("_______________________________________________________________________")
 path_folder_seed = f"{DATA}/{NOM_FOLDER_FASTA_TEST}"   # seed test
 path_folder_pid = f"{DATA}/{NOM_FOLDER_PID}"           # seed test pid
 
-# folder management: global
-IS_EXIST = os.path.exists(DATA_RESULT_EX_TEST)
-if not IS_EXIST:
-    os.makedirs(DATA_RESULT_EX_TEST)
-
-
-# folder management: per pid range
+# FOLDER MANAGEMENT
+path_review = f"{DATA_RESULT_EX_TEST}/REVIEW"
 new_folder_dico = f"{DATA_RESULT_EX_TEST}/{args.pid_inf}_{args.pid_sup}"
-IS_EXIST = os.path.exists(new_folder_dico)
-if not IS_EXIST:
-    os.makedirs(new_folder_dico)
 
-# file creation
+list_path = [DATA_RESULT_EX_TEST, path_review, new_folder_dico]
+for path in list_path:
+    IS_EXIST = os.path.exists(path)
+    if not IS_EXIST:
+        os.makedirs(path)
+
+# FOLDER CREATION
 path_folder_dico_seq = folder.creat_folder(f"{new_folder_dico}/seq")
 path_folder_dico_seed = folder.creat_folder(f"{new_folder_dico}/seed")
 
-# dico_seed and dico_seq calculation
-n_valid_seed, n_invalid_seed, n_valid_aa_couple = dataexampletestfonction.multi_seeds_selection(path_folder_seed, path_folder_pid,
-                                                                                                args.pid_inf, args.pid_sup, ALPHABET,
-                                                                                                path_folder_dico_seq, path_folder_dico_seed)
+# DICO-SEED AND DICO-SEQ CALCULATION
+n_valid_seed, n_non_info_seed, n_valid_aa_couple_global = dataexampletestfonction.multi_seeds_selection(
+                                                            path_folder_seed, path_folder_pid,
+                                                            args.pid_inf, args.pid_sup, ALPHABET,
+                                                            path_folder_dico_seq, path_folder_dico_seed)
+
+# REVIEW REGISTRATION
+data = args.pid_inf, args.pid_sup, n_valid_seed, n_non_info_seed, n_valid_aa_couple_global
+with open(f"{path_review}/ex_test.csv", 'a', encoding='UTF8', newline='') as f:
+    writer = csv.writer(f)
+    # header: pid_inf, pid_sup, n_valid_seed, n_non_info_seed, n_valid_aa_couple_global
+    writer.writerow(data)

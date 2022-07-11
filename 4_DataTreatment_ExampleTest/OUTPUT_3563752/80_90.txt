@@ -1,0 +1,9 @@
+_______________________________________________________________________
+                           PRE-PROCESSING                              
+                       EXAMPLE TEST SELECTION                          
+_______________________________________________________________________
+N_MSA:  9816
+VALID MSA SELECTION:   0%|                                                 | 0/9816 [00:00<?, ?it/s]VALID MSA SELECTION: 100%|█████████████████████████████████████| 9816/9816 [00:42<00:00, 232.47it/s]
+
+N_VALID, N_INVALID SEED: 2826, 6990
+TIME PRE-PROCESSING TEST EXAMPLES: 42.23s | 232.41it/s

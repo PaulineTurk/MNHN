@@ -61,13 +61,6 @@ def one_seed_selection(accession_num, seed,
 def multi_seeds_selection(path_folder_seed, path_folder_pid,
                           pid_inf, pid_sup, alphabet,
                           path_folder_dico_seq, path_folder_dico_seed):
-    # """
-    # path_folder_dico_seq: dossier créé s'il n'existe pas, effacé puis recréé sinon.
-    #                       Les dictionnaires de seed y sont enregistrés.
-    # path_file_dico_seed: dossier créé s'il n'existe pas, effacé puis recréé sinon.
-    #                      Le dictionnaire sur les seeds y est enregistré
-    #                      ainsi que sa version normalisée par la somme de tous les comptes.
-    # """
 
     # GLOBAL COUNTERS INITIALISATION
     dico_seed = {}
@@ -101,6 +94,14 @@ def multi_seeds_selection(path_folder_seed, path_folder_pid,
     path_save_file_dico_seed = f"{path_folder_dico_seed}/seed"
     np.save(path_save_file_dico_seed, dico_seed)
 
+    n_valid_seed = len(dico_seed)
+    print(f"\nN_VALID, N_INVALID SEED: {n_valid_seed}, {n_non_info_seed}")
+
+    end = time.time()
+    diff = end - start
+    items_per_second = n_files/diff
+    print(f'TIME PRE-PROCESSING TEST EXAMPLES: {diff:.2f}s | {items_per_second:.2f}it/s')
+
     # DICO SEED NORMALISATION
     dico_seed_normal = {}
     for key in dico_seed:
@@ -111,12 +112,5 @@ def multi_seeds_selection(path_folder_seed, path_folder_pid,
     # DICO SEED NORMALISED SAVE
     path_save_file_dico_seed_normalised = f"{path_folder_dico_seed}/seed_normal"
     np.save(path_save_file_dico_seed_normalised, dico_seed_normal)
-
-    n_valid_seed = len(dico_seed)
-    print(f"\nN_VALID, N_INVALID SEED: {n_valid_seed}, {n_non_info_seed}")
-    end = time.time()
-    diff = end - start
-    items_per_second = n_files/diff
-    print(f'TIME PRE-PROCESSING TEST EXAMPLES: {diff:.2f}s | {items_per_second:.2f}it/s')
 
     return n_valid_seed, n_non_info_seed, n_valid_aa_couple_global
