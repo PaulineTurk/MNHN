@@ -1,0 +1,47 @@
+nohup: les entrées sont ignorées
+_______________________________________________________________________
+                  EVALUATION OF THE PREDICTIVE ABILITY                 
+                     OF A CONTEXTUAL AMINO-ACID                        
+_______________________________________________________________________
+_________________________________
+  Preparation of the experiment  
+_________________________________
+PID_INF: 60
+PID_SUP: 70
+LIST CONTEXT TESTED: [(10, 0, 0, 0), (9, 0, 0, 0), (8, 0, 0, 0), (7, 0, 0, 0), (6, 0, 0, 0), (5, 0, 0, 0), (4, 0, 0, 0), (3, 0, 0, 0), (2, 0, 0, 0), (1, 0, 0, 0), (0, 0, 0, 0), (0, 1, 0, 0), (0, 2, 0, 0), (0, 3, 0, 0), (0, 4, 0, 0), (0, 5, 0, 0), (0, 6, 0, 0), (0, 7, 0, 0), (0, 8, 0, 0), (0, 9, 0, 0), (0, 10, 0, 0)]
+MAX_RELATIVE_POSITION: 10
+N_TEST_PER_CONTEXT: 5
+N_EXAMPLES_PER_TEST: 1500000
+PSEUDO_COUNTER_2D: 1
+PSEUDO_COUNTER_3D: 0
+WEIGHT_2D: 0.001
+_________________________________
+            Experiment           
+_________________________________
+
+__________________________
+CONTEXT: (10, 0, 0, 0)
+__________________________
+
+_____________
+TEST 1/5
+EXAMPLES NUMBER/SEED: time: 0.02s | 396104.94it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:23<00:00, 424.16it/s]
+SELECTION: time: 23.15 s | 0.00 it/s
+N_EXAMPLES: 533_866
+BRIER SCORE: 0.5244853461975459 | time 56.81s | 9397.91it/s
+
+_____________
+TEST 2/5
+EXAMPLES NUMBER/SEED: time: 0.02s | 418783.39it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:22<00:00, 438.55it/s]
+SELECTION: time: 22.38 s | 0.00 it/s
+N_EXAMPLES: 533_968
+Traceback (most recent call last):
+  File "/home/pauline/Bureau/MNHN/5_Brier_ex_restriction_ffnn/main_brier.py", line 146, in <module>
+    score_brier, list_unit_score_brier, nb_example = brier.brier_score(list_example,
+  File "/home/pauline/Bureau/MNHN/5_Brier_ex_restriction_ffnn/brierNeighbour/brier.py", line 168, in brier_score
+    list_vect_ol = vecteur_from_table_3d_proba(aa_1, aa_c_ol, list_cube_quarter_window_ol, alphabet)
+  File "/home/pauline/Bureau/MNHN/5_Brier_ex_restriction_ffnn/brierNeighbour/brier.py", line 67, in vecteur_from_table_3d_proba
+    vect.append(list_table_3d_proba[index][aa_origine][aa][aa_voisin])
+KeyboardInterrupt

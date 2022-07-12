@@ -1,23 +1,22 @@
 """
-Visualisation of the Brier Score tests
+Visualisation of the Brier Score tests:
+/home/pauline/Bureau/MNHN_RESULT/5_BRIER_SCORE/Experiment_Brier_60_70/origine_0.1
 """
 
-################################################################################
-#                                  Importations                                #
-################################################################################
+# IMPORTS
 
 import os
 import sys
+import argparse
 from pathlib import Path
-# import argparse
-# import numpy as np
+import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib import rc
 
-
-
-# import brierNeighbour.selection_example as selection_example
-import brierNeighbour.brier as brier
-# import utils.folder as folder
+# latex activation
+rc('text', usetex=True)
+# sudo apt-get install dvipng texlive-latex-extra texlive-fonts-recommended  cm-super
 
 file = Path(__file__).resolve()
 sys.path.append(file.parents[0])
@@ -25,114 +24,56 @@ sys.path.append(file.parents[0])
 
 
 
-
-################################################################################
-#                                  Variables                                   #
-################################################################################
-METHODE = "uni"
-
-# variables obligatoires à modifier directement dans le script
-
-# chemin du dossier des sorties
-DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT"
-
-# chemin du dossier des données
-DATA = f"{DATA_RESULT_GLOBAL}/1_DATA"
-
-# chemin du dossier des sorties de calcul de score
-DATA_RESULT = f"{DATA_RESULT_GLOBAL}/5_SCORE_{METHODE}_ex_restriction"
+# PARAMETERS
+parser = argparse.ArgumentParser()
+parser.add_argument("pid_inf", help="pourcentage d'identité inférieur", type=int)
+parser.add_argument("pid_sup", help="pourcentage d'identité supérieur", type=int)
+parser.add_argument("method", help="'uni' OR 'multi'", type=str)
+parser.add_argument("reference", help="'origine' OR 'destination'", type=str)
+args = parser.parse_args()
 
 
-NOM_FOLDER_FASTA_TEST = "Pfam_split/Pfam_test"
-MAX_POSITION = 10
-# REFERENCE = "origine"
-REFERENCE = "destination"
-NB_EXEMPLE_PAR_TEST = 1_500_000
-NB_TEST_PAR_CONTEXT = 5
 
-# liste_tranche = [(0, 10),
-#                  (10, 20),
-#                  (20, 30),
-#                  (30, 40),
-#                  (40, 50),
-#                  (50, 60),
-#                  (60, 70),
-#                  (70, 80),
-#                  (80, 90),
-#                  (90, 100)]
+DATA = f"{file.parents[2]}/MNHN_RESULT/5_BRIER_SCORE/Experiment_Brier_{args.pid_inf}_{args.pid_sup}"
+LIST_WEIGHT = [0.001, 0.01, 0.1, 1.0, 10.0]
 
-# liste_tranche = [(0, 10),
-#                  (70, 80),
-#                  (80, 90),
-#                  (90, 100)]
+print("_______________________________________________________________________")
+print("                           WEIGHT 2D EFFECT                            ")
+print("_______________________________________________________________________")
 
-liste_tranche = [(0, 10)]
-COLOR = "tab:blue"
-# liste_tranche = [(10, 20)]
-# COLOR = "tab:orange"
-# liste_tranche = [(20, 30)]
-# COLOR = "tab:green"
-# liste_tranche = [(30, 40)]
-# COLOR = "tab:red"
-# liste_tranche = [(40, 50)]
-# COLOR = "tab:purple"
-# liste_tranche = [(50, 60)]
-# COLOR = "tab:brown"
-# liste_tranche = [(60, 70)]
-# COLOR = "tab:pink"
-# liste_tranche = [(70, 80)]
-# COLOR = "tab:grey"
-# liste_tranche = [(80, 90)]
-# COLOR = "tab:olive"
-# liste_tranche = [(90, 100)]
-# COLOR = "tab:cyan"
-
-
-print("#######################################################################")
-print("      Tracé de graphes sur toutes les tranches choisies                ")
-print("#######################################################################")
-print("")
-# création du dossier pour enregistrer les graphes en sortie
-path_image = f"{DATA_RESULT}/Graphe_{REFERENCE}"
+# FOLDER REGISTRATION
+path_image = f"{DATA}/REVIEW"
 IS_EXIST = os.path.exists(path_image)
 if not IS_EXIST:
     os.makedirs(path_image)
 
-list_nb_example = [NB_EXEMPLE_PAR_TEST]*NB_TEST_PAR_CONTEXT
-path_folder_seed = f"{DATA}/{NOM_FOLDER_FASTA_TEST}"
+# CSV READING IN DATAFRAME
+# for weight in LIST_WEIGHT:
+for weight in LIST_WEIGHT:
+    relative_path_csv_file = f"{args.reference}_{weight}/{args.method}.csv"
+    # conversion to pandas dataframe + headers addition
+    df = pd.read_csv(f"{DATA}/{relative_path_csv_file}",
+                 names=['o_d', 'relative_position', 'test_num', 'Brier_Score', 'n_examples'])
+
+    df_mean = df.groupby('relative_position')['Brier_Score'].mean()
+    list_relative_postition = np.array([elem for elem in df_mean.keys()])
+    list_mean = np.array([elem for elem in df_mean])
+    df_std = df.groupby('relative_position')['Brier_Score'].std()
+    list_std = np.array([elem for elem in df_std])
 
 
-
-
-
-plt.figure(figsize=[10,9])
-
-for i, tranche in enumerate(liste_tranche):
-    pid_inf, pid_sup = tranche
-    path_data_graph = f"{DATA_RESULT}/Experience_Brier_{pid_inf}_{pid_sup}/Reference_{REFERENCE}"
-    list_brier_score = brier.readList(f"{path_data_graph}/brier_{REFERENCE}")
-    list_position = brier.readList(f"{path_data_graph}/position_{REFERENCE}")
-
-    nb_position = len(list_position)
-    list_position_err, list_brier_score_mean, list_brier_score_std = brier.estimationError(
-                         list_position, list_brier_score, nb_position, NB_TEST_PAR_CONTEXT)
-
-    plt.plot(list_position_err, list_brier_score_mean, color=COLOR)
-    plt.fill_between(list_position_err, list_brier_score_mean - list_brier_score_std,
-                     list_brier_score_mean + list_brier_score_std,
-                     alpha=0.5, label = f"{pid_inf}, {pid_sup}", color=COLOR)
-
-    plt.xticks(range(-MAX_POSITION,MAX_POSITION+1))
+    plt.plot(list_relative_postition, list_mean)
+    plt.fill_between(list_relative_postition, list_mean - 2*list_std,
+                     list_mean + 2*list_std,
+                     alpha=0.5, label = f"{weight}")
+    max_position = max(list_relative_postition)
+    plt.xticks(range(- max_position, max_position + 1))
     #plt.yticks(np.arange(0,1.1,0.1))
-    f_str = f"""Position de l'aa contextuel par rapport à l'aa \
-    {"d'origine" if REFERENCE=="origine" else "de destination"}"""
-    plt.xlabel(f_str, fontsize=13)
-    plt.ylabel(f'Score de Brier {METHODE}', fontsize=13)
-    NAME_FOLDER_MSA = os.path.basename(path_folder_seed)
-    myTitle = f"Score de Brier calculé sur {NAME_FOLDER_MSA} avec {NB_TEST_PAR_CONTEXT} tests par contexte\n\
-               {NB_EXEMPLE_PAR_TEST:,} exemples par test"   # à rechanger
+
+    plt.xlabel("Position contextuelle relative", fontsize=13)
+    plt.ylabel('Score de Brier', fontsize=13)
     plt.grid(color='lightgrey', linestyle='--', linewidth=0.5)
-    plt.title(myTitle, loc='center', fontsize=20)
-    plt.legend()
-    title = f"Score de Brier calculé sur {os.path.basename(path_folder_seed)}"
-    plt.savefig(f"{path_image}/{title}_{REFERENCE}_{pid_inf}_{pid_sup}.png")
+    plt.title(f"{args.pid_inf}_{args.pid_sup}_{args.method}_{args.reference}",
+                loc='center', fontsize=20)
+    plt.legend(title=r"\textbf{POIDS 2D}")
+    plt.savefig(f"{path_image}/{args.pid_inf}_{args.pid_sup}_{args.method}_{args.reference}.png")

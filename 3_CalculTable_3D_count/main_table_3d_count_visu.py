@@ -139,7 +139,7 @@ if args.eval == "not_eval":
     plt.yticks(np.arange(0,60,5))
 else:
     plt.yscale('log')
-plt.grid(color='lightgrey', linestyle='--', linewidth=0.5)                                        
+plt.grid(color='lightgrey', linestyle='--', linewidth=0.5)                              
 plt.title(DICO_TITLE_GRAPH[args.eval], loc='center',  fontsize=20)
 plt.legend()
 plt.savefig(f"{args.eval}_{args.ref}.png")

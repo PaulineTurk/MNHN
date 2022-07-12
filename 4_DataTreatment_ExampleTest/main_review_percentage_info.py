@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 from matplotlib import rc
 import pandas as pd
 
+# latex activation
+rc('text', usetex=True)
+
 import sys
 from pathlib import Path
 file = Path(__file__).resolve()
@@ -58,15 +61,15 @@ plt.figure(figsize=(8,5))
 
 # Create bars (inf)
 plt.bar(r, bars_non_info_seed, edgecolor='white', width=barWidth, hatch = '/',
-        label = 'non-informatif', color = "tab:red") #, color='#7f6d5f'
+        label = 'NON-INFORMATIF', color = "tab:red", alpha=0.7) #, color='#7f6d5f'
 # Create bars (sup)
 plt.bar(r, bars_valid_seed, bottom=bars_non_info_seed, edgecolor='white', width=barWidth,
-        label = 'informatif', color = "tab:green") # ,color='#557f2d'
+        label = 'INFORMATIF', color = "tab:green", alpha=0.7) # ,color='#557f2d'
 
 # Custom axis + legend + title
 plt.xticks(r, names, fontweight='bold')
 plt.xlabel("Intervalle de PID", fontsize=13)
-plt.ylabel(f"% d'alignements multiples", fontsize=13)
+plt.ylabel(f"\% d'alignements multiples", fontsize=13)
 title = "Répartition de l'origine des exemples tests\n selon l'intervalle de PID"
 plt.title(title, loc='center', fontsize=18)
 plt.legend()  # loc=9
