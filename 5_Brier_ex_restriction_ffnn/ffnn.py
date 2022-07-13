@@ -1,5 +1,12 @@
 """
-FFNN: python3 ffnn.py random_destination.csv > random_destination_$$.txt 2>&1
+FFNN:
+python3 ffnn.py learning_id.csv > learning_id_$$.txt 2>&1
+python3 ffnn.py random_destination.csv > random_destination_$$.txt 2>&1
+python3 ffnn.py max_neighbour.csv > max_neighbour_$$.txt 2>&1
+
+
+OVERFITTING TEST + REMEDIATION: 
+https://datahacker.rs/018-pytorch-popular-techniques-to-prevent-the-overfitting-in-a-neural-networks/
 """
 import argparse
 import torch
@@ -14,7 +21,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("path_data", help="dataset global path", type=str)
 args = parser.parse_args()
 
-N_NEIGHBOUR = 0
+N_NEIGHBOUR = 3
 N_CHARACTER = 9   # pour le test
 
 
@@ -33,7 +40,7 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # hyper parameters
 N_CLASSES = N_CHARACTER
-INPUT_SIZE = N_CHARACTER # ? pas du tout sure de ca ...
+INPUT_SIZE = N_CHARACTER*(N_NEIGHBOUR +1) # not sure
 HIDDEN_SIZE = 100   # comment le choisir ?
 N_EPOCHS = 100
 BATCH_SIZE = 50
@@ -90,7 +97,7 @@ class AminoAcidDataset(Dataset):
 
 # création de l'instance du dataset
 dataset = AminoAcidDataset(DATA, N_CLASSES)
-# print(data.n_samples, data.n_features)
+# print(dataset.n_samples, dataset.n_features)
 
 X_train, X_test, Y_train, Y_test = train_test_split(dataset.X,
                                                     dataset.Y,
@@ -127,7 +134,7 @@ print(f"N_EXAMPLES (TOTAL): {len(dataset)}")
 print(f"Example of one X_train, Y_train: {first_data}")
 print(f"N_EXAMPLES_TRAIN: {len(dataset_train)}")
 print(f"N_EXAMPLES_TEST: {len(dataset_test)}")
-print("(aa_origine == aa_destination) == True  # for all examples")
+print("(aa_destination == max(aa_contextual)) == True  # for all the examples")
 
 print("")
 print("____________________")
@@ -137,6 +144,7 @@ print("")
 print(f"N_CLASSES : {N_CLASSES}")
 print(f"INPUT_SIZE : {INPUT_SIZE}")
 print(f"HIDDEN_SIZE : {HIDDEN_SIZE}")
+print("ACTIVATION_FUNCTION = ELU")  # automate
 print(f"N_EPOCHS : {N_EPOCHS}")
 print(f"BATCH_SIZE : {BATCH_SIZE}")
 print(f"LEARNING_RATE : {LEARNING_RATE}")
@@ -144,28 +152,32 @@ print(f"TEST_SIZE : {TEST_SIZE}")
 print(f"RANDOM_STATE : {RANDOM_STATE}")
 
 ################################################################
-# STRUCTURE SIMPLE AVEC UNE HIDDEN LAYER
 class NeuralNet(nn.Module):
-
+    """Simple Feed Forward Neural Network with 1 hidden layer"""
     def __init__(self, input_size, hidden_size, n_classes):
         super(NeuralNet, self).__init__()   # hérite d'elle-meme ?
 
         # initialisation de chaque layer
         self.l1 = nn.Linear(input_size, hidden_size)   # input_size, output_size
-        # print(input_size, hidden_size)
-        self.relu = nn.ReLU() # fonction d'activation, pour la hidden layer (c quoi sa logique?)
-        self.l2 = nn.Linear(hidden_size, n_classes)   # input_size, output_size
-        # print(hidden_size, n_classes)
+        self.elu1 =nn.ELU()
+        # self.relu1 = nn.ReLU() # fonction d'activation
+        self.l2 = nn.Linear(hidden_size, hidden_size)   # input_size, output_size
+        self.elu2 =nn.ELU()
+        # self.relu2 = nn.ReLU() # fonction d'activation
+        self.l3 = nn.Linear(hidden_size, n_classes)   # input_size, output_size
         self.m = nn.Softmax(dim=1)
 
     def forward(self, x):  # x : RNN input
         out = self.l1(x)
-        out = self.relu(out)
+        out = self.elu1(out)
+        # out = self.relu1(out)
         out = self.l2(out)
+        out = self.elu2(out)
+        # out = self.relu2(out)
+        out = self.l3(out)
         out = self.m(out)
-
-        # pas la classique softmax à la fin, on veut appliquer Brier au vecteur de proba
         return out
+
 
 
 ## modèle

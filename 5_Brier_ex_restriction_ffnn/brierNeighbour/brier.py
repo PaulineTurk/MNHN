@@ -10,7 +10,6 @@ import sys
 from pathlib import Path 
 file = Path(__file__).resolve()
 sys.path.append(file.parents[1])
-import pickle
 
 
 
@@ -58,6 +57,9 @@ def vecteur_from_table_3d_proba(aa_origine, context_str, list_table_3d_proba, al
     Returns:
         list: list of vectors
     """
+    # print(f"AA ORIGINE: {aa_origine}")
+    # print(f"CONTEXT: {context_str}")
+    
     len_alphabet = len(alphabet)
     list_vect = [np.array(len_alphabet*[1])]
     for index, aa_voisin in enumerate(context_str):
@@ -68,6 +70,7 @@ def vecteur_from_table_3d_proba(aa_origine, context_str, list_table_3d_proba, al
             list_vect.append(np.array(vect))
         else:
             list_vect.append(np.array(len_alphabet*[1]))
+    # print(f"VECTORS: {list_vect}")
     return list_vect
 
 
@@ -101,7 +104,7 @@ def brier_score(list_example,
                 alphabet,
                 path_table_3d_proba_folder, path_table_2d_proba,
                 method):
-    """Compute Brier score of a test
+    """Compute Brier score of one test
 
     Args:
         list_example (list): _the example tests
@@ -137,6 +140,12 @@ def brier_score(list_example,
     # INITIALISATIONS
     score_brier_naive_bayes  = 0
     list_unit_score_brier = []
+    n_conservation = 0
+    n_conservation_true = 0
+    n_conservation_false = 0
+    n_substitution = 0
+    n_substitution_true = 0
+    n_substitution_false = 0
 
     # LOADING: 2D/3D-PROBA
     table_2d_proba = np.load(path_table_2d_proba, allow_pickle='TRUE').item()
@@ -165,69 +174,77 @@ def brier_score(list_example,
             vect_distribution.append(table_2d_proba[aa_1][aa])
 
         # Contextual vectors
+        # print("\nORIGINE-LEFT")
         list_vect_ol = vecteur_from_table_3d_proba(aa_1, aa_c_ol, list_cube_quarter_window_ol, alphabet)
+        # print("\nORIGINE-RIGHT")
         list_vect_or = vecteur_from_table_3d_proba(aa_1, aa_c_or, list_cube_quarter_window_or, alphabet)
+        # print("\nDESTINATION-LEFT")
         list_vect_dl = vecteur_from_table_3d_proba(aa_1, aa_c_dl, list_cube_quarter_window_dl, alphabet)
+        # print("\nDESTINATION-RIGHT")
         list_vect_dr = vecteur_from_table_3d_proba(aa_1, aa_c_dr, list_cube_quarter_window_dr, alphabet)
 
         # VECTORS CONCATENATION
         if method =="multi":
             total_list_vect = [vect_distribution] + list_vect_ol + list_vect_or + list_vect_dl + list_vect_dr
+            # print(f"METHOD: {method}")
+            # print(f"ALL THE VECTORS: {total_list_vect}")
         if method =="uni":
             total_list_vect = [vect_distribution, list_vect_ol[-1], list_vect_or[-1], list_vect_dl[-1], list_vect_dr[-1]]
+            # print(f"METHOD: {method}")
+            # print(f"ALL THE VECTORS: {total_list_vect}")
 
         # VECTORS ELEMENT WISE PRODUCT
         final_vector = np.prod(np.vstack(total_list_vect), axis=0)
+        # print(f"FINAL VECTOR: {final_vector}")
 
         # VECTOR NORMALIZATION
         final_vector_normalized = final_vector/np.sum(final_vector)
+        # print(f"FINAL VECTOR NORMALIZED: {final_vector_normalized}")
+        # print(f"COORDINATE SUM: {np.sum(final_vector_normalized)}")
 
         # BRIER SCORE / EXAMPLE
         score_brier_one_example = unit_brier_naive_bayes(final_vector_normalized, aa_2, alphabet)
-
         list_unit_score_brier.append(score_brier_one_example)
         score_brier_naive_bayes += score_brier_one_example
+
+        # PREDICTION CHECK
+        aa_origine = aa_1
+        aa_destination = aa_2
+        final_vector_normalized = list(final_vector_normalized)
+        max_proba = max(final_vector_normalized)
+        index_max = final_vector_normalized.index(max_proba)
+        aa_predicted = alphabet[index_max]
+
+        if aa_predicted == aa_origine: # prediction of a conservation
+            n_conservation += 1
+            if aa_predicted == aa_destination:
+                n_conservation_true +=1
+            else:
+                n_conservation_false +=1
+        else: # prediction of a substitution
+            n_substitution += 1
+            if aa_predicted == aa_destination:
+                n_substitution_true +=1
+            else:
+                n_substitution_false +=1
+
+
 
     nb_example = len(list_example)
     if nb_example != 0:
         score_brier_naive_bayes /= nb_example
-    # print("EXAMPLES FOR BRIER SCORE:", nb_example)
+
+    perc_conservation_true = 100*n_conservation_true/nb_example
+    perc_conservation_false = 100*n_conservation_false/nb_example
+    perc_substitution_true = 100*n_substitution_true/nb_example
+    perc_substitution_false = 100*n_substitution_false/nb_example
+
+    prediction_info = (perc_conservation_true, perc_conservation_false,
+                       perc_substitution_true, perc_substitution_false)
 
     end = time.time()
     diff = end - start
     items_per_second = nb_example/diff
     print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
 
-    return score_brier_naive_bayes, list_unit_score_brier, nb_example
-
-
-
-
-
-
-def estimationError(list_position, list_brier_score, nb_position, nb_test):
-
-    list_position_err       = []
-    list_brier_score_mean   = []
-    list_brier_score_std    = []
-
-    i = 0
-    while i in range(nb_position):
-        list_position_err.append(list_position[i])
-        estimation_brier = np.array(list_brier_score[i: i+nb_test])
-        list_brier_score_mean.append(np.mean(estimation_brier))
-        list_brier_score_std.append(np.std(estimation_brier))
-        i += nb_test
-    
-    return np.array(list_position_err), np.array(list_brier_score_mean), np.array(list_brier_score_std)
-
-
-def writeList(output_list, path_save_file):
-    with open(path_save_file, 'wb') as temp:
-        pickle.dump(output_list, temp)
-
-
-def readList(path_save_file):
-    with open (path_save_file, 'rb') as temp:
-        items = pickle.load(temp)
-    return items
+    return score_brier_naive_bayes, list_unit_score_brier, nb_example, prediction_info

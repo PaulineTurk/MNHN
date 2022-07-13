@@ -59,15 +59,15 @@ barWidth = 3
 plt.figure(figsize=(8,5))
 
 # Create bars
-graph = plt.bar(r, bars_n_aa_couple, edgecolor='white', 
+graph = plt.bar(r, bars_n_aa_couple, edgecolor='white',
                 width=barWidth, alpha=0.7)
 
 # Custom axis + legend + title
 plt.xticks(r, names, fontweight='bold')
 plt.xlabel("Intervalle de PID", fontsize=13)
-plt.ylabel(f"\% d'exemples test", fontsize=13)
+plt.ylabel(f"\% d'exemples tests non-contextuels", fontsize=13)
 n_aa_couple_no_context = '{:,}'.format(n_aa_couple_no_context).replace(',', ' ')
-title = f"Répartition du pourcentage d'exemples tests non-contextuels\n selon l'intervalle de PID (TOTAL: {n_aa_couple_no_context})"
+title = f"Répartition du pourcentage d'exemples tests non-contextuels\n selon l'intervalle de PID (TOTAL: {n_aa_couple_no_context} exemples tests non-contextuels)"
 plt.title(title, loc='center', fontsize=16)
 
 i = 0

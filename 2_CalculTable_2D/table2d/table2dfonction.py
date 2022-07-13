@@ -181,7 +181,7 @@ def freq_for_table_2d(count_AA, nb_AA, count_coupleAA, nb_coupleAA, path_folder_
 
 def table_2d_score(freq_AA, freq_coupleAA, path_folder_Result, scale_factor = 2):
     """
-    Compute and save table_2d_score 
+    Compute and save table_2d_score
     """
     list_residu = freq_AA.keys()
 
@@ -200,7 +200,7 @@ def table_2d_score(freq_AA, freq_coupleAA, path_folder_Result, scale_factor = 2)
     t.stop("calcul de table_2d_score")
 
     path_matrix = f"{path_folder_Result}/table_2d_score"
-    np.save(path_matrix, table_2d) 
+    np.save(path_matrix, table_2d)
 
     return table_2d
 

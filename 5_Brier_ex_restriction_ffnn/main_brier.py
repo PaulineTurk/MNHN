@@ -1,6 +1,6 @@
 """
 Brier Score Experiment:
-nohup python3 main_brier.py 60 70 uni origine 0.001> test_brier_$$.txt 2>&1
+nohup python3 main_brier.py 30 40 uni origine 0.001> test_brier_$$.txt 2>&1
 """
 
 # IMPORTS
@@ -37,14 +37,14 @@ DATA_2D_PROBA = f"{file.parents[2]}/MNHN_RESULT/2_TABLE_2D"
 # PATH FOR 3D_PROBA
 DATA_3D_PROBA = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D/PROBA"
 # PATH FOR THE RESULTS
-DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/5_BRIER_SCORE"
+DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/5_BRIER_SCORE_test_check_method"
 
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 NAME_FASTA_TEST_FOLDER = "Pfam_split/Pfam_test"
-MAX_RELATIVE_POSITION = 10
-N_TEST_PER_CONTEXT = 10
-N_EXAMPLES_PER_TEST = 1_500_000
+MAX_RELATIVE_POSITION = 3
+N_TEST_PER_CONTEXT = 1
+N_EXAMPLES_PER_TEST = 1_000
 PSEUDO_COUNTER_2D = 1
 PSEUDO_COUNTER_3D = 0
 
@@ -145,7 +145,7 @@ for context in list_context:
                                                                         context_ol, context_or, context_dl, context_dr,
                                                                         ALPHABET)
     
-        score_brier, list_unit_score_brier, nb_example = brier.brier_score(list_example,
+        score_brier, list_unit_score_brier, nb_example, prediction_info = brier.brier_score(list_example,
                                                                context_ol, context_or, context_dl, context_dr,
                                                                ALPHABET,
                                                                path_folder_table_3d_proba, path_table_2d_proba,
@@ -166,13 +166,17 @@ for context in list_context:
             relative_position = 0
 
 
-
-
         # REVIEW REGISTRATION
-        data = args.reference, relative_position, test_number, score_brier, nb_example
+        perc_conservation_true, perc_conservation_false, perc_substitution_true, perc_substitution_false = prediction_info
+        data = (args.reference, relative_position, test_number, score_brier, nb_example,
+                perc_conservation_true, perc_conservation_false,
+                perc_substitution_true, perc_substitution_false)
+
         with open(f"{path_new_file_experiment}/{args.method}.csv", 'a', encoding='UTF8', newline='') as f:
             writer = csv.writer(f)
-            # header: pid_inf, pid_sup, n_valid_seed, n_non_info_seed, n_valid_aa_couple_global
+            # header: pid_inf, pid_sup, n_valid_seed, n_non_info_seed, n_valid_aa_couple_global,
+            #         perc_conservation_true, perc_conservation_false,
+            #         perc_substitution_true, perc_substitution_false
             writer.writerow(data)
 
 end = time.time()

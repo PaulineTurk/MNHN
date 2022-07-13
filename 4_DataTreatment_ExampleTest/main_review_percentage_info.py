@@ -70,7 +70,8 @@ plt.bar(r, bars_valid_seed, bottom=bars_non_info_seed, edgecolor='white', width=
 plt.xticks(r, names, fontweight='bold')
 plt.xlabel("Intervalle de PID", fontsize=13)
 plt.ylabel(f"\% d'alignements multiples", fontsize=13)
-title = "Répartition de l'origine des exemples tests\n selon l'intervalle de PID"
+n_seed = '{:,}'.format(n_seed).replace(',', ' ')
+title = f"Répartition de l'origine des exemples tests\n selon l'intervalle de PID (TOTAL: {n_seed} alignements multiples)"
 plt.title(title, loc='center', fontsize=18)
 plt.legend()  # loc=9
 

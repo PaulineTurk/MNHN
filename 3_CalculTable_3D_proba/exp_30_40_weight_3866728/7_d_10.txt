@@ -1,0 +1,48 @@
+_______________________________________________________________________
+                           3D_TABLE PROBA                              
+                     WEIGHTING and NORMALISATION                       
+_______________________________________________________________________
+
+_________________
+    PARAMETERS   
+_________________
+PID_INF: 30
+PID_SUP: 40
+RELATIVE_CONTEXT_POSITION: 7
+REFERENCE: d
+PSEUDO_COUNTER_2D: 1
+PSEUDO_COUNTER_3D: 0
+WEIGHT: 10.0
+
+_________________
+   CALCULATION   
+_________________
+2D PROBA PATH: /home/pauline/Bureau/MNHN_RESULT/2_TABLE_2D/30_40_1/proba.npy
+3D COUNT PATH: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/COUNT/30_40_0/7_d.npy
+TIME WEIGHTING : 0.01s
+TIME NORMALISATION : 0.01s
+PATH 3D_PROBA WEIGHTED AND NORMALISED: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/PROBA/30_40_0_10.0/7_d.npy
+
+_________________________
+   CHECK NORMALISATION   
+_________________________
+A, 19.999999999999975
+R, 19.999999999999993
+N, 20.0
+D, 20.000000000000004
+C, 19.99999999999999
+Q, 19.99999999999999
+E, 19.999999999999996
+G, 20.000000000000018
+H, 20.000000000000007
+I, 20.000000000000018
+L, 19.99999999999999
+K, 20.0
+M, 20.00000000000004
+F, 19.999999999999986
+P, 19.999999999999993
+S, 19.999999999999993
+T, 19.999999999999993
+W, 19.99999999999999
+Y, 20.000000000000007
+V, 20.00000000000002

@@ -1,0 +1,914 @@
+________________________________________________
+             LEARNING IDENTITY TEST             
+           aa_origine == aa_destination         
+________________________________________________
+
+____________________
+  DATASET/DATALOAD  
+____________________
+
+DATASET with 9 amino-acids encoded from 0 to 8
+N_NEIGHBOUR : 3
+N_EXAMPLES (TOTAL): 45000
+Example of one X_train, Y_train: (tensor([[0, 0, 0, 0, 1, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0],
+        [0, 0, 0, 0, 0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 1, 0]]), tensor([1, 0, 0, 0, 0, 0, 0, 0, 0]))
+N_EXAMPLES_TRAIN: 36000
+N_EXAMPLES_TEST: 9000
+(aa_destination == max(aa_contextual)) == True  # for all the examples
+
+____________________
+  HYPER-PARAMETERS  
+____________________
+
+N_CLASSES : 9
+INPUT_SIZE : 36
+HIDDEN_SIZE : 100
+ACTIVATION_FUNCTION = ELU
+N_EPOCHS : 100
+BATCH_SIZE : 50
+LEARNING_RATE : 0.001
+TEST_SIZE : 0.2
+RANDOM_STATE : 1234
+
+____________________
+        MODEL       
+____________________
+
+Feed Forward Neural Network with 1 HIDDEN LAYER + a final SOFTMAX LAYER
+LOSS: MSELoss
+OPTIMIZER: Adam
+
+____________________
+   TRAINING LOOP    
+____________________
+
+epoch 1 / 100, step 100/720,                    loss = 0.0751
+epoch 1 / 100, step 200/720,                    loss = 0.0699
+epoch 1 / 100, step 300/720,                    loss = 0.0671
+epoch 1 / 100, step 400/720,                    loss = 0.0736
+epoch 1 / 100, step 500/720,                    loss = 0.0776
+epoch 1 / 100, step 600/720,                    loss = 0.0687
+epoch 1 / 100, step 700/720,                    loss = 0.0634
+epoch 2 / 100, step 100/720,                    loss = 0.0760
+epoch 2 / 100, step 200/720,                    loss = 0.0686
+epoch 2 / 100, step 300/720,                    loss = 0.0570
+epoch 2 / 100, step 400/720,                    loss = 0.0775
+epoch 2 / 100, step 500/720,                    loss = 0.0731
+epoch 2 / 100, step 600/720,                    loss = 0.0784
+epoch 2 / 100, step 700/720,                    loss = 0.0692
+epoch 3 / 100, step 100/720,                    loss = 0.0723
+epoch 3 / 100, step 200/720,                    loss = 0.0733
+epoch 3 / 100, step 300/720,                    loss = 0.0738
+epoch 3 / 100, step 400/720,                    loss = 0.0699
+epoch 3 / 100, step 500/720,                    loss = 0.0572
+epoch 3 / 100, step 600/720,                    loss = 0.0573
+epoch 3 / 100, step 700/720,                    loss = 0.0701
+epoch 4 / 100, step 100/720,                    loss = 0.0687
+epoch 4 / 100, step 200/720,                    loss = 0.0719
+epoch 4 / 100, step 300/720,                    loss = 0.0725
+epoch 4 / 100, step 400/720,                    loss = 0.0774
+epoch 4 / 100, step 500/720,                    loss = 0.0767
+epoch 4 / 100, step 600/720,                    loss = 0.0637
+epoch 4 / 100, step 700/720,                    loss = 0.0816
+epoch 5 / 100, step 100/720,                    loss = 0.0706
+epoch 5 / 100, step 200/720,                    loss = 0.0726
+epoch 5 / 100, step 300/720,                    loss = 0.0751
+epoch 5 / 100, step 400/720,                    loss = 0.0787
+epoch 5 / 100, step 500/720,                    loss = 0.0714
+epoch 5 / 100, step 600/720,                    loss = 0.0658
+epoch 5 / 100, step 700/720,                    loss = 0.0747
+epoch 6 / 100, step 100/720,                    loss = 0.0735
+epoch 6 / 100, step 200/720,                    loss = 0.0688
+epoch 6 / 100, step 300/720,                    loss = 0.0531
+epoch 6 / 100, step 400/720,                    loss = 0.0695
+epoch 6 / 100, step 500/720,                    loss = 0.0674
+epoch 6 / 100, step 600/720,                    loss = 0.0715
+epoch 6 / 100, step 700/720,                    loss = 0.0703
+epoch 7 / 100, step 100/720,                    loss = 0.0654
+epoch 7 / 100, step 200/720,                    loss = 0.0747
+epoch 7 / 100, step 300/720,                    loss = 0.0657
+epoch 7 / 100, step 400/720,                    loss = 0.0752
+epoch 7 / 100, step 500/720,                    loss = 0.0641
+epoch 7 / 100, step 600/720,                    loss = 0.0623
+epoch 7 / 100, step 700/720,                    loss = 0.0781
+epoch 8 / 100, step 100/720,                    loss = 0.0712
+epoch 8 / 100, step 200/720,                    loss = 0.0684
+epoch 8 / 100, step 300/720,                    loss = 0.0703
+epoch 8 / 100, step 400/720,                    loss = 0.0576
+epoch 8 / 100, step 500/720,                    loss = 0.0658
+epoch 8 / 100, step 600/720,                    loss = 0.0753
+epoch 8 / 100, step 700/720,                    loss = 0.0781
+epoch 9 / 100, step 100/720,                    loss = 0.0587
+epoch 9 / 100, step 200/720,                    loss = 0.0644
+epoch 9 / 100, step 300/720,                    loss = 0.0618
+epoch 9 / 100, step 400/720,                    loss = 0.0692
+epoch 9 / 100, step 500/720,                    loss = 0.0736
+epoch 9 / 100, step 600/720,                    loss = 0.0627
+epoch 9 / 100, step 700/720,                    loss = 0.0695
+epoch 10 / 100, step 100/720,                    loss = 0.0703
+epoch 10 / 100, step 200/720,                    loss = 0.0760
+epoch 10 / 100, step 300/720,                    loss = 0.0651
+epoch 10 / 100, step 400/720,                    loss = 0.0737
+epoch 10 / 100, step 500/720,                    loss = 0.0702
+epoch 10 / 100, step 600/720,                    loss = 0.0578
+epoch 10 / 100, step 700/720,                    loss = 0.0696
+epoch 11 / 100, step 100/720,                    loss = 0.0740
+epoch 11 / 100, step 200/720,                    loss = 0.0690
+epoch 11 / 100, step 300/720,                    loss = 0.0612
+epoch 11 / 100, step 400/720,                    loss = 0.0581
+epoch 11 / 100, step 500/720,                    loss = 0.0799
+epoch 11 / 100, step 600/720,                    loss = 0.0773
+epoch 11 / 100, step 700/720,                    loss = 0.0720
+epoch 12 / 100, step 100/720,                    loss = 0.0789
+epoch 12 / 100, step 200/720,                    loss = 0.0633
+epoch 12 / 100, step 300/720,                    loss = 0.0718
+epoch 12 / 100, step 400/720,                    loss = 0.0703
+epoch 12 / 100, step 500/720,                    loss = 0.0760
+epoch 12 / 100, step 600/720,                    loss = 0.0714
+epoch 12 / 100, step 700/720,                    loss = 0.0636
+epoch 13 / 100, step 100/720,                    loss = 0.0600
+epoch 13 / 100, step 200/720,                    loss = 0.0774
+epoch 13 / 100, step 300/720,                    loss = 0.0727
+epoch 13 / 100, step 400/720,                    loss = 0.0695
+epoch 13 / 100, step 500/720,                    loss = 0.0701
+epoch 13 / 100, step 600/720,                    loss = 0.0698
+epoch 13 / 100, step 700/720,                    loss = 0.0600
+epoch 14 / 100, step 100/720,                    loss = 0.0632
+epoch 14 / 100, step 200/720,                    loss = 0.0770
+epoch 14 / 100, step 300/720,                    loss = 0.0709
+epoch 14 / 100, step 400/720,                    loss = 0.0677
+epoch 14 / 100, step 500/720,                    loss = 0.0711
+epoch 14 / 100, step 600/720,                    loss = 0.0674
+epoch 14 / 100, step 700/720,                    loss = 0.0730
+epoch 15 / 100, step 100/720,                    loss = 0.0818
+epoch 15 / 100, step 200/720,                    loss = 0.0761
+epoch 15 / 100, step 300/720,                    loss = 0.0588
+epoch 15 / 100, step 400/720,                    loss = 0.0668
+epoch 15 / 100, step 500/720,                    loss = 0.0674
+epoch 15 / 100, step 600/720,                    loss = 0.0641
+epoch 15 / 100, step 700/720,                    loss = 0.0633
+epoch 16 / 100, step 100/720,                    loss = 0.0669
+epoch 16 / 100, step 200/720,                    loss = 0.0613
+epoch 16 / 100, step 300/720,                    loss = 0.0728
+epoch 16 / 100, step 400/720,                    loss = 0.0744
+epoch 16 / 100, step 500/720,                    loss = 0.0651
+epoch 16 / 100, step 600/720,                    loss = 0.0730
+epoch 16 / 100, step 700/720,                    loss = 0.0705
+epoch 17 / 100, step 100/720,                    loss = 0.0587
+epoch 17 / 100, step 200/720,                    loss = 0.0633
+epoch 17 / 100, step 300/720,                    loss = 0.0685
+epoch 17 / 100, step 400/720,                    loss = 0.0683
+epoch 17 / 100, step 500/720,                    loss = 0.0680
+epoch 17 / 100, step 600/720,                    loss = 0.0669
+epoch 17 / 100, step 700/720,                    loss = 0.0690
+epoch 18 / 100, step 100/720,                    loss = 0.0732
+epoch 18 / 100, step 200/720,                    loss = 0.0717
+epoch 18 / 100, step 300/720,                    loss = 0.0621
+epoch 18 / 100, step 400/720,                    loss = 0.0625
+epoch 18 / 100, step 500/720,                    loss = 0.0751
+epoch 18 / 100, step 600/720,                    loss = 0.0677
+epoch 18 / 100, step 700/720,                    loss = 0.0686
+epoch 19 / 100, step 100/720,                    loss = 0.0717
+epoch 19 / 100, step 200/720,                    loss = 0.0707
+epoch 19 / 100, step 300/720,                    loss = 0.0662
+epoch 19 / 100, step 400/720,                    loss = 0.0649
+epoch 19 / 100, step 500/720,                    loss = 0.0730
+epoch 19 / 100, step 600/720,                    loss = 0.0693
+epoch 19 / 100, step 700/720,                    loss = 0.0566
+epoch 20 / 100, step 100/720,                    loss = 0.0770
+epoch 20 / 100, step 200/720,                    loss = 0.0578
+epoch 20 / 100, step 300/720,                    loss = 0.0811
+epoch 20 / 100, step 400/720,                    loss = 0.0653
+epoch 20 / 100, step 500/720,                    loss = 0.0597
+epoch 20 / 100, step 600/720,                    loss = 0.0744
+epoch 20 / 100, step 700/720,                    loss = 0.0679
+epoch 21 / 100, step 100/720,                    loss = 0.0682
+epoch 21 / 100, step 200/720,                    loss = 0.0722
+epoch 21 / 100, step 300/720,                    loss = 0.0628
+epoch 21 / 100, step 400/720,                    loss = 0.0761
+epoch 21 / 100, step 500/720,                    loss = 0.0778
+epoch 21 / 100, step 600/720,                    loss = 0.0797
+epoch 21 / 100, step 700/720,                    loss = 0.0659
+epoch 22 / 100, step 100/720,                    loss = 0.0702
+epoch 22 / 100, step 200/720,                    loss = 0.0721
+epoch 22 / 100, step 300/720,                    loss = 0.0672
+epoch 22 / 100, step 400/720,                    loss = 0.0739
+epoch 22 / 100, step 500/720,                    loss = 0.0633
+epoch 22 / 100, step 600/720,                    loss = 0.0670
+epoch 22 / 100, step 700/720,                    loss = 0.0694
+epoch 23 / 100, step 100/720,                    loss = 0.0694
+epoch 23 / 100, step 200/720,                    loss = 0.0723
+epoch 23 / 100, step 300/720,                    loss = 0.0740
+epoch 23 / 100, step 400/720,                    loss = 0.0616
+epoch 23 / 100, step 500/720,                    loss = 0.0622
+epoch 23 / 100, step 600/720,                    loss = 0.0611
+epoch 23 / 100, step 700/720,                    loss = 0.0657
+epoch 24 / 100, step 100/720,                    loss = 0.0613
+epoch 24 / 100, step 200/720,                    loss = 0.0599
+epoch 24 / 100, step 300/720,                    loss = 0.0688
+epoch 24 / 100, step 400/720,                    loss = 0.0726
+epoch 24 / 100, step 500/720,                    loss = 0.0687
+epoch 24 / 100, step 600/720,                    loss = 0.0659
+epoch 24 / 100, step 700/720,                    loss = 0.0593
+epoch 25 / 100, step 100/720,                    loss = 0.0629
+epoch 25 / 100, step 200/720,                    loss = 0.0775
+epoch 25 / 100, step 300/720,                    loss = 0.0713
+epoch 25 / 100, step 400/720,                    loss = 0.0741
+epoch 25 / 100, step 500/720,                    loss = 0.0724
+epoch 25 / 100, step 600/720,                    loss = 0.0715
+epoch 25 / 100, step 700/720,                    loss = 0.0728
+epoch 26 / 100, step 100/720,                    loss = 0.0684
+epoch 26 / 100, step 200/720,                    loss = 0.0757
+epoch 26 / 100, step 300/720,                    loss = 0.0749
+epoch 26 / 100, step 400/720,                    loss = 0.0732
+epoch 26 / 100, step 500/720,                    loss = 0.0680
+epoch 26 / 100, step 600/720,                    loss = 0.0645
+epoch 26 / 100, step 700/720,                    loss = 0.0582
+epoch 27 / 100, step 100/720,                    loss = 0.0703
+epoch 27 / 100, step 200/720,                    loss = 0.0682
+epoch 27 / 100, step 300/720,                    loss = 0.0593
+epoch 27 / 100, step 400/720,                    loss = 0.0781
+epoch 27 / 100, step 500/720,                    loss = 0.0625
+epoch 27 / 100, step 600/720,                    loss = 0.0749
+epoch 27 / 100, step 700/720,                    loss = 0.0790
+epoch 28 / 100, step 100/720,                    loss = 0.0696
+epoch 28 / 100, step 200/720,                    loss = 0.0649
+epoch 28 / 100, step 300/720,                    loss = 0.0709
+epoch 28 / 100, step 400/720,                    loss = 0.0813
+epoch 28 / 100, step 500/720,                    loss = 0.0793
+epoch 28 / 100, step 600/720,                    loss = 0.0615
+epoch 28 / 100, step 700/720,                    loss = 0.0656
+epoch 29 / 100, step 100/720,                    loss = 0.0657
+epoch 29 / 100, step 200/720,                    loss = 0.0690
+epoch 29 / 100, step 300/720,                    loss = 0.0753
+epoch 29 / 100, step 400/720,                    loss = 0.0715
+epoch 29 / 100, step 500/720,                    loss = 0.0689
+epoch 29 / 100, step 600/720,                    loss = 0.0623
+epoch 29 / 100, step 700/720,                    loss = 0.0683
+epoch 30 / 100, step 100/720,                    loss = 0.0658
+epoch 30 / 100, step 200/720,                    loss = 0.0618
+epoch 30 / 100, step 300/720,                    loss = 0.0700
+epoch 30 / 100, step 400/720,                    loss = 0.0670
+epoch 30 / 100, step 500/720,                    loss = 0.0649
+epoch 30 / 100, step 600/720,                    loss = 0.0753
+epoch 30 / 100, step 700/720,                    loss = 0.0665
+epoch 31 / 100, step 100/720,                    loss = 0.0692
+epoch 31 / 100, step 200/720,                    loss = 0.0684
+epoch 31 / 100, step 300/720,                    loss = 0.0663
+epoch 31 / 100, step 400/720,                    loss = 0.0712
+epoch 31 / 100, step 500/720,                    loss = 0.0642
+epoch 31 / 100, step 600/720,                    loss = 0.0670
+epoch 31 / 100, step 700/720,                    loss = 0.0645
+epoch 32 / 100, step 100/720,                    loss = 0.0779
+epoch 32 / 100, step 200/720,                    loss = 0.0818
+epoch 32 / 100, step 300/720,                    loss = 0.0662
+epoch 32 / 100, step 400/720,                    loss = 0.0666
+epoch 32 / 100, step 500/720,                    loss = 0.0630
+epoch 32 / 100, step 600/720,                    loss = 0.0638
+epoch 32 / 100, step 700/720,                    loss = 0.0628
+epoch 33 / 100, step 100/720,                    loss = 0.0697
+epoch 33 / 100, step 200/720,                    loss = 0.0707
+epoch 33 / 100, step 300/720,                    loss = 0.0738
+epoch 33 / 100, step 400/720,                    loss = 0.0653
+epoch 33 / 100, step 500/720,                    loss = 0.0791
+epoch 33 / 100, step 600/720,                    loss = 0.0561
+epoch 33 / 100, step 700/720,                    loss = 0.0619
+epoch 34 / 100, step 100/720,                    loss = 0.0657
+epoch 34 / 100, step 200/720,                    loss = 0.0768
+epoch 34 / 100, step 300/720,                    loss = 0.0557
+epoch 34 / 100, step 400/720,                    loss = 0.0598
+epoch 34 / 100, step 500/720,                    loss = 0.0589
+epoch 34 / 100, step 600/720,                    loss = 0.0563
+epoch 34 / 100, step 700/720,                    loss = 0.0746
+epoch 35 / 100, step 100/720,                    loss = 0.0736
+epoch 35 / 100, step 200/720,                    loss = 0.0643
+epoch 35 / 100, step 300/720,                    loss = 0.0726
+epoch 35 / 100, step 400/720,                    loss = 0.0728
+epoch 35 / 100, step 500/720,                    loss = 0.0583
+epoch 35 / 100, step 600/720,                    loss = 0.0677
+epoch 35 / 100, step 700/720,                    loss = 0.0692
+epoch 36 / 100, step 100/720,                    loss = 0.0635
+epoch 36 / 100, step 200/720,                    loss = 0.0742
+epoch 36 / 100, step 300/720,                    loss = 0.0639
+epoch 36 / 100, step 400/720,                    loss = 0.0755
+epoch 36 / 100, step 500/720,                    loss = 0.0574
+epoch 36 / 100, step 600/720,                    loss = 0.0667
+epoch 36 / 100, step 700/720,                    loss = 0.0692
+epoch 37 / 100, step 100/720,                    loss = 0.0663
+epoch 37 / 100, step 200/720,                    loss = 0.0644
+epoch 37 / 100, step 300/720,                    loss = 0.0648
+epoch 37 / 100, step 400/720,                    loss = 0.0721
+epoch 37 / 100, step 500/720,                    loss = 0.0599
+epoch 37 / 100, step 600/720,                    loss = 0.0661
+epoch 37 / 100, step 700/720,                    loss = 0.0770
+epoch 38 / 100, step 100/720,                    loss = 0.0642
+epoch 38 / 100, step 200/720,                    loss = 0.0564
+epoch 38 / 100, step 300/720,                    loss = 0.0644
+epoch 38 / 100, step 400/720,                    loss = 0.0595
+epoch 38 / 100, step 500/720,                    loss = 0.0649
+epoch 38 / 100, step 600/720,                    loss = 0.0697
+epoch 38 / 100, step 700/720,                    loss = 0.0739
+epoch 39 / 100, step 100/720,                    loss = 0.0672
+epoch 39 / 100, step 200/720,                    loss = 0.0741
+epoch 39 / 100, step 300/720,                    loss = 0.0718
+epoch 39 / 100, step 400/720,                    loss = 0.0727
+epoch 39 / 100, step 500/720,                    loss = 0.0726
+epoch 39 / 100, step 600/720,                    loss = 0.0715
+epoch 39 / 100, step 700/720,                    loss = 0.0702
+epoch 40 / 100, step 100/720,                    loss = 0.0699
+epoch 40 / 100, step 200/720,                    loss = 0.0683
+epoch 40 / 100, step 300/720,                    loss = 0.0626
+epoch 40 / 100, step 400/720,                    loss = 0.0680
+epoch 40 / 100, step 500/720,                    loss = 0.0732
+epoch 40 / 100, step 600/720,                    loss = 0.0596
+epoch 40 / 100, step 700/720,                    loss = 0.0787
+epoch 41 / 100, step 100/720,                    loss = 0.0775
+epoch 41 / 100, step 200/720,                    loss = 0.0704
+epoch 41 / 100, step 300/720,                    loss = 0.0714
+epoch 41 / 100, step 400/720,                    loss = 0.0712
+epoch 41 / 100, step 500/720,                    loss = 0.0620
+epoch 41 / 100, step 600/720,                    loss = 0.0603
+epoch 41 / 100, step 700/720,                    loss = 0.0800
+epoch 42 / 100, step 100/720,                    loss = 0.0645
+epoch 42 / 100, step 200/720,                    loss = 0.0731
+epoch 42 / 100, step 300/720,                    loss = 0.0613
+epoch 42 / 100, step 400/720,                    loss = 0.0763
+epoch 42 / 100, step 500/720,                    loss = 0.0671
+epoch 42 / 100, step 600/720,                    loss = 0.0585
+epoch 42 / 100, step 700/720,                    loss = 0.0700
+epoch 43 / 100, step 100/720,                    loss = 0.0703
+epoch 43 / 100, step 200/720,                    loss = 0.0757
+epoch 43 / 100, step 300/720,                    loss = 0.0771
+epoch 43 / 100, step 400/720,                    loss = 0.0624
+epoch 43 / 100, step 500/720,                    loss = 0.0625
+epoch 43 / 100, step 600/720,                    loss = 0.0718
+epoch 43 / 100, step 700/720,                    loss = 0.0723
+epoch 44 / 100, step 100/720,                    loss = 0.0676
+epoch 44 / 100, step 200/720,                    loss = 0.0620
+epoch 44 / 100, step 300/720,                    loss = 0.0700
+epoch 44 / 100, step 400/720,                    loss = 0.0635
+epoch 44 / 100, step 500/720,                    loss = 0.0684
+epoch 44 / 100, step 600/720,                    loss = 0.0764
+epoch 44 / 100, step 700/720,                    loss = 0.0616
+epoch 45 / 100, step 100/720,                    loss = 0.0742
+epoch 45 / 100, step 200/720,                    loss = 0.0731
+epoch 45 / 100, step 300/720,                    loss = 0.0665
+epoch 45 / 100, step 400/720,                    loss = 0.0741
+epoch 45 / 100, step 500/720,                    loss = 0.0699
+epoch 45 / 100, step 600/720,                    loss = 0.0639
+epoch 45 / 100, step 700/720,                    loss = 0.0687
+epoch 46 / 100, step 100/720,                    loss = 0.0724
+epoch 46 / 100, step 200/720,                    loss = 0.0794
+epoch 46 / 100, step 300/720,                    loss = 0.0638
+epoch 46 / 100, step 400/720,                    loss = 0.0587
+epoch 46 / 100, step 500/720,                    loss = 0.0740
+epoch 46 / 100, step 600/720,                    loss = 0.0670
+epoch 46 / 100, step 700/720,                    loss = 0.0710
+epoch 47 / 100, step 100/720,                    loss = 0.0568
+epoch 47 / 100, step 200/720,                    loss = 0.0654
+epoch 47 / 100, step 300/720,                    loss = 0.0686
+epoch 47 / 100, step 400/720,                    loss = 0.0671
+epoch 47 / 100, step 500/720,                    loss = 0.0611
+epoch 47 / 100, step 600/720,                    loss = 0.0691
+epoch 47 / 100, step 700/720,                    loss = 0.0757
+epoch 48 / 100, step 100/720,                    loss = 0.0656
+epoch 48 / 100, step 200/720,                    loss = 0.0632
+epoch 48 / 100, step 300/720,                    loss = 0.0710
+epoch 48 / 100, step 400/720,                    loss = 0.0743
+epoch 48 / 100, step 500/720,                    loss = 0.0779
+epoch 48 / 100, step 600/720,                    loss = 0.0688
+epoch 48 / 100, step 700/720,                    loss = 0.0760
+epoch 49 / 100, step 100/720,                    loss = 0.0689
+epoch 49 / 100, step 200/720,                    loss = 0.0638
+epoch 49 / 100, step 300/720,                    loss = 0.0651
+epoch 49 / 100, step 400/720,                    loss = 0.0731
+epoch 49 / 100, step 500/720,                    loss = 0.0658
+epoch 49 / 100, step 600/720,                    loss = 0.0795
+epoch 49 / 100, step 700/720,                    loss = 0.0722
+epoch 50 / 100, step 100/720,                    loss = 0.0628
+epoch 50 / 100, step 200/720,                    loss = 0.0546
+epoch 50 / 100, step 300/720,                    loss = 0.0614
+epoch 50 / 100, step 400/720,                    loss = 0.0728
+epoch 50 / 100, step 500/720,                    loss = 0.0682
+epoch 50 / 100, step 600/720,                    loss = 0.0651
+epoch 50 / 100, step 700/720,                    loss = 0.0685
+epoch 51 / 100, step 100/720,                    loss = 0.0645
+epoch 51 / 100, step 200/720,                    loss = 0.0660
+epoch 51 / 100, step 300/720,                    loss = 0.0649
+epoch 51 / 100, step 400/720,                    loss = 0.0710
+epoch 51 / 100, step 500/720,                    loss = 0.0566
+epoch 51 / 100, step 600/720,                    loss = 0.0730
+epoch 51 / 100, step 700/720,                    loss = 0.0752
+epoch 52 / 100, step 100/720,                    loss = 0.0692
+epoch 52 / 100, step 200/720,                    loss = 0.0557
+epoch 52 / 100, step 300/720,                    loss = 0.0672
+epoch 52 / 100, step 400/720,                    loss = 0.0679
+epoch 52 / 100, step 500/720,                    loss = 0.0672
+epoch 52 / 100, step 600/720,                    loss = 0.0717
+epoch 52 / 100, step 700/720,                    loss = 0.0692
+epoch 53 / 100, step 100/720,                    loss = 0.0541
+epoch 53 / 100, step 200/720,                    loss = 0.0725
+epoch 53 / 100, step 300/720,                    loss = 0.0636
+epoch 53 / 100, step 400/720,                    loss = 0.0627
+epoch 53 / 100, step 500/720,                    loss = 0.0718
+epoch 53 / 100, step 600/720,                    loss = 0.0590
+epoch 53 / 100, step 700/720,                    loss = 0.0664
+epoch 54 / 100, step 100/720,                    loss = 0.0631
+epoch 54 / 100, step 200/720,                    loss = 0.0626
+epoch 54 / 100, step 300/720,                    loss = 0.0784
+epoch 54 / 100, step 400/720,                    loss = 0.0645
+epoch 54 / 100, step 500/720,                    loss = 0.0649
+epoch 54 / 100, step 600/720,                    loss = 0.0736
+epoch 54 / 100, step 700/720,                    loss = 0.0693
+epoch 55 / 100, step 100/720,                    loss = 0.0662
+epoch 55 / 100, step 200/720,                    loss = 0.0633
+epoch 55 / 100, step 300/720,                    loss = 0.0657
+epoch 55 / 100, step 400/720,                    loss = 0.0675
+epoch 55 / 100, step 500/720,                    loss = 0.0642
+epoch 55 / 100, step 600/720,                    loss = 0.0764
+epoch 55 / 100, step 700/720,                    loss = 0.0739
+epoch 56 / 100, step 100/720,                    loss = 0.0659
+epoch 56 / 100, step 200/720,                    loss = 0.0687
+epoch 56 / 100, step 300/720,                    loss = 0.0671
+epoch 56 / 100, step 400/720,                    loss = 0.0622
+epoch 56 / 100, step 500/720,                    loss = 0.0692
+epoch 56 / 100, step 600/720,                    loss = 0.0633
+epoch 56 / 100, step 700/720,                    loss = 0.0608
+epoch 57 / 100, step 100/720,                    loss = 0.0630
+epoch 57 / 100, step 200/720,                    loss = 0.0654
+epoch 57 / 100, step 300/720,                    loss = 0.0710
+epoch 57 / 100, step 400/720,                    loss = 0.0684
+epoch 57 / 100, step 500/720,                    loss = 0.0540
+epoch 57 / 100, step 600/720,                    loss = 0.0624
+epoch 57 / 100, step 700/720,                    loss = 0.0721
+epoch 58 / 100, step 100/720,                    loss = 0.0559
+epoch 58 / 100, step 200/720,                    loss = 0.0667
+epoch 58 / 100, step 300/720,                    loss = 0.0646
+epoch 58 / 100, step 400/720,                    loss = 0.0729
+epoch 58 / 100, step 500/720,                    loss = 0.0663
+epoch 58 / 100, step 600/720,                    loss = 0.0710
+epoch 58 / 100, step 700/720,                    loss = 0.0692
+epoch 59 / 100, step 100/720,                    loss = 0.0567
+epoch 59 / 100, step 200/720,                    loss = 0.0693
+epoch 59 / 100, step 300/720,                    loss = 0.0742
+epoch 59 / 100, step 400/720,                    loss = 0.0721
+epoch 59 / 100, step 500/720,                    loss = 0.0732
+epoch 59 / 100, step 600/720,                    loss = 0.0793
+epoch 59 / 100, step 700/720,                    loss = 0.0626
+epoch 60 / 100, step 100/720,                    loss = 0.0705
+epoch 60 / 100, step 200/720,                    loss = 0.0604
+epoch 60 / 100, step 300/720,                    loss = 0.0634
+epoch 60 / 100, step 400/720,                    loss = 0.0665
+epoch 60 / 100, step 500/720,                    loss = 0.0616
+epoch 60 / 100, step 600/720,                    loss = 0.0723
+epoch 60 / 100, step 700/720,                    loss = 0.0604
+epoch 61 / 100, step 100/720,                    loss = 0.0738
+epoch 61 / 100, step 200/720,                    loss = 0.0666
+epoch 61 / 100, step 300/720,                    loss = 0.0574
+epoch 61 / 100, step 400/720,                    loss = 0.0727
+epoch 61 / 100, step 500/720,                    loss = 0.0669
+epoch 61 / 100, step 600/720,                    loss = 0.0590
+epoch 61 / 100, step 700/720,                    loss = 0.0559
+epoch 62 / 100, step 100/720,                    loss = 0.0626
+epoch 62 / 100, step 200/720,                    loss = 0.0545
+epoch 62 / 100, step 300/720,                    loss = 0.0645
+epoch 62 / 100, step 400/720,                    loss = 0.0513
+epoch 62 / 100, step 500/720,                    loss = 0.0625
+epoch 62 / 100, step 600/720,                    loss = 0.0631
+epoch 62 / 100, step 700/720,                    loss = 0.0587
+epoch 63 / 100, step 100/720,                    loss = 0.0659
+epoch 63 / 100, step 200/720,                    loss = 0.0755
+epoch 63 / 100, step 300/720,                    loss = 0.0680
+epoch 63 / 100, step 400/720,                    loss = 0.0607
+epoch 63 / 100, step 500/720,                    loss = 0.0708
+epoch 63 / 100, step 600/720,                    loss = 0.0696
+epoch 63 / 100, step 700/720,                    loss = 0.0652
+epoch 64 / 100, step 100/720,                    loss = 0.0680
+epoch 64 / 100, step 200/720,                    loss = 0.0658
+epoch 64 / 100, step 300/720,                    loss = 0.0638
+epoch 64 / 100, step 400/720,                    loss = 0.0732
+epoch 64 / 100, step 500/720,                    loss = 0.0597
+epoch 64 / 100, step 600/720,                    loss = 0.0628
+epoch 64 / 100, step 700/720,                    loss = 0.0674
+epoch 65 / 100, step 100/720,                    loss = 0.0717
+epoch 65 / 100, step 200/720,                    loss = 0.0648
+epoch 65 / 100, step 300/720,                    loss = 0.0669
+epoch 65 / 100, step 400/720,                    loss = 0.0666
+epoch 65 / 100, step 500/720,                    loss = 0.0586
+epoch 65 / 100, step 600/720,                    loss = 0.0641
+epoch 65 / 100, step 700/720,                    loss = 0.0804
+epoch 66 / 100, step 100/720,                    loss = 0.0527
+epoch 66 / 100, step 200/720,                    loss = 0.0825
+epoch 66 / 100, step 300/720,                    loss = 0.0670
+epoch 66 / 100, step 400/720,                    loss = 0.0647
+epoch 66 / 100, step 500/720,                    loss = 0.0691
+epoch 66 / 100, step 600/720,                    loss = 0.0749
+epoch 66 / 100, step 700/720,                    loss = 0.0605
+epoch 67 / 100, step 100/720,                    loss = 0.0796
+epoch 67 / 100, step 200/720,                    loss = 0.0594
+epoch 67 / 100, step 300/720,                    loss = 0.0681
+epoch 67 / 100, step 400/720,                    loss = 0.0748
+epoch 67 / 100, step 500/720,                    loss = 0.0728
+epoch 67 / 100, step 600/720,                    loss = 0.0649
+epoch 67 / 100, step 700/720,                    loss = 0.0679
+epoch 68 / 100, step 100/720,                    loss = 0.0561
+epoch 68 / 100, step 200/720,                    loss = 0.0730
+epoch 68 / 100, step 300/720,                    loss = 0.0579
+epoch 68 / 100, step 400/720,                    loss = 0.0698
+epoch 68 / 100, step 500/720,                    loss = 0.0764
+epoch 68 / 100, step 600/720,                    loss = 0.0662
+epoch 68 / 100, step 700/720,                    loss = 0.0694
+epoch 69 / 100, step 100/720,                    loss = 0.0711
+epoch 69 / 100, step 200/720,                    loss = 0.0652
+epoch 69 / 100, step 300/720,                    loss = 0.0619
+epoch 69 / 100, step 400/720,                    loss = 0.0702
+epoch 69 / 100, step 500/720,                    loss = 0.0678
+epoch 69 / 100, step 600/720,                    loss = 0.0596
+epoch 69 / 100, step 700/720,                    loss = 0.0634
+epoch 70 / 100, step 100/720,                    loss = 0.0737
+epoch 70 / 100, step 200/720,                    loss = 0.0627
+epoch 70 / 100, step 300/720,                    loss = 0.0633
+epoch 70 / 100, step 400/720,                    loss = 0.0663
+epoch 70 / 100, step 500/720,                    loss = 0.0773
+epoch 70 / 100, step 600/720,                    loss = 0.0664
+epoch 70 / 100, step 700/720,                    loss = 0.0725
+epoch 71 / 100, step 100/720,                    loss = 0.0607
+epoch 71 / 100, step 200/720,                    loss = 0.0760
+epoch 71 / 100, step 300/720,                    loss = 0.0585
+epoch 71 / 100, step 400/720,                    loss = 0.0683
+epoch 71 / 100, step 500/720,                    loss = 0.0633
+epoch 71 / 100, step 600/720,                    loss = 0.0726
+epoch 71 / 100, step 700/720,                    loss = 0.0642
+epoch 72 / 100, step 100/720,                    loss = 0.0600
+epoch 72 / 100, step 200/720,                    loss = 0.0623
+epoch 72 / 100, step 300/720,                    loss = 0.0604
+epoch 72 / 100, step 400/720,                    loss = 0.0756
+epoch 72 / 100, step 500/720,                    loss = 0.0608
+epoch 72 / 100, step 600/720,                    loss = 0.0697
+epoch 72 / 100, step 700/720,                    loss = 0.0674
+epoch 73 / 100, step 100/720,                    loss = 0.0741
+epoch 73 / 100, step 200/720,                    loss = 0.0597
+epoch 73 / 100, step 300/720,                    loss = 0.0538
+epoch 73 / 100, step 400/720,                    loss = 0.0645
+epoch 73 / 100, step 500/720,                    loss = 0.0713
+epoch 73 / 100, step 600/720,                    loss = 0.0634
+epoch 73 / 100, step 700/720,                    loss = 0.0619
+epoch 74 / 100, step 100/720,                    loss = 0.0692
+epoch 74 / 100, step 200/720,                    loss = 0.0641
+epoch 74 / 100, step 300/720,                    loss = 0.0687
+epoch 74 / 100, step 400/720,                    loss = 0.0807
+epoch 74 / 100, step 500/720,                    loss = 0.0753
+epoch 74 / 100, step 600/720,                    loss = 0.0622
+epoch 74 / 100, step 700/720,                    loss = 0.0656
+epoch 75 / 100, step 100/720,                    loss = 0.0714
+epoch 75 / 100, step 200/720,                    loss = 0.0736
+epoch 75 / 100, step 300/720,                    loss = 0.0668
+epoch 75 / 100, step 400/720,                    loss = 0.0704
+epoch 75 / 100, step 500/720,                    loss = 0.0685
+epoch 75 / 100, step 600/720,                    loss = 0.0697
+epoch 75 / 100, step 700/720,                    loss = 0.0733
+epoch 76 / 100, step 100/720,                    loss = 0.0636
+epoch 76 / 100, step 200/720,                    loss = 0.0719
+epoch 76 / 100, step 300/720,                    loss = 0.0694
+epoch 76 / 100, step 400/720,                    loss = 0.0684
+epoch 76 / 100, step 500/720,                    loss = 0.0762
+epoch 76 / 100, step 600/720,                    loss = 0.0679
+epoch 76 / 100, step 700/720,                    loss = 0.0646
+epoch 77 / 100, step 100/720,                    loss = 0.0589
+epoch 77 / 100, step 200/720,                    loss = 0.0671
+epoch 77 / 100, step 300/720,                    loss = 0.0656
+epoch 77 / 100, step 400/720,                    loss = 0.0653
+epoch 77 / 100, step 500/720,                    loss = 0.0705
+epoch 77 / 100, step 600/720,                    loss = 0.0647
+epoch 77 / 100, step 700/720,                    loss = 0.0708
+epoch 78 / 100, step 100/720,                    loss = 0.0762
+epoch 78 / 100, step 200/720,                    loss = 0.0683
+epoch 78 / 100, step 300/720,                    loss = 0.0631
+epoch 78 / 100, step 400/720,                    loss = 0.0669
+epoch 78 / 100, step 500/720,                    loss = 0.0772
+epoch 78 / 100, step 600/720,                    loss = 0.0696
+epoch 78 / 100, step 700/720,                    loss = 0.0664
+epoch 79 / 100, step 100/720,                    loss = 0.0613
+epoch 79 / 100, step 200/720,                    loss = 0.0647
+epoch 79 / 100, step 300/720,                    loss = 0.0613
+epoch 79 / 100, step 400/720,                    loss = 0.0665
+epoch 79 / 100, step 500/720,                    loss = 0.0687
+epoch 79 / 100, step 600/720,                    loss = 0.0715
+epoch 79 / 100, step 700/720,                    loss = 0.0643
+epoch 80 / 100, step 100/720,                    loss = 0.0694
+epoch 80 / 100, step 200/720,                    loss = 0.0580
+epoch 80 / 100, step 300/720,                    loss = 0.0737
+epoch 80 / 100, step 400/720,                    loss = 0.0642
+epoch 80 / 100, step 500/720,                    loss = 0.0767
+epoch 80 / 100, step 600/720,                    loss = 0.0759
+epoch 80 / 100, step 700/720,                    loss = 0.0850
+epoch 81 / 100, step 100/720,                    loss = 0.0537
+epoch 81 / 100, step 200/720,                    loss = 0.0742
+epoch 81 / 100, step 300/720,                    loss = 0.0673
+epoch 81 / 100, step 400/720,                    loss = 0.0626
+epoch 81 / 100, step 500/720,                    loss = 0.0633
+epoch 81 / 100, step 600/720,                    loss = 0.0709
+epoch 81 / 100, step 700/720,                    loss = 0.0596
+epoch 82 / 100, step 100/720,                    loss = 0.0650
+epoch 82 / 100, step 200/720,                    loss = 0.0722
+epoch 82 / 100, step 300/720,                    loss = 0.0656
+epoch 82 / 100, step 400/720,                    loss = 0.0601
+epoch 82 / 100, step 500/720,                    loss = 0.0619
+epoch 82 / 100, step 600/720,                    loss = 0.0739
+epoch 82 / 100, step 700/720,                    loss = 0.0656
+epoch 83 / 100, step 100/720,                    loss = 0.0752
+epoch 83 / 100, step 200/720,                    loss = 0.0607
+epoch 83 / 100, step 300/720,                    loss = 0.0645
+epoch 83 / 100, step 400/720,                    loss = 0.0738
+epoch 83 / 100, step 500/720,                    loss = 0.0640
+epoch 83 / 100, step 600/720,                    loss = 0.0635
+epoch 83 / 100, step 700/720,                    loss = 0.0722
+epoch 84 / 100, step 100/720,                    loss = 0.0717
+epoch 84 / 100, step 200/720,                    loss = 0.0736
+epoch 84 / 100, step 300/720,                    loss = 0.0730
+epoch 84 / 100, step 400/720,                    loss = 0.0644
+epoch 84 / 100, step 500/720,                    loss = 0.0623
+epoch 84 / 100, step 600/720,                    loss = 0.0837
+epoch 84 / 100, step 700/720,                    loss = 0.0729
+epoch 85 / 100, step 100/720,                    loss = 0.0680
+epoch 85 / 100, step 200/720,                    loss = 0.0587
+epoch 85 / 100, step 300/720,                    loss = 0.0711
+epoch 85 / 100, step 400/720,                    loss = 0.0688
+epoch 85 / 100, step 500/720,                    loss = 0.0620
+epoch 85 / 100, step 600/720,                    loss = 0.0668
+epoch 85 / 100, step 700/720,                    loss = 0.0678
+epoch 86 / 100, step 100/720,                    loss = 0.0685
+epoch 86 / 100, step 200/720,                    loss = 0.0744
+epoch 86 / 100, step 300/720,                    loss = 0.0636
+epoch 86 / 100, step 400/720,                    loss = 0.0683
+epoch 86 / 100, step 500/720,                    loss = 0.0576
+epoch 86 / 100, step 600/720,                    loss = 0.0744
+epoch 86 / 100, step 700/720,                    loss = 0.0738
+epoch 87 / 100, step 100/720,                    loss = 0.0720
+epoch 87 / 100, step 200/720,                    loss = 0.0601
+epoch 87 / 100, step 300/720,                    loss = 0.0641
+epoch 87 / 100, step 400/720,                    loss = 0.0656
+epoch 87 / 100, step 500/720,                    loss = 0.0704
+epoch 87 / 100, step 600/720,                    loss = 0.0667
+epoch 87 / 100, step 700/720,                    loss = 0.0691
+epoch 88 / 100, step 100/720,                    loss = 0.0689
+epoch 88 / 100, step 200/720,                    loss = 0.0617
+epoch 88 / 100, step 300/720,                    loss = 0.0591
+epoch 88 / 100, step 400/720,                    loss = 0.0791
+epoch 88 / 100, step 500/720,                    loss = 0.0626
+epoch 88 / 100, step 600/720,                    loss = 0.0773
+epoch 88 / 100, step 700/720,                    loss = 0.0630
+epoch 89 / 100, step 100/720,                    loss = 0.0660
+epoch 89 / 100, step 200/720,                    loss = 0.0695
+epoch 89 / 100, step 300/720,                    loss = 0.0662
+epoch 89 / 100, step 400/720,                    loss = 0.0715
+epoch 89 / 100, step 500/720,                    loss = 0.0781
+epoch 89 / 100, step 600/720,                    loss = 0.0703
+epoch 89 / 100, step 700/720,                    loss = 0.0707
+epoch 90 / 100, step 100/720,                    loss = 0.0599
+epoch 90 / 100, step 200/720,                    loss = 0.0642
+epoch 90 / 100, step 300/720,                    loss = 0.0620
+epoch 90 / 100, step 400/720,                    loss = 0.0750
+epoch 90 / 100, step 500/720,                    loss = 0.0561
+epoch 90 / 100, step 600/720,                    loss = 0.0774
+epoch 90 / 100, step 700/720,                    loss = 0.0614
+epoch 91 / 100, step 100/720,                    loss = 0.0723
+epoch 91 / 100, step 200/720,                    loss = 0.0664
+epoch 91 / 100, step 300/720,                    loss = 0.0661
+epoch 91 / 100, step 400/720,                    loss = 0.0618
+epoch 91 / 100, step 500/720,                    loss = 0.0633
+epoch 91 / 100, step 600/720,                    loss = 0.0706
+epoch 91 / 100, step 700/720,                    loss = 0.0700
+epoch 92 / 100, step 100/720,                    loss = 0.0694
+epoch 92 / 100, step 200/720,                    loss = 0.0745
+epoch 92 / 100, step 300/720,                    loss = 0.0732
+epoch 92 / 100, step 400/720,                    loss = 0.0683
+epoch 92 / 100, step 500/720,                    loss = 0.0755
+epoch 92 / 100, step 600/720,                    loss = 0.0643
+epoch 92 / 100, step 700/720,                    loss = 0.0715
+epoch 93 / 100, step 100/720,                    loss = 0.0657
+epoch 93 / 100, step 200/720,                    loss = 0.0738
+epoch 93 / 100, step 300/720,                    loss = 0.0687
+epoch 93 / 100, step 400/720,                    loss = 0.0774
+epoch 93 / 100, step 500/720,                    loss = 0.0674
+epoch 93 / 100, step 600/720,                    loss = 0.0708
+epoch 93 / 100, step 700/720,                    loss = 0.0740
+epoch 94 / 100, step 100/720,                    loss = 0.0746
+epoch 94 / 100, step 200/720,                    loss = 0.0752
+epoch 94 / 100, step 300/720,                    loss = 0.0664
+epoch 94 / 100, step 400/720,                    loss = 0.0746
+epoch 94 / 100, step 500/720,                    loss = 0.0785
+epoch 94 / 100, step 600/720,                    loss = 0.0664
+epoch 94 / 100, step 700/720,                    loss = 0.0701
+epoch 95 / 100, step 100/720,                    loss = 0.0681
+epoch 95 / 100, step 200/720,                    loss = 0.0779
+epoch 95 / 100, step 300/720,                    loss = 0.0726
+epoch 95 / 100, step 400/720,                    loss = 0.0734
+epoch 95 / 100, step 500/720,                    loss = 0.0706
+epoch 95 / 100, step 600/720,                    loss = 0.0679
+epoch 95 / 100, step 700/720,                    loss = 0.0670
+epoch 96 / 100, step 100/720,                    loss = 0.0640
+epoch 96 / 100, step 200/720,                    loss = 0.0599
+epoch 96 / 100, step 300/720,                    loss = 0.0634
+epoch 96 / 100, step 400/720,                    loss = 0.0582
+epoch 96 / 100, step 500/720,                    loss = 0.0725
+epoch 96 / 100, step 600/720,                    loss = 0.0705
+epoch 96 / 100, step 700/720,                    loss = 0.0759
+epoch 97 / 100, step 100/720,                    loss = 0.0627
+epoch 97 / 100, step 200/720,                    loss = 0.0741
+epoch 97 / 100, step 300/720,                    loss = 0.0659
+epoch 97 / 100, step 400/720,                    loss = 0.0679
+epoch 97 / 100, step 500/720,                    loss = 0.0647
+epoch 97 / 100, step 600/720,                    loss = 0.0674
+epoch 97 / 100, step 700/720,                    loss = 0.0625
+epoch 98 / 100, step 100/720,                    loss = 0.0628
+epoch 98 / 100, step 200/720,                    loss = 0.0674
+epoch 98 / 100, step 300/720,                    loss = 0.0681
+epoch 98 / 100, step 400/720,                    loss = 0.0570
+epoch 98 / 100, step 500/720,                    loss = 0.0668
+epoch 98 / 100, step 600/720,                    loss = 0.0617
+epoch 98 / 100, step 700/720,                    loss = 0.0731
+epoch 99 / 100, step 100/720,                    loss = 0.0659
+epoch 99 / 100, step 200/720,                    loss = 0.0639
+epoch 99 / 100, step 300/720,                    loss = 0.0730
+epoch 99 / 100, step 400/720,                    loss = 0.0692
+epoch 99 / 100, step 500/720,                    loss = 0.0523
+epoch 99 / 100, step 600/720,                    loss = 0.0653
+epoch 99 / 100, step 700/720,                    loss = 0.0801
+epoch 100 / 100, step 100/720,                    loss = 0.0713
+epoch 100 / 100, step 200/720,                    loss = 0.0639
+epoch 100 / 100, step 300/720,                    loss = 0.0653
+epoch 100 / 100, step 400/720,                    loss = 0.0705
+epoch 100 / 100, step 500/720,                    loss = 0.0667
+epoch 100 / 100, step 600/720,                    loss = 0.0677
+epoch 100 / 100, step 700/720,                    loss = 0.0708
+
+____________________
+    TESTING LOOP    
+____________________
+
+Example of a test:
+--Prediction:
+ tensor([[1.6909e-01, 1.2303e-01, 2.0638e-01, 1.3601e-01, 7.2577e-02, 1.3732e-01,
+         1.4883e-01, 6.5175e-03, 2.5300e-04],
+        [1.3671e-01, 1.2158e-01, 6.4913e-02, 1.3167e-01, 9.4909e-02, 2.5748e-01,
+         1.8396e-01, 4.4134e-03, 4.3666e-03],
+        [1.5645e-01, 1.5133e-01, 1.2086e-01, 1.4525e-01, 1.3789e-01, 1.5798e-01,
+         1.2172e-01, 7.2646e-03, 1.2491e-03],
+        [2.6421e-05, 1.1037e-03, 4.3049e-05, 8.6263e-05, 7.1906e-05, 2.5606e-04,
+         3.0440e-04, 9.9809e-01, 1.3524e-05],
+        [2.3691e-03, 2.7894e-03, 1.1889e-03, 1.1981e-03, 5.7162e-04, 1.5666e-03,
+         1.5956e-04, 2.1656e-04, 9.8994e-01],
+        [3.5524e-04, 2.6220e-04, 1.7349e-04, 2.5682e-04, 2.7269e-05, 1.4730e-03,
+         4.4703e-05, 1.6204e-05, 9.9739e-01],
+        [1.8499e-01, 2.5271e-01, 2.6828e-01, 7.9250e-02, 6.9600e-02, 1.3259e-01,
+         7.5400e-03, 3.7140e-03, 1.3225e-03],
+        [1.3359e-01, 1.7267e-01, 1.7148e-01, 1.4197e-01, 1.1683e-01, 1.2326e-01,
+         1.3005e-01, 8.7865e-03, 1.3696e-03],
+        [6.3730e-02, 1.0195e-01, 7.6489e-02, 6.9270e-02, 8.2907e-02, 1.0374e-01,
+         1.0990e-01, 2.2606e-01, 1.6596e-01],
+        [1.5308e-01, 1.6360e-01, 2.3419e-01, 2.8383e-01, 1.4759e-01, 7.7961e-03,
+         4.3067e-03, 1.5581e-03, 4.0366e-03],
+        [1.2214e-01, 1.3917e-01, 1.5691e-01, 1.5489e-01, 1.6012e-01, 1.1390e-01,
+         8.8929e-02, 5.5405e-02, 8.5420e-03],
+        [1.9087e-01, 1.1994e-01, 1.1693e-01, 1.6145e-01, 1.6894e-01, 2.2557e-01,
+         1.1144e-02, 3.7362e-03, 1.4187e-03],
+        [3.5301e-05, 1.8711e-05, 9.3094e-05, 3.9317e-05, 1.2589e-04, 4.1183e-06,
+         3.8028e-05, 5.2218e-05, 9.9959e-01],
+        [2.1966e-04, 3.7543e-05, 1.2735e-04, 4.0559e-05, 3.4238e-05, 2.5626e-06,
+         4.2525e-05, 3.5948e-05, 9.9946e-01],
+        [2.8460e-03, 4.4001e-03, 3.3920e-03, 9.8778e-01, 6.0503e-05, 1.7949e-04,
+         6.7818e-04, 6.2197e-04, 3.7533e-05],
+        [2.5398e-01, 1.9810e-01, 1.9885e-01, 2.0534e-01, 1.3076e-01, 8.2560e-03,
+         1.9550e-03, 1.8907e-03, 8.6331e-04],
+        [3.0522e-05, 6.5874e-05, 7.4322e-04, 6.7392e-06, 1.0889e-05, 4.9418e-05,
+         7.0075e-05, 9.9900e-01, 1.8756e-05],
+        [1.2716e-01, 1.0421e-01, 1.3687e-01, 1.1054e-01, 2.0282e-01, 9.0856e-02,
+         1.3042e-01, 9.4541e-02, 2.5704e-03],
+        [1.4170e-01, 1.3745e-01, 1.3006e-01, 1.3508e-01, 1.2098e-01, 1.0901e-01,
+         1.3854e-01, 7.9980e-02, 7.1972e-03],
+        [1.2630e-04, 4.3175e-04, 4.8710e-04, 3.3682e-03, 1.3031e-04, 9.9535e-01,
+         8.1142e-05, 1.1121e-05, 1.7361e-05],
+        [1.1592e-01, 8.7144e-02, 8.7266e-02, 1.6598e-01, 1.4477e-01, 2.0103e-01,
+         1.9005e-01, 4.9060e-03, 2.9297e-03],
+        [1.6442e-01, 1.7872e-01, 1.3744e-01, 1.3745e-01, 1.5315e-01, 1.2240e-01,
+         9.2891e-02, 1.2270e-02, 1.2518e-03],
+        [1.6666e-01, 1.8414e-01, 1.1590e-01, 1.6272e-01, 1.3808e-01, 1.2755e-01,
+         9.7849e-02, 5.8721e-03, 1.2317e-03],
+        [5.4272e-04, 1.7916e-03, 6.1333e-04, 1.3641e-05, 1.0900e-03, 1.0806e-03,
+         2.3210e-04, 9.9461e-01, 2.4897e-05],
+        [1.4732e-01, 1.5866e-01, 1.4556e-01, 1.4734e-01, 1.4847e-01, 1.2427e-01,
+         1.1163e-01, 1.5160e-02, 1.6096e-03],
+        [1.1096e-04, 7.3796e-06, 6.1112e-06, 8.3017e-05, 3.3604e-05, 1.2845e-05,
+         9.9809e-01, 1.1732e-05, 1.6488e-03],
+        [1.2167e-01, 9.1552e-02, 1.3157e-01, 1.0921e-01, 1.7587e-01, 9.9359e-02,
+         1.0922e-01, 7.7944e-02, 8.3614e-02],
+        [1.2386e-01, 1.2574e-01, 1.5029e-01, 1.9134e-01, 1.2917e-01, 1.3543e-01,
+         1.3444e-01, 5.9256e-03, 3.8094e-03],
+        [2.5106e-04, 3.0841e-05, 1.9788e-04, 1.6120e-03, 4.4929e-04, 8.0501e-04,
+         9.9533e-01, 3.8871e-05, 1.2816e-03],
+        [4.9511e-04, 8.9641e-04, 5.3345e-04, 6.4541e-04, 7.0072e-03, 1.5771e-03,
+         5.1484e-04, 9.8828e-01, 5.0095e-05],
+        [1.2283e-01, 1.0080e-01, 5.3691e-02, 1.6942e-01, 1.6180e-01, 1.4883e-01,
+         1.6902e-01, 7.0041e-02, 3.5772e-03],
+        [1.4666e-01, 1.3858e-01, 1.7954e-01, 1.7457e-01, 1.0182e-01, 1.1448e-01,
+         1.2610e-01, 1.5822e-02, 2.4201e-03],
+        [6.6391e-02, 7.8799e-02, 1.3344e-01, 2.0636e-01, 8.1990e-02, 9.3141e-02,
+         1.2958e-01, 1.1833e-01, 9.1972e-02],
+        [2.5184e-01, 1.2637e-01, 1.6432e-01, 3.2609e-01, 1.2441e-01, 1.6844e-03,
+         1.4252e-03, 2.8659e-03, 1.0019e-03],
+        [6.0348e-02, 1.1245e-01, 7.1723e-02, 4.9406e-02, 1.1682e-01, 1.4861e-01,
+         8.7319e-02, 1.5097e-01, 2.0237e-01],
+        [1.0000e-01, 1.2097e-01, 1.3634e-01, 1.4899e-01, 1.2356e-01, 1.1062e-01,
+         8.1523e-02, 9.4324e-02, 8.3669e-02],
+        [1.2432e-01, 1.3812e-01, 1.0258e-01, 1.3144e-01, 1.2044e-01, 7.0246e-02,
+         1.2618e-01, 8.6063e-02, 1.0061e-01],
+        [5.1602e-02, 5.5962e-02, 1.6793e-01, 1.4084e-01, 1.5652e-01, 2.3013e-01,
+         1.8962e-01, 6.0873e-03, 1.3048e-03],
+        [1.0826e-01, 1.3852e-01, 1.5973e-01, 1.1296e-01, 8.6618e-02, 1.0113e-01,
+         1.1742e-01, 6.8067e-02, 1.0730e-01],
+        [2.0993e-01, 2.6306e-01, 1.7601e-01, 1.5646e-01, 1.8508e-01, 6.7066e-03,
+         9.8673e-04, 1.4880e-03, 2.7781e-04],
+        [1.9396e-01, 1.4078e-01, 1.4521e-01, 1.3728e-01, 1.7040e-01, 1.0829e-01,
+         9.6251e-02, 5.5814e-03, 2.2479e-03],
+        [1.2926e-01, 1.8713e-01, 1.2599e-01, 1.5614e-01, 6.2019e-02, 7.5512e-02,
+         1.4387e-01, 1.1833e-01, 1.7452e-03],
+        [5.3873e-01, 1.8667e-01, 2.2833e-01, 2.1001e-02, 4.4638e-03, 1.2465e-02,
+         5.8533e-03, 5.8329e-04, 1.9065e-03],
+        [2.7290e-01, 2.2056e-01, 1.7940e-01, 2.3583e-01, 8.0416e-02, 3.2734e-03,
+         2.6943e-03, 3.0209e-03, 1.8954e-03],
+        [1.3083e-01, 1.8117e-01, 2.4032e-01, 2.2603e-01, 2.0897e-01, 4.8726e-03,
+         4.9938e-03, 2.2364e-03, 5.7965e-04],
+        [1.0981e-01, 1.4600e-01, 1.5320e-01, 1.0743e-01, 9.2464e-02, 8.4900e-02,
+         1.1463e-01, 1.8841e-01, 3.1633e-03],
+        [1.0116e-01, 9.8971e-02, 1.4662e-01, 1.4041e-01, 9.8338e-02, 8.6251e-02,
+         1.1049e-01, 8.9707e-02, 1.2806e-01],
+        [2.6418e-04, 8.5055e-05, 6.6001e-05, 1.5018e-04, 1.7404e-04, 7.3151e-05,
+         9.9895e-01, 8.8285e-06, 2.3201e-04],
+        [2.9513e-04, 2.0900e-04, 3.9161e-04, 4.2510e-04, 2.1446e-03, 4.1875e-04,
+         9.9586e-01, 3.5698e-05, 2.1687e-04],
+        [8.0118e-05, 5.2989e-05, 9.9692e-04, 1.3528e-05, 9.2701e-05, 7.2093e-05,
+         9.0491e-05, 9.9854e-01, 6.4904e-05]], device='cuda:0')
+--Expected values:
+ tensor([[0., 0., 1., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 1., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 1., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 0., 1.],
+        [0., 0., 0., 0., 0., 0., 0., 0., 1.],
+        [1., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 1., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 1., 0., 0., 0.],
+        [0., 0., 0., 1., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 1., 0., 0., 0.],
+        [0., 1., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 0., 1.],
+        [0., 0., 0., 0., 0., 0., 0., 0., 1.],
+        [0., 0., 0., 1., 0., 0., 0., 0., 0.],
+        [0., 1., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0.],
+        [1., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 1., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 1., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 1., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 1., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0.],
+        [0., 0., 0., 1., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 1., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 1., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0.],
+        [0., 0., 0., 0., 1., 0., 0., 0., 0.],
+        [1., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [1., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 1., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 1., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 1., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0.],
+        [0., 1., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 1., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0.],
+        [1., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 1., 0., 0., 0., 0., 0., 0.],
+        [1., 0., 0., 0., 0., 0., 0., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 0., 1.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 1., 0., 0.],
+        [0., 0., 0., 0., 0., 0., 0., 1., 0.]], device='cuda:0')
+
+Index of the Softmax MAX
+--Prediction: tensor([2, 5, 5, 7, 8, 8, 2, 1, 7, 3, 4, 5, 8, 8, 3, 0, 7, 4, 0, 5, 5, 1, 1, 7,
+        1, 6, 4, 3, 6, 7, 3, 2, 3, 3, 8, 3, 1, 5, 2, 1, 0, 1, 0, 0, 2, 7, 2, 6,
+        6, 7], device='cuda:0')
+--Expected values: tensor([2, 3, 3, 7, 8, 8, 0, 2, 5, 3, 5, 1, 8, 8, 3, 1, 7, 0, 4, 5, 5, 5, 6, 7,
+        3, 6, 2, 3, 6, 7, 4, 0, 6, 0, 1, 2, 2, 6, 7, 1, 1, 7, 0, 2, 0, 6, 8, 6,
+        6, 7], device='cuda:0')
+
+ACCURACY: 38.44444444444444 %

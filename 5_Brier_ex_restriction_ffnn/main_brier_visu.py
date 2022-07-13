@@ -53,7 +53,9 @@ for weight in LIST_WEIGHT:
     relative_path_csv_file = f"{args.reference}_{weight}/{args.method}.csv"
     # conversion to pandas dataframe + headers addition
     df = pd.read_csv(f"{DATA}/{relative_path_csv_file}",
-                 names=['o_d', 'relative_position', 'test_num', 'Brier_Score', 'n_examples'])
+                 names=['o_d', 'relative_position', 'test_num', 'Brier_Score', 'n_examples',
+                         'perc_conservation_true', 'perc_conservation_false',
+                         'perc_substitution_true', 'perc_substitution_false'])
 
     df_mean = df.groupby('relative_position')['Brier_Score'].mean()
     list_relative_postition = np.array([elem for elem in df_mean.keys()])

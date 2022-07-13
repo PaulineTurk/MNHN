@@ -33,9 +33,9 @@ DATA_MNHN = f"{file.parents[2]}/MNHN_RESULT/1_DATA"
 # PATH FOR THE PRE-PROCESSED DATA TEST EXAMPLES
 DATA_EXEMPLE_TEST = f"{file.parents[2]}/MNHN_RESULT/4_DATA_EXEMPLE_TEST"
 # PATH FOR 2D_PROBA
-PATH_FOLDER_2D_PROBA = f"{file.parents[2]}"  # à compléter ................................
+DATA_2D_PROBA = f"{file.parents[2]}/MNHN_RESULT/2_TABLE_2D"
 # PATH FOR 3D_PROBA
-PATH_FOLDER_3D_PROBA = f"{file.parents[2]}"  # à compléter ................................
+DATA_3D_PROBA = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D/PROBA"
 # PATH FOR THE RESULTS
 DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/5_BRIER_SCORE"
 
