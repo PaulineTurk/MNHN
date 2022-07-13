@@ -117,10 +117,7 @@ def multi_count_for_table_2d(path_folder_fasta, path_folder_pid,
     diff = end - start
     items_per_second = nb_files/diff
     print(f"Count of amino acid and couple of amino acids: {diff:.2f}s | {items_per_second:.2f}it/s")
-    # print("\ncount_AA:\n", count_AA)
-    # print("\nnb_AA:\n", nb_AA)
-    # print("\ncount_coupleAA:\n", count_coupleAA)
-    # print("\nnb_coupleAA:\n", nb_coupleAA)
+
 
     # vérification que chacun des 400 paramètres ont été évalué par au moins un exemple d'apprentissage
     count_couple_not_evaluated = 0
@@ -179,6 +176,39 @@ def freq_for_table_2d(count_AA, nb_AA, count_coupleAA, nb_coupleAA, path_folder_
     return freq_AA, freq_coupleAA
 
 
+def count_2d_pc(path_count, path_freqAA, pc, path_Result):
+    dico_count_2D = np.load(path_count, allow_pickle=True).item()
+    # print(f"dico_count_2D\n:{dico_count_2D}")
+    dico_freq_AA = np.load(path_freqAA, allow_pickle=True).item()
+    # print(f"dico_freq_AA\n:{dico_freq_AA}")
+    list_characters = dico_freq_AA.keys()
+    dico_count_2D_pc = {}
+    for char_1 in list_characters:
+        dico_count_2D_pc[char_1] = {}
+        for char_2 in list_characters:
+            dico_count_2D_pc[char_1][char_2] = (dico_count_2D[char_1][char_2]
+                                              + pc*dico_freq_AA[char_1]*dico_freq_AA[char_2])
+    # print(f"dico_count_2D_pc\n:{dico_count_2D_pc}")
+    np.save(path_Result, dico_count_2D_pc)
+    return dico_count_2D_pc
+
+def min_2D(dic_2D):
+    list_char = list(dic_2D.keys())
+    # print(list_char)
+    minimum = 0
+
+    for char in list_char:
+        print(char)
+        print(dic_2D[char])
+        minimum_temp = min(dic_2D[char].values())
+        print(minimum_temp)
+        if float(minimum_temp) < minimum:
+            minimum = minimum_temp
+    print(minimum)
+
+
+
+
 def table_2d_score(freq_AA, freq_coupleAA, path_folder_Result, scale_factor = 2):
     """
     Compute and save table_2d_score
@@ -230,6 +260,7 @@ def table_2d_conditional_proba(freq_AA, freq_coupleAA, path_folder_Result):
     return cond_proba
 
 
+
 def table_2d_heatmap(matrix, path_folder_Result, title, size_annot = 3):
     """
     Save the heatmap of the matrix in path_folder_Result
@@ -239,9 +270,9 @@ def table_2d_heatmap(matrix, path_folder_Result, title, size_annot = 3):
     #cmap = sb.diverging_palette(145, 300, s=60, as_cmap=True)  # test de palette de couleurs
     #cmap = sb.color_palette("vlag", as_cmap=True)
     #heatmap = sb.heatmap(heatmap_matrix, annot = True, annot_kws = {"size": size_annot}, fmt = '.2g', cmap = cmap)
-    heatmap = sb.heatmap(heatmap_matrix, annot = True, annot_kws = {"size": size_annot}, fmt = '.2g')    
-    plt.yticks(rotation=0) 
-    heatmap_figure = heatmap.get_figure()    
+    heatmap = sb.heatmap(heatmap_matrix, annot = True, annot_kws = {"size": size_annot}, fmt = '.2g')
+    plt.yticks(rotation=0)
+    heatmap_figure = heatmap.get_figure()
     plt.title(title, loc='center', wrap=True)
     #plt.title(title)
     plt.close()

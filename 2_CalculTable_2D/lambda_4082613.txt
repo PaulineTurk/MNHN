@@ -1,0 +1,4 @@
+  File "/home/pauline/Bureau/MNHN/2_CalculTable_2D/lambda_main_table_2d.py", line 46
+    (args.lambda)
+          ^
+SyntaxError: f-string: invalid syntax
