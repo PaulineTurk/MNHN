@@ -1,6 +1,6 @@
 """
 DATA PRE-PROCESSING:
-python3 main_data_treatment.py > data_processing.txt 2>&1
+nohup python3 main_data_treatment.py > data_pre_processing.txt 2>&1
 """
 
 # IMPORTS
@@ -49,7 +49,7 @@ print("                         DATA PRE-PROCESSING                           ")
 print("             OF PROTEIC MULTI-SEQUENCE-ALIGNMENTS (MSA)                ")
 print("_______________________________________________________________________")
 
-print("DATA PROCESSING START")
+print("DATA PRE-PROCESSING START")
 start = time.time()
 
 # general folder managment
@@ -58,13 +58,18 @@ if not os.path.exists(FOLDER_SOURCE):
 if not os.path.exists(DATA):
     os.makedirs(DATA)
 
-print("\nMULTI --> MONO STOCKHOLM:")
+print("")
+print("_________________________")
+print("MULTI --> MONO STOCKHOLM:")
+print("_________________________")
 path_file_multi_stockholm = f"{file.parents[2]}/{NAME_MULTI_STOCKHOLM_FILE}"
 path_folder_mono_stockholm = f"{DATA}/{NAME_MONO_STOCKHOLM_FOLDER}"
 stockholm.stockholm_separator(path_file_multi_stockholm, path_folder_mono_stockholm)
 
-
-print("\nCONVERSION FROM STOCKHOLM FORMAT TO FASTA FORMAT:")
+print("")
+print("_________________________________________________")
+print("CONVERSION FROM STOCKHOLM FORMAT TO FASTA FORMAT:")
+print("_________________________________________________")
 path_folder_fasta = f"{DATA}/{NAME_FASTA_FOLDER}"
 stockholm.multi_stockholm_to_fasta(path_folder_mono_stockholm, path_folder_fasta)
 
@@ -74,38 +79,34 @@ description.data_count(path_folder_fasta, ALPHABET,
                        path_character_percentage,
                        path_character_included_percentage)
 
-description.bar_plot_data_description(path_folder_fasta, 
+description.bar_plot_data_description(path_folder_fasta,
                                     path_character_percentage, "ALL CHARACTERS")
-description.bar_plot_data_description(path_folder_fasta, 
+description.bar_plot_data_description(path_folder_fasta,
                     path_character_included_percentage , "STANDARD AMINO-ACIDS")
 
-
-print("\nUPPER CASE:")
+print("")
+print("___________")
+print("UPPER CASE:")
+print("___________")
 path_folder_fasta_upper = f"{DATA}/{NAME_FASTA_FOLDER_UPPER}"
 capitalizer.multi_capitalization(path_folder_fasta, path_folder_fasta_upper)
 
-# path_character_percentage = f"{DATA}/character_upper.npy"
-# path_character_included_percentage = f"{DATA}/character_included_upper.npy"
-# description.data_count(path_folder_fasta_upper, ALPHABET,
-#                        path_character_percentage,
-#                        path_character_included_percentage)
 
-# description.bar_plot_data_description(path_folder_fasta_upper, 
-#                                     path_character_percentage, "ALL CHARACTERS")
-# description.bar_plot_data_description(path_folder_fasta_upper, 
-#                     path_character_included_percentage , "STANDARD AMINO-ACIDS")
-
-
-print("\nPID")
+print("")
+print("______________________")
+print("PERCENTAGE OF IDENTITY")
+print("______________________")
 path_folder_pid = f"{DATA}/{NAME_PID_FOLDER}"
 pid.save_pid(path_folder_fasta_upper, path_folder_pid, ALPHABET)
 
-
-print("\nCLUSTERING")
+print("")
+print("__________")
+print("CLUSTERING")
+print("__________")
 print(f"CLUSTERING_PID: {CLUSTERING_PID}")
 path_folder_fasta_nonRedondant = f"{DATA}/{NAME_CLUSTER_FOLDER}"
-redundancy.multi_non_redundancy_correction(path_folder_fasta_upper, 
-                        path_folder_fasta_nonRedondant, 
+redundancy.multi_non_redundancy_correction(path_folder_fasta_upper,
+                        path_folder_fasta_nonRedondant,
                         path_folder_pid,
                         ALPHABET, CLUSTERING_PID)
 
@@ -115,19 +116,21 @@ description.data_count(path_folder_fasta_nonRedondant, ALPHABET,
                        path_character_percentage,
                        path_character_included_percentage)
 
-description.bar_plot_data_description(path_folder_fasta_nonRedondant, 
+description.bar_plot_data_description(path_folder_fasta_nonRedondant,
                                     path_character_percentage, "ALL CHARACTERS")
-description.bar_plot_data_description(path_folder_fasta_nonRedondant, 
+description.bar_plot_data_description(path_folder_fasta_nonRedondant,
                     path_character_included_percentage , "STANDARD AMINO-ACIDS")
 
 
-
-print("\nDATA SPLIT TRAIN/TEST:")
+print("")
+print("______________________")
+print("DATA SPLIT TRAIN/TEST:")
+print("______________________")
 print(f"TRAIN_PERCENTAGE: {TRAIN_PERCENTAGE}")
 path_folder_data_split = f"{DATA}/{NAME_SPLIT_DATA_FOLDER}"
 folder.creat_folder(path_folder_data_split)
-split.data_split(path_folder_fasta_nonRedondant, 
+split.data_split(path_folder_fasta_nonRedondant,
             path_folder_data_split, TRAIN_PERCENTAGE, "Pfam_train", "Pfam_test")
 
 end = time.time()
-print(f"\nDATA PROCESSING DONE IN {round(end - start, 2)} s")
+print(f"\nDATA PRE-PROCESSING DONE IN {'{:_}'.format(round(end - start, 4))} s")

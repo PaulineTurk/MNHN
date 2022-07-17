@@ -56,8 +56,7 @@ def stockholm_separator(path_file, path_folder_save):
     input_handle.close()
 
     end = time.time()
-    diff = end - start
-    print(f"MULTI TO MONO STOCKHOLM: time {diff} s")
+    print(f"MULTI TO MONO STOCKHOLM: time {'{:_}'.format(round(end - start, 4))} s")
 
 
 
@@ -81,6 +80,5 @@ def multi_stockholm_to_fasta(path_folder_stockholm, path_folder_fasta):
                     AlignIO.write([alignment], file_fasta, "fasta")
 
     end = time.time()
-    diff = end - start
-    print(f"STOCKHOLM TO FASTA: time {diff} s")
+    print(f"STOCKHOLM TO FASTA: time {'{:_}'.format(round(end - start, 4))} s")
     

@@ -37,5 +37,4 @@ def multi_capitalization(path_data, path_data_corrected):
                     file_corrected.write(line)
     
     end = time.time()
-    diff = end - start
-    print(f"CAPITALISATION: time {diff} s")
+    print(f"CAPITALISATION: time {'{:_}'.format(round(end - start, 4))} s")

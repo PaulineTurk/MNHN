@@ -1,14 +1,15 @@
 # IMPORTS
 
-import sys  
-from pathlib import Path  
+import sys
+import time
+from pathlib import Path
 import numpy as np
 from tqdm import tqdm
 
 import sys  
 from pathlib import Path 
 file = Path(__file__).resolve()
-sys.path.append(file.parents[1]) 
+sys.path.append(file.parents[1])
 import utils.fastaReader as fastaReader
 import utils.folder as folder
 
@@ -98,6 +99,7 @@ def multi_non_redundancy_correction(path_folder_fasta: str,
     files = [x for x in Path(path_folder_fasta).iterdir()]
     n_files = len(files)
 
+    start = time.time()
     for file_counter in tqdm(range(n_files), desc = "non-redundant", mininterval=60):
         file = files[file_counter]
         seed = fastaReader.read_multi_fasta(file)
@@ -115,9 +117,11 @@ def multi_non_redundancy_correction(path_folder_fasta: str,
                 flag_write = False
                 for line in file:
                     if line[0] == ">":   
-                        if line[1:-1].split(" ")[0] in seq_non_redundant:    # keep the name only 
+                        if line[1:-1].split(" ")[0] in seq_non_redundant:    # keep the name only
                             flag_write = True
                         else:
                             flag_write = False
                     if flag_write == True:
                         file_corrected.write(line)
+    end = time.time()
+    print(f"NON-REDUNDANCY: time {'{:_}'.format(round(end - start, 4))} s")

@@ -57,5 +57,4 @@ def data_split(path_folder_data, path_folder_data_split, percentage_A, name_data
         copy_file_in_folder(file_name, path_folder_data, path_folder_data_B, extension_B)
 
     end = time.time()
-    diff = end - start
-    print(f"DATA SPLIT: time {diff} s")
+    print(f"DATA SPLIT: time {'{:_}'.format(round(end - start, 4))} s")

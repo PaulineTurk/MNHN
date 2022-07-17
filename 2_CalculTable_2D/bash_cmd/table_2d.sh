@@ -1,7 +1,8 @@
 #!/bin/bash
 
-name_folder=OUTPUT
+name_folder=OUTPUT_$$
 mkdir $name_folder
+
 for ((i=0; i<=9; i++)); 
     do
     pid_inf=$(( 10*$i ))

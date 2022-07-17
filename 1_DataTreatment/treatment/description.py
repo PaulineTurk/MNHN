@@ -24,9 +24,8 @@ def data_count(path_data, alphabet,
     # initialisation
     n_seed = 0
     n_seq = 0
-    n_position = 0
-    n_character_included = 0
     n_character = 0
+    n_character_included = 0
     character_count = {}
 
     character_included_count = {}
@@ -34,13 +33,14 @@ def data_count(path_data, alphabet,
         character_included_count[aa] = 0
 
     # count
-    files = Path(path_data).iterdir()
-    for file in files:
+    files = [x for x in Path(path_data).iterdir()]
+    nb_files = len(files)
+    for file_counter in range(nb_files):
+        file = files[file_counter]
         n_seed += 1
-        data_Pfam = fastaReader.read_multi_fasta(file)
-        len_seq = len(data_Pfam[0][1])
-        n_position += len_seq
-        for _, seq in data_Pfam:
+        seed = fastaReader.read_multi_fasta(file)
+        len_seq = len(seed[0][1])
+        for _, seq in seed:
             n_seq += 1
             n_character += len_seq
             for aa in seq:
@@ -54,24 +54,23 @@ def data_count(path_data, alphabet,
                     character_included_count[aa] += 1
                     
     print("\nDESCRIPTION:")
-    print(f"N_MULTIPLE ALIGNMENTS: {int('{:_}'.format(n_seed))}")
-    print(f"N_SEQ: {int('{:_}'.format(n_seq))}")
-    print(f"N_POSITION: {int('{:_}'.format(n_position))}")
-    print(f"N_CHARACTER: {int('{:_}'.format(n_character))}")
-    print(f"N_CHARACTER_INCLUDED: {int('{:_}'.format(n_character_included))}")
+    print(f"N_MULTIPLE ALIGNMENTS: {'{:_}'.format(int(n_seed))}")
+    print(f"N_SEQ: {'{:_}'.format(int(n_seq))}")
+    print(f"N_CHARACTER: {'{:_}'.format(int(n_character))}")
+    print(f"N_CHARACTER_INCLUDED: {'{:_}'.format(int(n_character_included))}")
 
     print("\nMEANS:")
     # mean len sequence
     if n_seq != 0:
         mean_len_seq = round(n_character_included/n_seq, 2)
-        print(f"MEAN_LEN_SEQ: {'{:_.2f}'.format(mean_len_seq)}")
+        print(f"MEAN_VALID_CHARACTERS_PER_SEQ: {'{:_.2f}'.format(mean_len_seq)}")
     else:
         print("NO SEQUENCE IN THE DATA SELECTED")
 
     # mean number of sequences per seed
     if n_seed != 0:
         mean_n_seq = round(n_seq/n_seed, 2)
-        print(f"MEAN_N_SEQ: {'{:_.2f}'.format(mean_n_seq)}")
+        print(f"MEAN_N_SEQ_PER_SEED: {'{:_.2f}'.format(mean_n_seq)}")
     else:
         print("NO SEED IN THE DATA SELECTED")
 

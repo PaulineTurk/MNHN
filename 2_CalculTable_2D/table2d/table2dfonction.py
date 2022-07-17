@@ -7,7 +7,6 @@ FUNCTIONS FOR NON-CONTEXTUAL INFORMATION
 import pandas as pd
 from math import log2
 import numpy as np
-import os 
 import blosum as bl
 import seaborn as sb
 import matplotlib.pyplot as plt
@@ -19,245 +18,265 @@ import sys
 from pathlib import Path  
 file = Path(__file__).resolve()
 sys.path.append(file.parents[1])
-from utils.timer import Timer
 import utils.fastaReader as fastaReader
 import utils.folder as folder
 
 
 # FUNCTIONS
-def count_for_table_2d(num_accession, path_folder_pid, seed, pid_inf, pid_sup,
-                     count_AA, nb_AA, count_coupleAA, nb_coupleAA, nb_ex_train, list_residu):
-    """
-    In the seed with id num_accession, count the number of each valid amino acid
-    and the number of valid couple
-    
-    num_accession: pid of the seed
-    name_folder_pid: the pid file of this seed
-    seed: the (name, seq) tuples of this seed
-    pid_inf: smaller pid to validate a couple of sequence
-    count_AA: dictionary of the count of each valid amino acid to cumulate this count on many seeds
-    nb_AA: count of all valid amino acids
-    count_coupleAA: dictionary of the count of each valid couple of amino acids to cumulate this count on many seeds
-    nb_coupleAA: count of all valid couple of amino acids
-    list_residu: list of valid amino acids
+def count_for_table_2d(num_accession: str, path_folder_pid: str,
+                       seed, pid_inf: int, pid_sup: int,
+                       dico_count_AA: dict,
+                       dico_count_AA_couple: dict,
+                       alphabet: list):
+    """Count the number of each character of the alphabet and the each
+       couple of characters in one multi-sequence alignment (seed.
+       The counts are concatenated to the previous counts on other seeds.
+
+    Args:
+        num_accession (str): accession to a multi-sequence alignment
+        path_folder_pid (str): path to the percentage of identity information
+        seed: a multi-sequence alignment (name, seq)
+        pid_inf (float): a pairwise alignment must have a pid >= pid_inf
+        pid_sup (float): a pairwise alignment must have a pid < pid_inf
+        dico_count_AA (dict): count of each character in alphabet
+        dico_count_AA_couple (dict): count of each couple of character in alphabet
+        alphabet (list): alphabet (list): list of character included
+
+    Returns:
+        dict, dict: dico_count_AA, dico_count_AA_couple
     """
 
     pid_couple = np.load(f"{path_folder_pid}/{num_accession}.pid.npy", allow_pickle='TRUE').item()
     nb_seq = len(seed)
-    for i in range(nb_seq -1): # dans test préliminaire il n'y avait pas le -1
+    for i in range(nb_seq -1):
         name_1, seq_1 = seed[i]
         for j in range(i + 1, nb_seq):
-            name_2 ,seq_2 = seed[j] 
+            name_2 ,seq_2 = seed[j]
             if pid_couple[name_1][name_2] >= pid_inf and pid_couple[name_1][name_2] < pid_sup:
                 for (aa_1, aa_2) in zip(seq_1, seq_2):  
-                    if aa_1 in list_residu and aa_2 in list_residu:
-                        nb_ex_train += 2   # exemple selectionné et son symétrique
+                    if aa_1 in alphabet and aa_2 in alphabet:
 
                         # count AA
-                        count_AA[aa_1] += 1
-                        count_AA[aa_2] += 1
-                        nb_AA += 2
+                        dico_count_AA[aa_1] += 2
+                        dico_count_AA[aa_2] += 2
 
                         # count couple AA
                         if aa_1 == aa_2:
-                            count_coupleAA[aa_1][aa_2] += 2
+                            dico_count_AA_couple[aa_1][aa_2] += 2
                         else:
-                            count_coupleAA[aa_1][aa_2] += 1
-                            count_coupleAA[aa_2][aa_1] += 1
-                        nb_coupleAA += 2
+                            dico_count_AA_couple[aa_1][aa_2] += 1
+                            dico_count_AA_couple[aa_2][aa_1] += 1
 
-    return count_AA, nb_AA, count_coupleAA, nb_coupleAA, nb_ex_train
-
+    return dico_count_AA, dico_count_AA_couple
 
 
-def multi_count_for_table_2d(path_folder_fasta, path_folder_pid,
-                           list_residu, pid_inf, pid_sup,
-                           path_folder_Result,
-                           pseudo_compte):
+
+def multi_count_for_table_2d(path_folder_fasta: str, path_folder_pid: str,
+                           alphabet: list, pid_inf: int, pid_sup: int,
+                           path_folder_Result: str,
+                           pseudo_compte_initial: int):
     """
     Iterate count_for_table_2d on the files included in path_folder_fasta.
     """
 
-    nb_ex_train = 0
-    nb_AA = 0
-    nb_coupleAA = 0
-    len_alphabet = len(list_residu)
+    len_alphabet = len(alphabet)
  
-    # intialisation avec pseudo-compte de la table_2d de comptage
-    count_coupleAA = {}
-    for aa_1 in list_residu:
-        count_coupleAA[aa_1] = {}
-        for aa_2 in list_residu:
-            count_coupleAA[aa_1][aa_2] = pseudo_compte
-            nb_coupleAA += pseudo_compte
+    # INITIALISATION: AMINO-ACID COUPLE COUNT
+    dico_count_AA_couple = {}
+    for aa_1 in alphabet:
+        dico_count_AA_couple[aa_1] = {}
+        for aa_2 in alphabet:
+            dico_count_AA_couple[aa_1][aa_2] = pseudo_compte_initial
 
-    # intialisation avec pseudo-compte du compte de chaque acide aminé dans la table_2d de comptage
-    count_AA = {}
-    for aa in list_residu:
-        count_AA[aa] = len_alphabet*pseudo_compte
-        nb_AA += len_alphabet*pseudo_compte
+    # INITIALISATION: AMINO-ACID COUNT
+    dico_count_AA = {}
+    for aa in alphabet:
+        dico_count_AA[aa] = len_alphabet*pseudo_compte_initial
 
-
-
-    path, dirs, files = next(os.walk(path_folder_fasta))
-    nb_files = len(files)
-
-    # liste des PosixPath des alignements d'apprentissage
     files = [x for x in Path(path_folder_fasta).iterdir()]
+    n_files = len(files)
+
     start = time.time()
-    for file_counter in tqdm(range(nb_files), desc = "calcul de table_2d_count",
+    for file_counter in tqdm(range(n_files), desc = "2d count",
                              ncols= 100, mininterval=60):
         file = files[file_counter]
         accession_num = folder.get_accession_number(file)
         seed_train = fastaReader.read_multi_fasta(file)
-        count_AA, nb_AA, count_coupleAA, nb_coupleAA, nb_ex_train = count_for_table_2d(accession_num, path_folder_pid, seed_train, pid_inf, pid_sup,
-                                                                                count_AA, nb_AA, count_coupleAA, nb_coupleAA, nb_ex_train, list_residu)
+        dico_count_AA, dico_count_AA_couple = count_for_table_2d(accession_num,
+                                                                path_folder_pid,
+                                                                seed_train,
+                                                                pid_inf, pid_sup,
+                                                                dico_count_AA,
+                                                                dico_count_AA_couple,
+                                                                alphabet)
 
     end = time.time()
     diff = end - start
-    items_per_second = nb_files/diff
-    print(f"Count of amino acid and couple of amino acids: {diff:.2f}s | {items_per_second:.2f}it/s")
+    items_per_second = n_files/diff
+    print(f"2D COUNT: {'{:_}'.format(round(end - start, 4))}s | {items_per_second:.2f}it/s")
 
+    # SAVE
+    path_count_AA = f"{path_folder_Result}/table_1d_count"
+    np.save(path_count_AA, dico_count_AA)
 
-    # vérification que chacun des 400 paramètres ont été évalué par au moins un exemple d'apprentissage
-    count_couple_not_evaluated = 0
-    for aa_1 in list_residu:
-        for aa_2 in list_residu:
-            if count_coupleAA[aa_1][aa_2] == pseudo_compte:
-                count_couple_not_evaluated += 1
-    percentage_couple_not_evaluated = 100*count_couple_not_evaluated/(len(list_residu)**2)
-    print(f"Pourcentage de couples d'acides aminés non estimés: {percentage_couple_not_evaluated} %")
-
-    print("Nombre d'exemples d'apprentissage :",  '{:_}'.format(nb_ex_train))
-
-
-    path_couple_count = f"{path_folder_Result}/table_2d_count"
-    np.save(path_couple_count , count_coupleAA)
-
-    return count_AA, nb_AA, count_coupleAA, nb_coupleAA
+    path_count_AA_couple = f"{path_folder_Result}/table_2d_count"
+    np.save(path_count_AA_couple, dico_count_AA_couple)
 
 
 
 
-def freq_for_table_2d(count_AA, nb_AA, count_coupleAA, nb_coupleAA, path_folder_Result):
-    """
-    Compute and save the frequences of each valid amino acid
-    and each valid couple of amino acids.
-    """
-    # get the list of valid residus
-    list_residu = count_AA.keys()
 
-    t = Timer()
-    t.start()
 
-    # frequence of each valid amino acid
-    freq_AA = {}
-    for aa in list_residu:
-        if nb_AA != 0:
-            freq_AA[aa] = count_AA[aa]/nb_AA
-        else: 
-            freq_AA[aa] = 0
+# def freq_for_table_2d_old(dico_count_AA, n_AA, dico_count_AA_couple, n_AA_couple,
+#                       alphabet,
+#                       path_folder_Result):
+#     """
+#     Compute and save the frequences of each valid amino acid
+#     and each valid couple of amino acids.
+#     """
+#     start = time.time()
+
+#     # AMINO-ACID FREQUENCY
+#     freq_AA = {}
+#     for aa in alphabet:
+#         if n_AA != 0:
+#             freq_AA[aa] = dico_count_AA[aa]/n_AA
+#         else:
+#             freq_AA[aa] = 0
     
-    # frequence of each couple of amino acid
-    freq_coupleAA = {}
-    for aa_1 in list_residu:
-        freq_coupleAA[aa_1] = {}
-        for aa_2 in list_residu:
-            if nb_coupleAA != 0:
-                freq_coupleAA[aa_1][aa_2] = count_coupleAA[aa_1][aa_2]/nb_coupleAA
-            else:
-                freq_coupleAA[aa_1][aa_2] = 0
-    print("")
-    t.stop("calcul de table_2d_freq")
+#     # AMINO-ACID COUPLE FREQUENCY
+#     freq_AA_couple = {}
+#     for aa_1 in alphabet:
+#         freq_AA_couple[aa_1] = {}
+#         for aa_2 in alphabet:
+#             if n_AA_couple != 0:
+#                 freq_AA_couple[aa_1][aa_2] = dico_count_AA_couple[aa_1][aa_2]/n_AA_couple
+#             else:
+#                 freq_AA_couple[aa_1][aa_2] = 0
+#     end = time.time()
+#     print(f"2D FREQ: time {end - start} s")
 
-    path_freqAA = f"{path_folder_Result}/table_2d_freq"
-    np.save(path_freqAA, freq_AA)
+#     path_freqAA = f"{path_folder_Result}/table_2d_freq"
+#     np.save(path_freqAA, freq_AA)
 
-    return freq_AA, freq_coupleAA
+#     return freq_AA, freq_AA_couple
 
 
-def count_2d_pc(path_count, path_freqAA, pc, path_Result):
-    dico_count_2D = np.load(path_count, allow_pickle=True).item()
-    # print(f"dico_count_2D\n:{dico_count_2D}")
-    dico_freq_AA = np.load(path_freqAA, allow_pickle=True).item()
-    # print(f"dico_freq_AA\n:{dico_freq_AA}")
-    list_characters = dico_freq_AA.keys()
-    dico_count_2D_pc = {}
-    for char_1 in list_characters:
-        dico_count_2D_pc[char_1] = {}
-        for char_2 in list_characters:
-            dico_count_2D_pc[char_1][char_2] = (dico_count_2D[char_1][char_2]
-                                              + pc*dico_freq_AA[char_1]*dico_freq_AA[char_2])
-    # print(f"dico_count_2D_pc\n:{dico_count_2D_pc}")
-    np.save(path_Result, dico_count_2D_pc)
-    return dico_count_2D_pc
 
-def min_2D(dic_2D):
-    list_char = list(dic_2D.keys())
-    # print(list_char)
+
+    
+# doutes sur l'homogénéité
+def proba_conditional_weighted(path_count_AA: str, path_count_AA_couple: str,
+                               pseudo_counter_2d: int,
+                               alphabet: list,
+                               path_folder_Result: str):
+    start = time.time()
+    # LOAD
+    dico_count_AA = np.load(path_count_AA, allow_pickle=True).item()
+    dico_count_AA_couple = np.load(path_count_AA_couple, allow_pickle=True).item()
+
+    # count_AA to freq_AA
+    denominator = sum(dico_count_AA.values())
+    dico_freq_AA = {key: value/denominator for key, value in dico_count_AA.items()}
+
+    # N_EX_TRAIN
+    n_ex_train = 0
+    for aa_1 in alphabet:
+        for aa_2 in alphabet:
+            n_ex_train += dico_count_AA_couple[aa_1][aa_2]
+    print(f"N_EX_TRAIN: {'{:_}'.format(int(n_ex_train))}")
+
+    dico_conditional_proba_weight = {}
+    for char_1 in alphabet:
+        dico_conditional_proba_weight[char_1] = {}
+        for char_2 in alphabet:
+            numerator = (dico_count_AA_couple[char_1][char_2]
+                        + pseudo_counter_2d*dico_freq_AA[char_1]*dico_freq_AA[char_2])
+            denumerator = (n_ex_train + pseudo_counter_2d)*dico_freq_AA[char_1]
+            dico_conditional_proba_weight[char_1][char_2] = numerator/denumerator
+
+    path_dico_conditional_proba_weight = f"{path_folder_Result}/proba_{pseudo_counter_2d}"
+    np.save(path_dico_conditional_proba_weight, dico_conditional_proba_weight)
+    end = time.time()
+    print(f"2D PROBA: time {'{:_}'.format(round(end - start, 4))}s")
+
+
+def min_2D(dic_2D, alphabet):
     minimum = 0
-
-    for char in list_char:
-        print(char)
-        print(dic_2D[char])
+    for char in alphabet:
         minimum_temp = min(dic_2D[char].values())
-        print(minimum_temp)
         if float(minimum_temp) < minimum:
             minimum = minimum_temp
-    print(minimum)
+    return minimum
 
 
 
 
-def table_2d_score(freq_AA, freq_coupleAA, path_folder_Result, scale_factor = 2):
+def score(path_count_AA, path_count_AA_couple,
+                   path_folder_Result,
+                   alphabet, scale_factor=2):
     """
     Compute and save table_2d_score
     """
-    list_residu = freq_AA.keys()
+    start = time.time()
 
-    t = Timer()
-    t.start()
+    # LOAD
+    dico_count_AA = np.load(path_count_AA, allow_pickle=True).item()
+    dico_count_AA_couple = np.load(path_count_AA_couple, allow_pickle=True).item()
+
+    # count to freq
+    denominator = sum(dico_count_AA.values())
+    freq_AA = {key: value/denominator for key, value in dico_count_AA.items()}
+
+    # N_EX_TRAIN
+    n_ex_train = 0
+    for aa_1 in alphabet:
+        for aa_2 in alphabet:
+            n_ex_train += dico_count_AA_couple[aa_1][aa_2]
+    freq_AA_couple = {}
+    for aa_1 in alphabet:
+        freq_AA_couple[aa_1] = {}
+        for aa_2 in alphabet:
+            freq_AA_couple[aa_1][aa_2] = dico_count_AA_couple[aa_1][aa_2]/n_ex_train
+
+
     table_2d = {}
-    for aa_1 in list_residu:
+    for aa_1 in alphabet:
         table_2d[aa_1] = {}
-        for aa_2 in list_residu:
-            if freq_coupleAA[aa_1][aa_2] != 0:
-                table_2d[aa_1][aa_2] = round(scale_factor * log2(freq_coupleAA[aa_1][aa_2]
-                                                            / (freq_AA[aa_1] * freq_AA[aa_2])))
+        for aa_2 in alphabet:
+            if freq_AA_couple[aa_1][aa_2] != 0:
+                table_2d[aa_1][aa_2] = round(scale_factor * log2(freq_AA_couple[aa_1][aa_2]
+                                            / (freq_AA[aa_1] * freq_AA[aa_2])))
             else:
                 table_2d[aa_1][aa_2] = 0
-    print("")
-    t.stop("calcul de table_2d_score")
+    end = time.time()
+    print(f"2D SCORE: time {'{:_}'.format(round(end - start, 4))} s")
 
     path_matrix = f"{path_folder_Result}/table_2d_score"
     np.save(path_matrix, table_2d)
 
-    return table_2d
 
+# def table_2d_conditional_proba_old(freq_AA, freq_AA_couple,
+#                                alphabet, path_folder_Result):
+#     """
+#     Compute and save the matrix of conditional probabilities
+#     """
+#     start = time.time()
+#     cond_proba = {}
+#     for aa_1 in alphabet:
+#         cond_proba[aa_1] = {}
+#         for aa_2 in alphabet:
+#             if freq_AA_couple[aa_1][aa_2] != 0:
+#                 cond_proba[aa_1][aa_2] = freq_AA_couple[aa_1][aa_2]/freq_AA[aa_1]
+#             else:
+#                 cond_proba[aa_1][aa_2] = 0
+#     end = time.time()
+#     print(f"2D PROBA: time {end - start} s")
 
-def table_2d_conditional_proba(freq_AA, freq_coupleAA, path_folder_Result):
-    """
-    Compute and save the matrix of conditional probabilities
-    """
-    list_residu = freq_AA.keys()
+#     path_cond_proba = f"{path_folder_Result}/table_2d_proba"
+#     np.save(path_cond_proba, cond_proba)
 
-    t = Timer()
-    t.start()
-    cond_proba = {}
-    for aa_1 in list_residu:
-        cond_proba[aa_1] = {}
-        for aa_2 in list_residu:
-            if freq_coupleAA[aa_1][aa_2] != 0:
-                cond_proba[aa_1][aa_2] = freq_coupleAA[aa_1][aa_2]/freq_AA[aa_1]
-            else:
-                cond_proba[aa_1][aa_2] = 0
-    print("")
-    t.stop("calcul de table_2d_proba")
-
-    path_cond_proba = f"{path_folder_Result}/table_2d_proba"
-    np.save(path_cond_proba, cond_proba)
-
-    return cond_proba
+#     return cond_proba
 
 
 
@@ -265,53 +284,43 @@ def table_2d_heatmap(matrix, path_folder_Result, title, size_annot = 3):
     """
     Save the heatmap of the matrix in path_folder_Result
     """
-    #heatmap_matrix = pd.DataFrame(matrix).T.fillna(0)
     heatmap_matrix = np.transpose(pd.DataFrame.from_dict(matrix))
-    #cmap = sb.diverging_palette(145, 300, s=60, as_cmap=True)  # test de palette de couleurs
-    #cmap = sb.color_palette("vlag", as_cmap=True)
-    #heatmap = sb.heatmap(heatmap_matrix, annot = True, annot_kws = {"size": size_annot}, fmt = '.2g', cmap = cmap)
     heatmap = sb.heatmap(heatmap_matrix, annot = True, annot_kws = {"size": size_annot}, fmt = '.2g')
     plt.yticks(rotation=0)
     heatmap_figure = heatmap.get_figure()
     plt.title(title, loc='center', wrap=True)
-    #plt.title(title)
     plt.close()
     path_save_fig = f"{path_folder_Result}/{title}.png"
     heatmap_figure.savefig(path_save_fig, dpi=400)
 
 
 
-def table_2d_visualisation_transposition(table_2d):
+def table_2d_visualisation(table_2d):
     """
     Visualisation of the matrix
     """
     df_table_2d = np.transpose(pd.DataFrame.from_dict(table_2d))
     print(df_table_2d)
 
-    return df_table_2d
 
-
-def sum_line_transposition(table_2d):
+def sum_line(table_2d):
     """
     To check that the sum of a line is equal to one
     for the conditional probability matrix
     """
     df_table_2d= np.transpose(pd.DataFrame.from_dict(table_2d))
     sum_line = df_table_2d.sum(axis=1)
-    print("Somme de chaque ligne :")
+    print("SUM OVER A CHARACTER OF DESTINATION:")
     print("")
     print(sum_line)
 
 
-def table_2d_difference(table_2d, pid_inf_ref):
+def table_2d_difference(table_2d, alphabet, pid_inf_ref):
     """
     Quantify the distance between the table_2d_score computed and a blosum of reference
     """
-
-    list_residu = table_2d.keys()
-
-    # blosum ref importation
-    blosum_ref = bl.BLOSUM(pid_inf_ref) 
+    # IMPORTS
+    blosum_ref = bl.BLOSUM(pid_inf_ref)
 
     # initialisation
     matrix_diff = {}
@@ -319,9 +328,9 @@ def table_2d_difference(table_2d, pid_inf_ref):
     count = 0
 
     # evaluation of the differences
-    for aa1 in list_residu:
+    for aa1 in alphabet:
         matrix_diff[aa1] = {}
-        for aa2 in list_residu:
+        for aa2 in alphabet:
             matrix_diff[aa1][aa2] = int(table_2d[aa1][aa2] - blosum_ref[aa1 + aa2])
             difference += matrix_diff[aa1][aa2]
             count += 1

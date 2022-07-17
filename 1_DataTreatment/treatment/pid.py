@@ -87,5 +87,4 @@ def save_pid(path_folder_fasta: str, path_folder_pid: str, alphabet: list):
         np.save(path_file_pid, pid_couple)
     
     end = time.time()
-    diff = end - start
-    print(f"PID: time {diff} s")
+    print(f"PID: time {'{:_}'.format(round(end - start, 4))} s")
