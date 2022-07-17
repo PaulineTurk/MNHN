@@ -201,15 +201,6 @@ def proba_conditional_weighted(path_count_AA: str, path_count_AA_couple: str,
     print(f"2D PROBA: time {'{:_}'.format(round(end - start, 4))}s")
 
 
-def min_2D(dic_2D, alphabet):
-    minimum = 0
-    for char in alphabet:
-        minimum_temp = min(dic_2D[char].values())
-        if float(minimum_temp) < minimum:
-            minimum = minimum_temp
-    return minimum
-
-
 
 
 def score(path_count_AA, path_count_AA_couple,
@@ -337,3 +328,11 @@ def table_2d_difference(table_2d, alphabet, pid_inf_ref):
     average_difference  = round(difference/count, 2)
 
     return matrix_diff, pid_inf_ref, average_difference
+
+def min_2D(dic_2D, alphabet):
+    minimum = 1
+    for char in alphabet:
+        minimum_temp = min(dic_2D[char].values())
+        if float(minimum_temp) < minimum:
+            minimum = minimum_temp
+    return minimum

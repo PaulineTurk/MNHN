@@ -31,7 +31,7 @@ DATA_RESULT_2D_COUNT = f"{file.parents[2]}/MNHN_RESULT_DRAFT/2_TABLE_2D"
 NAME_FASTA_TRAIN_FOLDER = "Pfam_split/Pfam_train"
 NAME_PID_FOLDER = "PID"
 PSEUDO_COUNTER_INITIAL = 1
-LIST_PSEUDO_COUNTER_2D = [0, 1, 10, 100, 1_000, 10_000]
+LIST_PSEUDO_COUNTER_2D = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000]
 
 
 print("_______________________________________________________________________")

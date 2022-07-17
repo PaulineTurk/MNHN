@@ -29,7 +29,7 @@ NAME_PID_FOLDER         = "PID"
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 PSEUDO_COUNTER = 1
-LIST_PSEUDO_COUNTER_2D = [0, 1, 10, 100, 1_000, 10_000]
+LIST_PSEUDO_COUNTER_2D = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000]
 
 
 
