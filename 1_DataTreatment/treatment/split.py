@@ -1,21 +1,16 @@
-################################################################################
-#                                  Importations                                #    
-################################################################################
+# IMPORTS
 
 import shutil
+import time
 from sklearn.model_selection import train_test_split
 
 import sys  
 from pathlib import Path 
 file = Path(__file__).resolve()
-sys.path.append(file.parents[1]) 
-from utils.timer import Timer
+sys.path.append(file.parents[1])
 import utils.folder as folder
 
-
-################################################################################
-#                                  Fonctions                                   #    
-################################################################################
+# FUNCTIONS
 
 def copy_file_in_folder(file_name, folder_name_source, folder_path_target, extension_file_name_target):
     path_file_source = f"{folder_name_source}/{file_name}"
@@ -38,8 +33,7 @@ def data_split(path_folder_data, path_folder_data_split, percentage_A, name_data
     extension_A: extension of name_data_A
     extension_B: extension of name_data_B
     """
-    t = Timer()
-    t.start()
+    start = time.time()
 
     folder.creat_folder(path_folder_data_split)
     path_folder_data_A = f"{path_folder_data_split}/{name_data_A}"
@@ -54,8 +48,7 @@ def data_split(path_folder_data, path_folder_data_split, percentage_A, name_data
         data_name.append(file_name)
 
     fraction_A = percentage_A/100
-    files_A, files_B = train_test_split(data_name, train_size = fraction_A)  
-    # https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html
+    files_A, files_B = train_test_split(data_name, train_size = fraction_A)
 
     for file_name in files_A:
         copy_file_in_folder(file_name, path_folder_data, path_folder_data_A, extension_A)
@@ -63,4 +56,6 @@ def data_split(path_folder_data, path_folder_data_split, percentage_A, name_data
     for file_name in files_B:
         copy_file_in_folder(file_name, path_folder_data, path_folder_data_B, extension_B)
 
-    t.stop("Split data_total in data_A and data_B")
+    end = time.time()
+    diff = end - start
+    print(f"DATA SPLIT: time {diff} s")

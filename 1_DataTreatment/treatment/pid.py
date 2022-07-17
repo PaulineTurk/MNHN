@@ -1,82 +1,91 @@
-################################################################################
-#                                  Importations                                #    
-################################################################################
+# IMPORTS
 
 import numpy as np
-import os
 from tqdm import tqdm
-
+import time
 
 import sys  
 from pathlib import Path 
 file = Path(__file__).resolve()
-sys.path.append(file.parents[1]) 
-from utils.timer import Timer
+sys.path.append(file.parents[1])
 import utils.fastaReader as fastaReader
 import utils.folder as folder
 
 
 
-################################################################################
-#                                  Fonctions                                   #    
-################################################################################
+# FUNCTIONS
 
-def pid(seq_1, seq_2, list_inclusion):  
-    """
-    Return the percentage of identity between the two sequences: seq_1 and seq_2
-    list_inclusion: liste des caractères inclus
+def pid(seq_1: str, seq_2: str,
+        alphabet: list, len_align: int):
+    """Compute the percentage of identity between 2 sequences
+
+    Args:
+        seq_1 (str): first sequence
+        seq_2 (str): second sequence
+        alphabet (list): list of character included
+        len_align: number of characters in seq_1 and seq_2
+
+    Returns:
+        float: percentage of identity
     """
     pid = 0
-    nb_included_character_seq_1 = 0
-    nb_included_character_seq_2 = 0
+    n_included_character_seq_1 = 0
+    n_included_character_seq_2 = 0
 
-    len_seq = len(seq_1)
-    for indice_aa in range(len_seq):
-        if seq_1[indice_aa] in list_inclusion:
-            nb_included_character_seq_1 += 1
-        if seq_2[indice_aa] in list_inclusion:
-            nb_included_character_seq_2 += 1
+    for indice_aa in range(len_align):
+        inclusion_check = 0
+        if seq_1[indice_aa] in alphabet:
+            n_included_character_seq_1 += 1
+            inclusion_check += 1
+        if seq_2[indice_aa] in alphabet:
+            n_included_character_seq_2 += 1
+            inclusion_check += 1
             
-        if seq_1[indice_aa] in list_inclusion and seq_2[indice_aa] in list_inclusion and seq_1[indice_aa] == seq_2[indice_aa]:
+        if seq_1[indice_aa] == seq_2[indice_aa] and inclusion_check == 2:
             pid += 1
 
-    return 100*pid/min(nb_included_character_seq_1, nb_included_character_seq_2)
+    return 100*pid/min(n_included_character_seq_1, n_included_character_seq_2)
 
 
-def pid_two_seq(path_fasta_file, path_file_pId, list_inclusion):  
-    liste_seq = fastaReader.read_multi_fasta(path_fasta_file)
-    pid_couple = {}
-    nb_seq = len(liste_seq)
-
-    # intialisation dico
-    for i in range(nb_seq):
-        pid_couple[liste_seq[i][0]] = {}
-    
-    for i in range(nb_seq):
-        for j in range(i, nb_seq):
-            current_pid = pid(liste_seq[i][1], liste_seq[j][1], list_inclusion)
-            pid_couple[liste_seq[i][0]][liste_seq[j][0]] = current_pid
-            pid_couple[liste_seq[j][0]][liste_seq[i][0]] = current_pid
-
-    np.save(path_file_pId, pid_couple) 
 
 
-def save_pid(path_folder_fasta, path_folder_pid, list_inclusion):
-    """
-    For each fasta file in path_folder_fasta, compute the dictionary of pid 
-    for each couple of sequences and save it in path_folder_pid
+def save_pid(path_folder_fasta: str, path_folder_pid: str, alphabet: list):
+    """Compute the percentage of identity for each couple of sequences in a
+       folder of multi-sequence alignments
+
+    Args:
+        path_folder_fasta (str): path od data to compute pid on
+        path_folder_pid (str): path where the pid info is stored
+        alphabet (list): list of character included
     """
 
     folder.creat_folder(path_folder_pid)
 
-    path, dirs, files = next(os.walk(path_folder_fasta))
-    nb_files = len(files)
-
-    # liste des PosixPath des alignements d'apprentissage
     files = [x for x in Path(path_folder_fasta).iterdir()]
+    n_files = len(files)
 
-    for file_counter in tqdm(range(nb_files), desc = "pid"):
+    start = time.time()
+    
+    for file_counter in tqdm(range(n_files), desc = "pid", mininterval=60):
         file = files[file_counter]
         accession_num = folder.get_accession_number(file)
         path_file_pid = f"{path_folder_pid}/{accession_num}.pid"
-        pid_two_seq(file, path_file_pid, list_inclusion)
+        liste_seq = fastaReader.read_multi_fasta(file)
+        pid_couple = {}
+        n_seq = len(liste_seq)
+        len_align = int(len(liste_seq[0][1]))
+        for i in range(n_seq):
+            pid_couple[liste_seq[i][0]] = {}
+        
+        for i in range(n_seq):
+            for j in range(i, n_seq):
+                current_pid = pid(liste_seq[i][1], liste_seq[j][1],
+                                  alphabet, len_align)
+                pid_couple[liste_seq[i][0]][liste_seq[j][0]] = current_pid
+                pid_couple[liste_seq[j][0]][liste_seq[i][0]] = current_pid
+        
+        np.save(path_file_pid, pid_couple)
+    
+    end = time.time()
+    diff = end - start
+    print(f"PID: time {diff} s")

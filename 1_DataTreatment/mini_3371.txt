@@ -1,0 +1,50 @@
+_______________________________________________________________________
+                         DATA PRE-PROCESSING                           
+             OF PROTEIC MULTI-SEQUENCE-ALIGNMENTS (MSA)                
+_______________________________________________________________________
+DATA PROCESSING START
+
+MULTI --> MONO STOCKHOLM:
+MULTI TO MONO STOCKHOLM: time 0.003939628601074219 s
+
+CONVERSION FROM STOCKHOLM FORMAT TO FASTA FORMAT:
+STOCKHOLM TO FASTA: time 0.07702803611755371 s
+
+DESCRIPTION:
+N_MULTIPLE ALIGNMENTS: 6
+N_SEQ: 282
+N_POSITION: 1585
+N_CHARACTER: 80103
+N_CHARACTER_INCLUDED: 63653
+
+MEANS:
+MEAN_LEN_SEQ: 225.72
+MEAN_N_SEQ: 47.00
+
+UPPER CASE:
+CAPITALISATION: time 0.00449371337890625 s
+
+PID
+pid:   0%|          | 0/6 [00:00<?, ?it/s]pid:  50%|█████     | 3/6 [00:02<00:02,  1.23it/s]pid:  67%|██████▋   | 4/6 [00:03<00:01,  1.22it/s]pid: 100%|██████████| 6/6 [00:03<00:00,  1.83it/s]
+PID: time 3.294584274291992 s
+
+CLUSTERING
+CLUSTERING_PID: 99
+non-redundant:   0%|          | 0/6 [00:00<?, ?it/s]non-redundant: 100%|██████████| 6/6 [00:00<00:00, 157.01it/s]
+
+DESCRIPTION:
+N_MULTIPLE ALIGNMENTS: 6
+N_SEQ: 282
+N_POSITION: 1585
+N_CHARACTER: 80103
+N_CHARACTER_INCLUDED: 63653
+
+MEANS:
+MEAN_LEN_SEQ: 225.72
+MEAN_N_SEQ: 47.00
+
+DATA SPLIT TRAIN/TEST:
+TRAIN_PERCENTAGE: 50
+DATA SPLIT: time 0.0039179325103759766 s
+
+DATA PROCESSING DONE IN 4.53 s

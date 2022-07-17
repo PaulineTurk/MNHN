@@ -1,98 +1,104 @@
-################################################################################
-#                                  Importations                                #    
-################################################################################
+# IMPORTS
 
 import os
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 import sys  
 from pathlib import Path 
 file = Path(__file__).resolve()
-sys.path.append(file.parents[1]) 
+sys.path.append(file.parents[1])
 import utils.fastaReader as fastaReader
 
 
 
-################################################################################
-#                                  Fonctions                                   #    
-################################################################################
+#FUNCTIONS
 
-def data_count(path_data, list_residu):
+def data_count(path_data, alphabet,
+               path_character_percentage,
+               path_character_included_percentage):
     """
     path_folder: path of the folder of fasta files to describe
     """
     # initialisation
-    nbre_seed = 0
-    nbre_seq = 0
-    total_position = 0
-    total_residu = 0            # en fait il s'agit des caractères inclus
-    total_character = 0
-    character_count = {}        # consider all residus (dico constructed along the way)
+    n_seed = 0
+    n_seq = 0
+    n_position = 0
+    n_character_included = 0
+    n_character = 0
+    character_count = {}
 
-    residu_count = {}  
-    for aa in list_residu:
-        residu_count[aa] = 0 
+    character_included_count = {}
+    for aa in alphabet:
+        character_included_count[aa] = 0
 
-    # counting
+    # count
     files = Path(path_data).iterdir()
     for file in files:
-        nbre_seed += 1
+        n_seed += 1
         data_Pfam = fastaReader.read_multi_fasta(file)
         len_seq = len(data_Pfam[0][1])
-        total_position += len_seq
+        n_position += len_seq
         for _, seq in data_Pfam:
-            nbre_seq += 1
-            total_character += len_seq
+            n_seq += 1
+            n_character += len_seq
             for aa in seq:
                 if aa in character_count:
                     character_count[aa] += 1
                 else:
                     character_count[aa] = 1
                 
-                if aa in list_residu:
-                    total_residu += 1 
-                    residu_count[aa] += 1
+                if aa in alphabet:
+                    n_character_included += 1
+                    character_included_count[aa] += 1
                     
-    print("\nDescription nombre:")
-    print("nbre_seed:               ", '{:_}'.format(nbre_seed))
-    print("nbre_seq:                ", '{:_}'.format(nbre_seq))
-    print("nbre_position:           ", '{:_}'.format(total_position))
-    print("total_character:         ", '{:_}'.format(total_character))
-    print("total_character_included:", '{:_}'.format(total_residu))
+    print("\nDESCRIPTION:")
+    print(f"N_MULTIPLE ALIGNMENTS: {int('{:_}'.format(n_seed))}")
+    print(f"N_SEQ: {int('{:_}'.format(n_seq))}")
+    print(f"N_POSITION: {int('{:_}'.format(n_position))}")
+    print(f"N_CHARACTER: {int('{:_}'.format(n_character))}")
+    print(f"N_CHARACTER_INCLUDED: {int('{:_}'.format(n_character_included))}")
 
-    print("\nDescription moyenne:")
+    print("\nMEANS:")
     # mean len sequence
-    if nbre_seq != 0:
-        mean_len_seq = round(total_residu/nbre_seq, 2)
-        print("mean_len_seq:            ", '{:_.2f}'.format(mean_len_seq))
-    else: 
-        print("no sequence")
-
-    # mean nbre sequence per seed
-    if nbre_seed != 0:
-        mean_nbre_seq = round(nbre_seq/nbre_seed, 2)
-        print("mean_nbre_seq:           ", '{:_.2f}'.format(mean_nbre_seq))
+    if n_seq != 0:
+        mean_len_seq = round(n_character_included/n_seq, 2)
+        print(f"MEAN_LEN_SEQ: {'{:_.2f}'.format(mean_len_seq)}")
     else:
-        print('no seed')
+        print("NO SEQUENCE IN THE DATA SELECTED")
 
-    return residu_count, total_residu, character_count, total_character
+    # mean number of sequences per seed
+    if n_seed != 0:
+        mean_n_seq = round(n_seq/n_seed, 2)
+        print(f"MEAN_N_SEQ: {'{:_.2f}'.format(mean_n_seq)}")
+    else:
+        print("NO SEED IN THE DATA SELECTED")
+
+    # SAVE
+    character_percentage = {k: round(100*v / n_character, 2) for k, v in character_count.items()}
+    np.save(path_character_percentage, character_percentage)
+
+    character_included_percentage = {k: round(100*v / n_character_included, 2) for k, v in character_included_count.items()}
+    np.save(path_character_included_percentage, character_included_percentage)
 
 
-def bar_plot_data_count(path_folder_to_describe: str,  residu_count: dict, total_residu: float, entity_name):
+
+def bar_plot_data_description(path_folder_to_describe: str,  path_percentage_description: str, entity_name: str):
+    """Description of the distribution of characters in data with bar plot
+
+    Args:
+        path_folder_to_describe (str): path of the folder to describe
+        path_percentage_description (str): path of the dicitonary
+                                           of each character percentage
+        entity_name (str): "STANDARD AMINO-ACIDS" OR "ALL CHARACTERS"
     """
-    path_folder_to_describe: to name the graph and the figure according to the folder described
-    descriptor: dictionary that contains the feature information for each residu
-    feature: can be "count" or "percentage"
-    """
-    residu_percentage = {k: round(100*v / total_residu, 2) for k, v in residu_count.items()}
+    data_percentage = np.load(path_percentage_description, allow_pickle=True).item()
+    data_percentage_sorted = dict(sorted(data_percentage.items(), key=lambda item: item[1], reverse=True))
 
-    # dico sorted by descending order
-    residu_percentage_sorted = dict(sorted(residu_percentage.items(), key=lambda item: item[1], reverse=True))
-
-    plt.bar(list(residu_percentage_sorted.keys()), residu_percentage_sorted.values(), color='g')
+    plt.bar(list(data_percentage_sorted.keys()), data_percentage_sorted.values(), color='g')
     plt.xlabel(entity_name)
-    plt.ylabel('Percentage')
+    plt.ylabel('PERCENTAGE')
 
     dir_image = os.path.dirname(path_folder_to_describe)
     name_dir = os.path.basename(path_folder_to_describe)

@@ -1,7 +1,6 @@
-################################################################################
-#                                  Importations                                #    
-################################################################################
+# IMPORTATIONS
 
+import time
 from Bio import AlignIO
 from pathlib import Path
 
@@ -9,24 +8,12 @@ from pathlib import Path
 import sys  
 from pathlib import Path 
 file = Path(__file__).resolve()
-sys.path.append(file.parents[1]) 
-from utils.timer import Timer
+sys.path.append(file.parents[1])
 import utils.folder as folder
 
 
 
-################################################################################
-#                                  Fonctions                                   #    
-################################################################################
-
-
-def stockholm_to_fasta(path_stockholm, path_fasta) :
-    """Convert a Stockholm file into a fasta file"""
-    with open(path_stockholm, "r") as file_stockholm:
-        with open(path_fasta, "w") as file_fasta:
-            alignments = AlignIO.parse(file_stockholm, "stockholm")
-            for alignment in alignments:
-                AlignIO.write([alignment], file_fasta, "fasta")
+# FUNCTIONS
 
 
 def stockholm_separator(path_file, path_folder_save):
@@ -36,8 +23,7 @@ def stockholm_separator(path_file, path_folder_save):
     path_file_name: path of the multiStockholm file
     path_folder_save: path of th folder where the monoStockholm files generated are saved 
     """
-    t = Timer()
-    t.start()
+    start = time.time()
 
     input_handle = open(path_file)
     folder.creat_folder(path_folder_save)
@@ -68,15 +54,19 @@ def stockholm_separator(path_file, path_folder_save):
 
     output_handle.close()
     input_handle.close()
-    t.stop("Separation of the multiStockholm file into monoStockholm files")
+
+    end = time.time()
+    diff = end - start
+    print(f"MULTI TO MONO STOCKHOLM: time {diff} s")
+
+
 
 
 def multi_stockholm_to_fasta(path_folder_stockholm, path_folder_fasta):
     """
     Convert Stockholm files into Fasta files
     """
-    t = Timer()
-    t.start()
+    start = time.time()
 
     folder.creat_folder(path_folder_fasta)
 
@@ -84,5 +74,13 @@ def multi_stockholm_to_fasta(path_folder_stockholm, path_folder_fasta):
     for file_stockholm in files_stockholm:
         accession_num = folder.get_accession_number(file_stockholm)
         path_file_fasta = f"{path_folder_fasta}/{accession_num}.fasta"
-        stockholm_to_fasta(file_stockholm, path_file_fasta)
-    t.stop("Conversion du format Stockholm au format Fasta")
+        with open(file_stockholm, "r") as file_stockholm:
+            with open(path_file_fasta, "w") as file_fasta:
+                alignments = AlignIO.parse(file_stockholm, "stockholm")
+                for alignment in alignments:
+                    AlignIO.write([alignment], file_fasta, "fasta")
+
+    end = time.time()
+    diff = end - start
+    print(f"STOCKHOLM TO FASTA: time {diff} s")
+    

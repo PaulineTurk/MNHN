@@ -1,78 +1,52 @@
-################################################################################
-#                                  Importations                                #    
-################################################################################
+# IMPORTS
 
 import sys  
 from pathlib import Path  
-import os
+import numpy as np
 from tqdm import tqdm
 
 import sys  
 from pathlib import Path 
 file = Path(__file__).resolve()
 sys.path.append(file.parents[1]) 
-from utils.timer import Timer
-from treatment.pid import pid                        # check si vraiment besoin
 import utils.fastaReader as fastaReader
 import utils.folder as folder
 
 
-################################################################################
-#                                  Fonctions                                   #    
-################################################################################
+# FUNCTIONS
 
-def len_seq_corrected(seq, list_residu):
+def len_seq_corrected(seq, alphabet):
     """
-    Return the number of residus in seq that are included in list_residu
+    Return the number of residus in seq that are included in alphabet
     """
     len_seq_corrected = 0
     for aa in seq:
-        if aa in list_residu:
+        if aa in alphabet:
             len_seq_corrected += 1
     return len_seq_corrected
 
 
-def pid_redundant(seq_1, seq_2, list_inclusion):  
+
+def clustering_non_redundant(liste_seq, file_seq_non_redondant,
+                             alphabet, pid_cluster, data_pid):
     """
-    Return the percentage of identity between the two sequences: seq_1 and seq_2
-    list_inclusion: liste des caractères inclus
-    """
-    pid = 0
-    nb_included_character_seq_1 = 0
-    nb_included_character_seq_2 = 0
-
-    len_seq = len(seq_1)
-    for indice_aa in range(len_seq):
-        if seq_1[indice_aa] in list_inclusion:
-            nb_included_character_seq_1 += 1
-        if seq_2[indice_aa] in list_inclusion:
-            nb_included_character_seq_2 += 1
-            
-        if seq_1[indice_aa] in list_inclusion and seq_2[indice_aa] in list_inclusion and seq_1[indice_aa] == seq_2[indice_aa]:
-                pid += 1
-
-    return 100*pid/min(nb_included_character_seq_1, nb_included_character_seq_2)
-
-
-def clustering_non_redundant(liste_seq, file_seq_non_redondant, list_inclusion, pid_sup):    
-    """
-    Return a partition of liste_seq of sequences with a percentage of identity greater or equal than pid_sup
+    Return a partition of liste_seq of sequences with a percentage of identity greater or equal than pid_cluster
     """
     cluster = {}
-    if liste_seq:   # if the list is not empty
+    if liste_seq:
         name_0, seq_0 = liste_seq[0] 
-        len_seq_real_0 = len_seq_corrected(seq_0, list_inclusion)
+        len_seq_real_0 = len_seq_corrected(seq_0, alphabet)
         cluster[0] = [(name_0, seq_0, len_seq_real_0)]
 
         for name_1, seq_1 in liste_seq:
-            len_seq_real_1 = len_seq_corrected(seq_1, list_inclusion)
+            len_seq_real_1 = len_seq_corrected(seq_1, alphabet)
             group = 0
             indice = 0
 
             while group <= len(cluster) - 1 and indice <= len(cluster[group]) - 1:
-                seq_2 = cluster[group][indice][1]
-                pourcentage_id = pid_redundant(seq_1, seq_2, list_inclusion) 
-                if pourcentage_id < pid_sup:
+                name_2 = cluster[group][indice][0]
+                pourcentage_id = data_pid[name_1][name_2]
+                if pourcentage_id < pid_cluster:
                     group += 1
                     indice = 0
                 else:
@@ -105,51 +79,45 @@ def cluster_representative(cluster):
 
 
 
+def multi_non_redundancy_correction(path_folder_fasta: str, 
+                                    path_folder_fasta_non_redondant: str,
+                                    path_pid:str,
+                                    alphabet: list, pid_cluster: float):
+    """Correct the redundancy issue by selecting on representative for each group of sequences
+       in a seed with a pid > pid_cluster
 
-def non_redundancy_correction(path_file_fasta, path_file_seq_non_redundant, list_residu, pid_sup):
+    Args:
+        path_folder_fasta (str): folder of data to cluster
+        path_folder_fasta_non_redondant (str): path where the clustered data is stored
+        path_pid (str): path of the pid for each couple of sequences
+        alphabet (list): list of character included
+        pid_cluster (float): pid min to group the sequences
     """
-    Rewrite the fasta file by correcting the issue of redundancy according to pid_sup.o
-    """
-    seed = fastaReader.read_multi_fasta(path_file_fasta)
-    cluster = clustering_non_redundant(seed, path_file_seq_non_redundant, list_residu, pid_sup)
-    seq_non_redundant = cluster_representative(cluster)
-
-    with open(path_file_fasta, "r") as file:
-        with open(path_file_seq_non_redundant, "w") as file_corrected:
-            flag_write = False
-            for line in file:
-                if line[0] == ">":   
-                    if line[1:-1].split(" ")[0] in seq_non_redundant:    # keep the name only 
-                        flag_write = True
-                    else:
-                        flag_write = False
-                if flag_write == True:
-                    file_corrected.write(line)
-
-
-
-
-
-def multi_non_redundancy_correction(path_folder_fasta, path_folder_fasta_non_redondant, list_residu, pid_sup = 99):
-    """
-    Create a folder of fasta files with the redondant issue corrected
-
-    path_folder_fasta: original fasta folder
-    path_folder_fasta_non_redondant: fasta folder corrected
-    list_residu: list of valid residu to evaluate the corrected len of each sequence
-    pid_sup: percentage of identity for the clustering
-    """
-
     folder.creat_folder(path_folder_fasta_non_redondant)
-    
-    path, dirs, files = next(os.walk(path_folder_fasta))
-    nb_files = len(files)
 
-    # liste des PosixPath des alignements d'apprentissage
     files = [x for x in Path(path_folder_fasta).iterdir()]
+    n_files = len(files)
 
-    for file_counter in tqdm(range(nb_files), desc = "non-redundant"):
+    for file_counter in tqdm(range(n_files), desc = "non-redundant", mininterval=60):
         file = files[file_counter]
+        seed = fastaReader.read_multi_fasta(file)
+
         accession_num = folder.get_accession_number(file)
-        path_fasta_non_redondant = f"{path_folder_fasta_non_redondant}/{accession_num}.fasta.nonRedundant"
-        non_redundancy_correction(file, path_fasta_non_redondant, list_residu, pid_sup)
+        path_fasta_non_redondant = f"{path_folder_fasta_non_redondant}/{accession_num}.non_redundant"
+        data_pid = np.load(f"{path_pid}/{accession_num}.pid.npy", allow_pickle=True).item()
+
+        cluster = clustering_non_redundant(seed, path_fasta_non_redondant, 
+                                           alphabet, pid_cluster, data_pid)
+        seq_non_redundant = cluster_representative(cluster)
+
+        with open(file, "r") as file:
+            with open(path_fasta_non_redondant, "w") as file_corrected:
+                flag_write = False
+                for line in file:
+                    if line[0] == ">":   
+                        if line[1:-1].split(" ")[0] in seq_non_redundant:    # keep the name only 
+                            flag_write = True
+                        else:
+                            flag_write = False
+                    if flag_write == True:
+                        file_corrected.write(line)
