@@ -48,8 +48,7 @@ new_folder_dico = f"{DATA_RESULT_EX_TEST}/{args.pid_inf}_{args.pid_sup}"
 
 list_path = [DATA_RESULT_EX_TEST, path_review, new_folder_dico]
 for path in list_path:
-    IS_EXIST = os.path.exists(path)
-    if not IS_EXIST:
+    if not os.path.exists(path):
         os.makedirs(path)
 
 # FOLDER CREATION

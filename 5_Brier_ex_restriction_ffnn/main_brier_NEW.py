@@ -1,6 +1,6 @@
 """
 Brier Score Experiment:
-nohup python3 main_brier.py 90 100 uni origine 0.001> test_brier_$$.txt 2>&1
+nohup python3 main_brier_NEW.py 90 100 uni origine 0.001> test_brier_$$.txt 2>&1
 """
 
 # IMPORTS

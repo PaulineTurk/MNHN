@@ -1,6 +1,6 @@
 """
 PSEUDO_COUNTER OPTIMISATION:
-python3 main_pseudo_counter_optimisation.py 60 70 > data_pc_2d_optimisation_60_70_$$.txt 2>&1
+python3 main_pseudo_counter_optimisation.py 90 100 > data_pc_2d_optimisation_60_70_$$.txt 2>&1
 """
 
 
@@ -25,9 +25,15 @@ args = parser.parse_args()
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 
-DATA = f"{file.parents[2]}/MNHN_RESULT_DRAFT/2_TABLE_2D"
-PSEUDO_COUNTER_INITIAL = 1
-LIST_PSEUDO_COUNTER_2D = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000]
+DATA = f"{file.parents[2]}/MNHN_RESULT/2_TABLE_2D"
+LIST_PSEUDO_COUNTER_2D = [0,
+                          pow(10, -5),
+                          pow(10, -4),
+                          pow(10, -3),
+                          pow(10, -2),
+                          pow(10, -1),
+                          1,
+                          10]
 
 
 print("_______________________________________________________________________")
@@ -41,7 +47,7 @@ with open(f"{DATA}/PC_optimisation_{args.pid_inf}_{args.pid_sup}.csv", 'w', enco
     header = ("pseudo_counter_2d", "min_proba_estimated")
     writer.writerow(header)
     for pseudo_counter_2d in LIST_PSEUDO_COUNTER_2D:
-        path_table_2d = f"{DATA}/{args.pid_inf}_{args.pid_sup}_{PSEUDO_COUNTER_INITIAL}"
+        path_table_2d = f"{DATA}/{args.pid_inf}_{args.pid_sup}"
         table_2d_proba =  np.load(f"{path_table_2d}/proba_{pseudo_counter_2d}.npy", allow_pickle='TRUE').item()
         proba_min = table2dfonction.min_2D(table_2d_proba, ALPHABET)
         data = (pseudo_counter_2d, proba_min)

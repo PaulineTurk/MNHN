@@ -1,6 +1,6 @@
 """
 NON-CONTEXTUAL VIEW:
-python3 main_table_2d_view.py 60 70 > data_table_2d_view_60_70_$$.txt 2>&1
+python3 main_table_2d_view.py 90 100 > data_table_2d_view_90_100_$$.txt 2>&1
 """
 
 # IMPORTS
@@ -22,14 +22,20 @@ parser.add_argument("pid_inf", help="pourcentage d'identité inférieur", type=i
 parser.add_argument("pid_sup", help="pourcentage d'identité supérieur", type=int)
 args = parser.parse_args()
 
-DATA = f"{file.parents[2]}/MNHN_RESULT_DRAFT/1_DATA"
-DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT_DRAFT/2_TABLE_2D"
+DATA = f"{file.parents[2]}/MNHN_RESULT/1_DATA"
+DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_TABLE_2D"
 NAME_FASTA_TRAIN_FOLDER = "Pfam_split/Pfam_train"
 NAME_PID_FOLDER         = "PID"
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
-PSEUDO_COUNTER = 1
-LIST_PSEUDO_COUNTER_2D = [0, 1, 10, 100, 1_000, 10_000, 100_000, 1_000_000]
+LIST_PSEUDO_COUNTER_2D = [0,
+                          pow(10, -5),
+                          pow(10, -4),
+                          pow(10, -3),
+                          pow(10, -2),
+                          pow(10, -1),
+                          1,
+                          10]
 
 
 
@@ -41,14 +47,14 @@ print("_______________________________________________________________________")
 
 path_folder_fasta      = f"{DATA}/{NAME_FASTA_TRAIN_FOLDER}"
 path_folder_pid        = f"{DATA}/{NAME_PID_FOLDER}"
-path_res = f"{DATA_RESULT}/{args.pid_inf}_{args.pid_sup}_{PSEUDO_COUNTER}"
+path_res = f"{DATA_RESULT}/{args.pid_inf}_{args.pid_sup}"
 path_res_graph = f"{path_res}/graph"
 if not os.path.exists(path_res_graph):
     os.makedirs(path_res_graph)
 
 # table_2d score (BLOSUM formula)
 print(f"\ntable_2d_score ({args.pid_inf},{args.pid_sup}) :\n")
-table_2d_score = np.load(f"{path_res}/table_2d_score.npy", allow_pickle='TRUE').item()
+table_2d_score = np.load(f"{path_res}/score.npy", allow_pickle='TRUE').item()
 table2dfonction.table_2d_visualisation(table_2d_score)
 name_folder_fasta =  os.path.basename(path_folder_fasta)
 title_heatmap = f"Heatmap de la table_2d de scores [{args.pid_inf},{args.pid_sup}] calculée sur {name_folder_fasta}"
