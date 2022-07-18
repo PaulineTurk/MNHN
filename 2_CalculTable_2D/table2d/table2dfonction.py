@@ -136,7 +136,7 @@ def multi_count_for_table_2d(path_folder_fasta: str, path_folder_pid: str,
 
 
 def proba_conditional_weighted(path_freq_AA: str, path_freq_AA_couple: str,
-                               pseudo_counter_2d: int,
+                               pseudo_counter_2d: float,
                                alphabet: list,
                                path_folder_Result: str):
     start = time.time()
@@ -184,7 +184,7 @@ def freq(path_count_AA: str, path_count_AA_couple: str,
     for aa_1 in alphabet:
         for aa_2 in alphabet:
             n_ex_train += dico_count_AA_couple[aa_1][aa_2]
-    print(f"N_EXAMPLES_TRAIN: {n_ex_train}")
+    print(f"N_EXAMPLES_TRAIN: {'{:_}'.format(int(n_ex_train))}")
 
     dico_freq_AA_couple = {}
     for aa_1 in alphabet:

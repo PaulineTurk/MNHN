@@ -248,3 +248,45 @@ def brier_score(list_example,
     print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
 
     return score_brier_naive_bayes, list_unit_score_brier, nb_example, prediction_info
+
+
+
+
+
+def brier_score_no_context(list_example,
+                           alphabet,
+                           path_table_2d_proba):
+
+
+    # INITIALISATIONS
+    score_brier_naive_bayes  = 0
+    list_unit_score_brier = []
+
+    # LOADING: 2D_PROBA
+    table_2d_proba = np.load(path_table_2d_proba, allow_pickle='TRUE').item()
+
+    start = time.time()
+    for example in list_example:
+        aa_1 = example[0]     # amino-acid ref origine
+        aa_2 = example[1]     # amino-acid ref destination
+
+        # Non-contextual vector (a priori distribution)
+        vect_distribution = []
+        for aa in alphabet:
+            vect_distribution.append(table_2d_proba[aa_1][aa])
+
+        # BRIER SCORE / EXAMPLE
+        score_brier_one_example = unit_brier_naive_bayes(vect_distribution, aa_2, alphabet)
+        list_unit_score_brier.append(score_brier_one_example)
+        score_brier_naive_bayes += score_brier_one_example
+
+    nb_example = len(list_example)
+    if nb_example != 0:
+        score_brier_naive_bayes /= nb_example
+
+    end = time.time()
+    diff = end - start
+    items_per_second = nb_example/diff
+    print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
+
+    return score_brier_naive_bayes, list_unit_score_brier, nb_example

@@ -77,7 +77,6 @@ path_file_param_eval = f"{DATA_RESULT_2D_COUNT}/Parameters_Evaluated.csv"
 file_exists = os.path.isfile(path_file_param_eval)
 
 with open (path_file_param_eval, 'a', encoding='UTF8', newline='') as f:
-    headers = ['TimeStamp', 'light', 'Proximity']
     writer = csv.writer(f)
     header = ("pid_inf", "pid_sup", "percentage_not_evaluated")
 
@@ -116,6 +115,7 @@ table2dfonction.score(path_freq_AA,
 
 
 for pseudo_counter_2d in LIST_PSEUDO_COUNTER_2D:
+    pseudo_counter_2d = float(pseudo_counter_2d)
     print("")
     print("_________________________________")
     print(f"TABLE 2D PROBA")

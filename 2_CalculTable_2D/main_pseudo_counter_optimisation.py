@@ -1,6 +1,6 @@
 """
 PSEUDO_COUNTER OPTIMISATION:
-python3 main_pseudo_counter_optimisation.py 90 100 > data_pc_2d_optimisation_60_70_$$.txt 2>&1
+python3 main_pseudo_counter_optimisation.py 90 100 > data_pc_2d_optimisation_90_100_$$.txt 2>&1
 """
 
 
@@ -52,5 +52,3 @@ with open(f"{DATA}/PC_optimisation_{args.pid_inf}_{args.pid_sup}.csv", 'w', enco
         proba_min = table2dfonction.min_2D(table_2d_proba, ALPHABET)
         data = (pseudo_counter_2d, proba_min)
         writer.writerow(data)
-
-

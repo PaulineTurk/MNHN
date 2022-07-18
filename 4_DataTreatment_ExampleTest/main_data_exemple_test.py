@@ -5,6 +5,7 @@ python3 main_data_exemple_test.py 90 100 > 90_100_$$.txt 2>&1
 
 # IMPORTS
 import os
+import os.path
 import argparse
 import csv
 
@@ -62,8 +63,16 @@ n_valid_seed, n_non_info_seed, n_valid_aa_couple_global = dataexampletestfonctio
                                                             path_folder_dico_seq, path_folder_dico_seed)
 
 # REVIEW REGISTRATION
-data = args.pid_inf, args.pid_sup, n_valid_seed, n_non_info_seed, n_valid_aa_couple_global
-with open(f"{path_review}/ex_test.csv", 'a', encoding='UTF8', newline='') as f:
+
+path_ex_test = f"{path_review}/example_test.csv"
+file_exists = os.path.isfile(path_ex_test)
+
+with open (path_ex_test, 'a', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
-    # header: pid_inf, pid_sup, n_valid_seed, n_non_info_seed, n_valid_aa_couple_global
+    header = ('pid_inf', 'pid_sup', 'n_valid_seed', 'n_non_info_seed', 'n_valid_aa_couple_global')
+
+    if not file_exists:
+        writer.writerow(header)
+
+    data = args.pid_inf, args.pid_sup, n_valid_seed, n_non_info_seed, n_valid_aa_couple_global
     writer.writerow(data)

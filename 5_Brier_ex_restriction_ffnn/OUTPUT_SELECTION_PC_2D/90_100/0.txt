@@ -1,0 +1,56 @@
+_______________________________________________________________________
+                     PSEUDO_COUNTER_2D SELECTION                       
+_______________________________________________________________________
+_________________________________
+  Preparation of the experiment  
+_________________________________
+PID_INF: 90
+PID_SUP: 100
+LIST CONTEXT TESTED: [(0, 0, 0, 0)]
+N_TEST_PER_CONTEXT: 5
+N_EXAMPLES_PER_TEST: 100000
+PSEUDO_COUNTER_2D: 0.0
+_________________________________
+            Experiment           
+_________________________________
+
+__________________________
+CONTEXT: (0, 0, 0, 0)
+__________________________
+
+TEST 1/5
+EXAMPLES NUMBER/SEED: time: 0.03s | 15535.45it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|██████████████████████████████████████| 9816/9816 [00:03<00:00, 2472.17it/s]
+SELECTION: time: 4.08 s | 0.00 it/s
+N_EXAMPLES: 99_995
+BRIER SCORE: 0.1121589023771395 | time 4.13s | 24197.44it/s
+
+TEST 2/5
+EXAMPLES NUMBER/SEED: time: 0.00s | 98334.20it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|██████████████████████████████████████| 9816/9816 [00:03<00:00, 2890.63it/s]
+SELECTION: time: 3.40 s | 0.00 it/s
+N_EXAMPLES: 100_010
+BRIER SCORE: 0.10949950614146611 | time 4.65s | 21494.81it/s
+
+TEST 3/5
+EXAMPLES NUMBER/SEED: time: 0.02s | 23779.82it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|██████████████████████████████████████| 9816/9816 [00:03<00:00, 2838.94it/s]
+SELECTION: time: 3.46 s | 0.00 it/s
+N_EXAMPLES: 100_003
+BRIER SCORE: 0.10983570516038048 | time 4.27s | 23401.77it/s
+
+TEST 4/5
+EXAMPLES NUMBER/SEED: time: 0.01s | 28908.11it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|██████████████████████████████████████| 9816/9816 [00:03<00:00, 3005.32it/s]
+SELECTION: time: 3.27 s | 0.00 it/s
+N_EXAMPLES: 100_008
+BRIER SCORE: 0.11250669591941892 | time 4.39s | 22802.67it/s
+
+TEST 5/5
+EXAMPLES NUMBER/SEED: time: 0.01s | 30137.03it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|██████████████████████████████████████| 9816/9816 [00:03<00:00, 3088.77it/s]
+SELECTION: time: 3.19 s | 0.00 it/s
+N_EXAMPLES: 100_013
+BRIER SCORE: 0.11315218642290224 | time 4.09s | 24442.48it/s
+
+DONE in 39.7637 s
