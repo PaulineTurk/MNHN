@@ -1,6 +1,6 @@
 """
 PSEUDO_COUNTER OPTIMISATION:
-python3 main_pseudo_counter_optimisation.py 90 100 > data_pc_2d_optimisation_$$.txt 2>&1
+python3 main_pseudo_counter_optimisation.py 60 70 > data_pc_2d_optimisation_60_70_$$.txt 2>&1
 """
 
 
@@ -36,7 +36,7 @@ print("                      THE MIN OF PROBA ESTIMATED                       ")
 print("_______________________________________________________________________")
 
 
-with open(f"{DATA}/PC_optimisation.csv", 'w', encoding='UTF8', newline='') as f:
+with open(f"{DATA}/PC_optimisation_{args.pid_inf}_{args.pid_sup}.csv", 'w', encoding='UTF8', newline='') as f:
     writer = csv.writer(f)
     header = ("pseudo_counter_2d", "min_proba_estimated")
     writer.writerow(header)

@@ -1,6 +1,6 @@
 """
 NON-CONTEXTUAL INFORMATION:
-python3 main_table_2d.py 90 100 > data_table_2d_$$.txt 2>&1
+python3 main_table_2d.py 60 70 > data_table_2d_$$.txt 2>&1
 """
 
 

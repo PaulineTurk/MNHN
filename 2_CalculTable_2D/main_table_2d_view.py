@@ -1,6 +1,6 @@
 """
 NON-CONTEXTUAL VIEW:
-python3 main_table_2d_view.py 90 100 > data_table_2d_view_$$.txt 2>&1
+python3 main_table_2d_view.py 60 70 > data_table_2d_view_60_70_$$.txt 2>&1
 """
 
 # IMPORTS

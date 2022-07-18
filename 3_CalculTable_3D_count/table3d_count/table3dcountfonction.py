@@ -122,14 +122,13 @@ def multi_table_3d_count(path_folder_fasta, path_folder_pid,
     nb_ex_train = 0
 
     triplet_count = table_3d_count_initialisation(alphabet, pseudo_compte)
-    path, dirs, files = next(os.walk(path_folder_fasta))
-    nb_files = len(files)
 
     dico_function = {"o": table_3d_count_origine,
                      "d": table_3d_count_destination}
 
 
     files = [x for x in Path(path_folder_fasta).iterdir()]
+    nb_files = len(files)
 
     start = time.time()
     for file_counter in tqdm(range(nb_files), desc='3D count', mininterval=60):
