@@ -116,12 +116,12 @@ table2dfonction.score(path_freq_AA,
 
 for pseudo_counter_2d in LIST_PSEUDO_COUNTER_2D:
     pseudo_counter_2d = float(pseudo_counter_2d)
-    print("")
-    print("_________________________________")
-    print(f"TABLE 2D PROBA")
-    print(f"PSEUDO_COUNTER_2D: {pseudo_counter_2d}")
-    print("_________________________________")
-    table2dfonction.proba_conditional_weighted(path_freq_AA, path_freq_AA_couple,
+print("")
+print("_________________________________")
+print(f"TABLE 2D PROBA")
+print(f"PSEUDO_COUNTER_2D: {pseudo_counter_2d}")
+print("_________________________________")
+table2dfonction.proba_conditional_weighted(path_freq_AA, path_freq_AA_couple,
                                                pseudo_counter_2d,
                                                ALPHABET,
                                                path_folder_Result)
