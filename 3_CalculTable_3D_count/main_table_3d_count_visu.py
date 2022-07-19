@@ -1,5 +1,6 @@
 """
-CONTEXTUAL INFORMATION VIEW
+CONTEXTUAL INFORMATION VIEW:
+python3 main_table_3d_count_visu.py o min
 """
 
 # IMPORTS
@@ -17,12 +18,12 @@ sys.path.append(file.parents[0])
 parser = argparse.ArgumentParser()
 parser.add_argument("ref", help="'o' for origine OR 'd' for destination", type=str)
 parser.add_argument("eval",
-                    help="'min' for min_count,'not_eval' for not_evaluated OR 'total for total_count",
+                    help="'min' for min_count,'not_eval' for not_evaluated OR 'total' for total_count",
                     type=str)
 args = parser.parse_args()
 
 DATA_RESULT_2D = f"{file.parents[2]}/MNHN_RESULT/2_TABLE_2D"
-DATA_RESULT_3D = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D_COUNT"
+DATA_RESULT_3D = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D/COUNT"
 
 
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
@@ -30,14 +31,14 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
 
 # LIST_PID_RANGE = [(0,10), (10,20), (20,30), (30,40), (40,50),
 #                   (50,60),(60,70), (70,80), (80,90), (90,100)]
-LIST_PID_RANGE = [(0,10)]
+LIST_PID_RANGE = [(90,100)]
 INDEX_MAX  = 10
 
 PSEUDO_COUNTER = 1
 
 
 # FUNCTIONS
-def descriptionTable(table_count, alphabet, pseudo_counter, table_type):
+def descriptionTable(table_count, alphabet, table_type):
     """
     table_count: dico of the table to describe
     table_type: '2D' or '3D'
@@ -64,7 +65,7 @@ def descriptionTable(table_count, alphabet, pseudo_counter, table_type):
 
     for count in list_count:
         total_count += count
-        if count == pseudo_counter:
+        if count == 0:
             not_eval_count += 1
 
     not_eval_percent = 100*not_eval_count/(len(alphabet)**3)
@@ -96,33 +97,34 @@ for pid_range in LIST_PID_RANGE:
                         "min": min_count_global}
 
     # chemin des tables 3d count par tranche de pid
-    path_table_3d = f"{DATA_RESULT_3D}/table_3d_count_{pid_inf}_{pid_sup}_{PSEUDO_COUNTER}"
+    path_table_3d = f"{DATA_RESULT_3D}/{pid_inf}_{pid_sup}"
 
     
     # importation des tables de comptage 3D de la tranche en position négative
     list_neg_index = [i for i in range(1,INDEX_MAX+1)][::-1]
     for index in list_neg_index:
-        table3d_comptage = np.load(f"{path_table_3d}/table_3d_count_({-index},{args.ref}).npy", allow_pickle='TRUE').item()
-        total_count, not_eval_percent, min_count = descriptionTable(table3d_comptage, ALPHABET,
-                                                                    PSEUDO_COUNTER, "3D")
+        table3d_comptage = np.load(f"{path_table_3d}/{-index}_{args.ref}.npy", allow_pickle='TRUE').item()
+        total_count, not_eval_percent, min_count = descriptionTable(table3d_comptage,
+                                                                    ALPHABET,
+                                                                    "3D")
         total_count_global.append(total_count)
         not_eval_percent_global.append(not_eval_percent)
         min_count_global.append(min_count)
 
     # importation de la table de comptage 2D de la tranche
-    path_table_2d    = f"{DATA_RESULT_2D}/table_2d_{pid_inf}_{pid_sup}_{PSEUDO_COUNTER}"
-    table2d_comptage = np.load(f"{path_table_2d}/table_2d_count.npy", allow_pickle='TRUE').item()
-    total_count, not_eval_percent, min_count = descriptionTable(table2d_comptage, ALPHABET,
-                                                                PSEUDO_COUNTER, "2D")
-    total_count_global.append(total_count)
+    path_table_2d    = f"{DATA_RESULT_2D}/{pid_inf}_{pid_sup}"
+    table2d_comptage = np.load(f"{path_table_2d}/count_2d.npy", allow_pickle='TRUE').item()
+    total_count, not_eval_percent, min_count = descriptionTable(table2d_comptage,
+                                                                ALPHABET, "2D")
+    total_count_global.append(total_count)            
     not_eval_percent_global.append(not_eval_percent)
     min_count_global.append(min_count)
 
     # importation des tables de comptage 3D de la tranche en position positive
     for index in range(1,INDEX_MAX+1):
-        table3d_comptage = np.load(f"{path_table_3d}/table_3d_count_({index},{args.ref}).npy", allow_pickle='TRUE').item()
-        total_count, not_eval_percent, min_count = descriptionTable(table3d_comptage, ALPHABET,
-                                                                    PSEUDO_COUNTER, "3D")
+        table3d_comptage = np.load(f"{path_table_3d}/{index}_{args.ref}.npy", allow_pickle='TRUE').item()
+        total_count, not_eval_percent, min_count = descriptionTable(table3d_comptage,
+                                                                    ALPHABET, "3D")
         total_count_global.append(total_count)
         not_eval_percent_global.append(not_eval_percent)
         min_count_global.append(min_count)
@@ -137,8 +139,8 @@ plt.xlabel(DICO_TITLE_X[args.ref], fontsize=13)
 plt.ylabel(DICO_TITLE_Y[args.eval], fontsize=13)
 if args.eval == "not_eval":
     plt.yticks(np.arange(0,60,5))
-else:
-    plt.yscale('log')
+#else:
+    #plt.yscale('log')
 plt.grid(color='lightgrey', linestyle='--', linewidth=0.5)                              
 plt.title(DICO_TITLE_GRAPH[args.eval], loc='center',  fontsize=20)
 plt.legend()

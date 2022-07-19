@@ -10,7 +10,7 @@ for ((x=0; x<=9; x++));
     pid_inf=$(( 10*$x ))
     pid_sup=$(( 10*$x + 10 ))
     name_file="$pid_inf"_"$pid_sup"
-    mkdir $name_folder/$name_file             # éventuellement mkdir -p
+    mkdir $name_folder/$name_file
 
 
     for j in ${myArray[@]};

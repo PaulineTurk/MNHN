@@ -41,7 +41,7 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 NAME_FASTA_TEST_FOLDER = "Pfam_split/Pfam_test"
 N_TEST_PER_CONTEXT = 5
-N_EXAMPLES_PER_TEST = 100_000
+N_EXAMPLES_PER_TEST = 1_000_000
 
 
 print("_______________________________________________________________________")
@@ -71,13 +71,15 @@ for path_folder in list_path_folder:
     if not os.path.exists(path_folder):
         os.makedirs(path_folder,  exist_ok=True)
 
-# MSA PATH
+# PATH TO LOAD:
+
+## MSA
 path_folder_seed = f"{DATA_MNHN}/{NAME_FASTA_TEST_FOLDER}"
 
-# PATH 2D_PROBA
+## 2D_PROBA WITH PSEUDO_COUNTER_2D
 path_table_2d_proba = f"{DATA_2D_PROBA}/{args.pid_inf}_{args.pid_sup}/proba_{args.pseudo_counter_2d}.npy"
 
-# PATH PRE-PROECESSING DICO
+## DATA PRE-PROECESSING DICO
 path_folder_dico_seq = f"{DATA_EXEMPLE_TEST}/{args.pid_inf}_{args.pid_sup}/seq"
 path_file_dico_seed_normal = f"{DATA_EXEMPLE_TEST}/{args.pid_inf}_{args.pid_sup}/seed/seed_normal.npy"
 

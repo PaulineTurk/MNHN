@@ -1,2 +1,0 @@
-
-python3 4_main_data_exemple_test.py 90 100 > data_ex_test_90_100.txt 2>&1

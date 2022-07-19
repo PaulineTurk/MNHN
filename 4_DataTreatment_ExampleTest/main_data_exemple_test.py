@@ -39,6 +39,9 @@ print("                           PRE-PROCESSING                              ")
 print("                       EXAMPLE TEST SELECTION                          ")
 print("_______________________________________________________________________")
 
+print(f"PID_INF: {args.pid_inf}")
+print(f"PID_SUP: {args.pid_sup}")
+
 
 path_folder_seed = f"{DATA}/{NOM_FOLDER_FASTA_TEST}"   # seed test
 path_folder_pid = f"{DATA}/{NOM_FOLDER_PID}"           # seed test pid

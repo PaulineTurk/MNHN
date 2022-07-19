@@ -1,6 +1,6 @@
 #!/bin/bash
 
-name_folder=OUTPUT_$$
+name_folder=OUTPUT_EX_TEST_$$
 mkdir $name_folder
 
 
