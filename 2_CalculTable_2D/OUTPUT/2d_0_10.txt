@@ -1,15 +1,0 @@
-#######################################################################
-                             Calcul table 2d                           
-#######################################################################
-
-table_2d (0,10)
-calcul de table_2d_count:   0%|                                            | 0/9816 [00:00<?, ?it/s]calcul de table_2d_count:  13%|████▍                            | 1302/9816 [01:40<10:55, 13.00it/s]calcul de table_2d_count:  13%|████▍                            | 1302/9816 [01:50<10:55, 13.00it/s]calcul de table_2d_count:  17%|█████▋                           | 1681/9816 [03:46<20:41,  6.55it/s]calcul de table_2d_count:  17%|█████▋                           | 1681/9816 [04:00<20:41,  6.55it/s]calcul de table_2d_count:  23%|███████▌                         | 2241/9816 [04:48<17:14,  7.33it/s]calcul de table_2d_count:  23%|███████▌                         | 2241/9816 [05:00<17:14,  7.33it/s]calcul de table_2d_count:  41%|█████████████▌                   | 4052/9816 [05:50<06:50, 14.05it/s]calcul de table_2d_count:  41%|█████████████▌                   | 4052/9816 [06:10<06:50, 14.05it/s]calcul de table_2d_count:  58%|███████████████████              | 5654/9816 [06:52<03:55, 17.65it/s]calcul de table_2d_count:  58%|███████████████████              | 5654/9816 [07:10<03:55, 17.65it/s]calcul de table_2d_count:  80%|██████████████████████████▎      | 7826/9816 [08:04<01:30, 21.91it/s]calcul de table_2d_count:  80%|██████████████████████████▎      | 7826/9816 [08:20<01:30, 21.91it/s]calcul de table_2d_count: 100%|████████████████████████████████▊| 9773/9816 [09:04<00:01, 24.93it/s]calcul de table_2d_count: 100%|█████████████████████████████████| 9816/9816 [09:06<00:00, 17.97it/s]
-Count of amino acid and couple of amino acids: 546.39s | 17.97it/s
-Pourcentage de couples d'acides aminés non estimés: 0.0 %
-Nombre d'exemples d'apprentissage : 240_250_518
-
----> calcul de table_2d_freq: 0.00021 s
-
----> calcul de table_2d_score: 0.00044 s
-
----> calcul de table_2d_proba: 0.00023 s
