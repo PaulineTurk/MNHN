@@ -98,7 +98,8 @@ def brier_score_check_convergence(list_example,
                 alphabet,
                 path_table_3d_proba_folder, path_table_2d_proba,
                 method,
-                vector_diff):
+                vector_diff,
+                table_1d):
 
     count_0 = 0
     list_context = [context_ol, context_or, context_dl, context_dr]
@@ -145,25 +146,40 @@ def brier_score_check_convergence(list_example,
         list_vect_dl = vecteur_from_table_3d_proba(aa_1, aa_c_dl, list_cube_quarter_window_dl, alphabet)
         list_vect_dr = vecteur_from_table_3d_proba(aa_1, aa_c_dr, list_cube_quarter_window_dr, alphabet)
 
+
+        # check convergence vect multiplied:
+        for index, vector in enumerate(list_vect_ol[1:]):
+            sum_diff_vect_multiplied = 0
+            for elem in vector:
+                sum_diff_vect_multiplied += abs(elem - table_1d[aa_c_ol[index]])
+            print(f"\nVECTOR: \n{vector}")
+            print(f"P(C) = {table_1d[aa_c_ol[index]]}")
+            print(sum_diff_vect_multiplied)
+
         # VECTORS CONCATENATION
         if method =="multi":
             total_list_vect = [vect_distribution] + list_vect_ol + list_vect_or + list_vect_dl + list_vect_dr
 
         if method =="uni":
             total_list_vect = [vect_distribution, list_vect_ol[-1], list_vect_or[-1], list_vect_dl[-1], list_vect_dr[-1]]
-
+            print("\nLIST OF VECTORS TO MULTIPLY")
+            for vect in total_list_vect:
+                print(vect)
 
         # VECTORS ELEMENT WISE PRODUCT
         final_vector = np.prod(np.vstack(total_list_vect), axis=0)
-        # print(f"FINAL VECTOR: {final_vector}")
+        print(f"\nVECTOR MULTIPLIED: {final_vector}")
 
         # VECTOR NORMALIZATION
         final_vector_normalized = final_vector/np.sum(final_vector)
+        print(f"\nVECTOR NORMALIZED: {final_vector_normalized}")
 
 
         # CHECK CONVERGENCE
-        for index in range(len(final_vector)):
-            vector_diff += abs(final_vector[index] - vect_distribution[index])
+        for index in range(len(final_vector_normalized)):
+            diff_final = abs(final_vector_normalized[index] - vect_distribution[index])
+            print(f"DIFF WITH P(J|I): {diff_final}")
+            vector_diff += diff_final
 
         # BRIER SCORE / EXAMPLE
         score_brier_one_example = unit_brier_naive_bayes(final_vector_normalized, aa_2, alphabet)
@@ -180,7 +196,7 @@ def brier_score_check_convergence(list_example,
     items_per_second = nb_example/diff
     print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
 
-    return score_brier_naive_bayes, list_unit_score_brier, nb_example, vector_diff, list_cube_quarter_window_ol, list_path_ol #, prediction_info
+    return score_brier_naive_bayes, list_unit_score_brier, nb_example, vector_diff, list_cube_quarter_window_ol, list_path_ol  #, prediction_info
 
 
 

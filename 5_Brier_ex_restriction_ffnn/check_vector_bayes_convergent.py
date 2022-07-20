@@ -42,7 +42,7 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
 NAME_FASTA_TEST_FOLDER = "Pfam_split/Pfam_test"
 MAX_RELATIVE_POSITION = 1
 N_TEST_PER_CONTEXT = 1
-N_EXAMPLES_PER_TEST = 1
+N_EXAMPLES_PER_TEST = 2
 PSEUDO_COUNTER_2D = pow(10, -2)
 
 
@@ -108,17 +108,18 @@ for context in list_context:
                                                                         path_folder_dico_seq,
                                                                         context_ol, context_or, context_dl, context_dr,
                                                                         ALPHABET)
-    
-        score_brier, list_unit_score_brier, nb_example, vector_diff, list_cube_quarter_window_ol, list_path_ol= brier.brier_score_check_convergence(list_example,
+        
+        table_1d = np.load(f"{DATA_2D_PROBA}/{args.pid_inf}_{args.pid_sup}/freq_1d.npy", allow_pickle='TRUE').item()
+
+        score_brier, list_unit_score_brier, nb_example, vector_diff, list_cube_quarter_window_ol, list_path_ol = brier.brier_score_check_convergence(list_example,
                                                                context_ol, context_or, context_dl, context_dr,
                                                                ALPHABET,
                                                                path_folder_table_3d_proba, path_table_2d_proba,
                                                                args.method,
-                                                               vector_diff)
-        
+                                                               vector_diff,
+                                                               table_1d)
 
 
-        table_1d = np.load(f"{DATA_2D_PROBA}/{args.pid_inf}_{args.pid_sup}/freq_1d.npy", allow_pickle='TRUE').item()
 
 
         for index, table_3d in enumerate(list_cube_quarter_window_ol):
