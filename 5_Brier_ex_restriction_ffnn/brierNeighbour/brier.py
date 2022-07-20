@@ -140,12 +140,12 @@ def brier_score(list_example,
     # INITIALISATIONS
     score_brier_naive_bayes  = 0
     list_unit_score_brier = []
-    n_conservation = 0
-    n_conservation_true = 0
-    n_conservation_false = 0
-    n_substitution = 0
-    n_substitution_true = 0
-    n_substitution_false = 0
+    # n_conservation = 0
+    # n_conservation_true = 0
+    # n_conservation_false = 0
+    # n_substitution = 0
+    # n_substitution_true = 0
+    # n_substitution_false = 0
 
     # LOADING: 2D/3D-PROBA
     table_2d_proba = np.load(path_table_2d_proba, allow_pickle='TRUE').item()
@@ -207,26 +207,26 @@ def brier_score(list_example,
         list_unit_score_brier.append(score_brier_one_example)
         score_brier_naive_bayes += score_brier_one_example
 
-        # PREDICTION CHECK
-        aa_origine = aa_1
-        aa_destination = aa_2
-        final_vector_normalized = list(final_vector_normalized)
-        max_proba = max(final_vector_normalized)
-        index_max = final_vector_normalized.index(max_proba)
-        aa_predicted = alphabet[index_max]
+        # # PREDICTION CHECK
+        # aa_origine = aa_1
+        # aa_destination = aa_2
+        # final_vector_normalized = list(final_vector_normalized)
+        # max_proba = max(final_vector_normalized)
+        # index_max = final_vector_normalized.index(max_proba)
+        # aa_predicted = alphabet[index_max]
 
-        if aa_predicted == aa_origine: # prediction of a conservation
-            n_conservation += 1
-            if aa_predicted == aa_destination:
-                n_conservation_true +=1
-            else:
-                n_conservation_false +=1
-        else: # prediction of a substitution
-            n_substitution += 1
-            if aa_predicted == aa_destination:
-                n_substitution_true +=1
-            else:
-                n_substitution_false +=1
+        # if aa_predicted == aa_origine: # prediction of a conservation
+        #     n_conservation += 1
+        #     if aa_predicted == aa_destination:
+        #         n_conservation_true +=1
+        #     else:
+        #         n_conservation_false +=1
+        # else: # prediction of a substitution
+        #     n_substitution += 1
+        #     if aa_predicted == aa_destination:
+        #         n_substitution_true +=1
+        #     else:
+        #         n_substitution_false +=1
 
 
 
@@ -234,20 +234,20 @@ def brier_score(list_example,
     if nb_example != 0:
         score_brier_naive_bayes /= nb_example
 
-    perc_conservation_true = 100*n_conservation_true/nb_example
-    perc_conservation_false = 100*n_conservation_false/nb_example
-    perc_substitution_true = 100*n_substitution_true/nb_example
-    perc_substitution_false = 100*n_substitution_false/nb_example
+    # perc_conservation_true = 100*n_conservation_true/nb_example
+    # perc_conservation_false = 100*n_conservation_false/nb_example
+    # perc_substitution_true = 100*n_substitution_true/nb_example
+    # perc_substitution_false = 100*n_substitution_false/nb_example
 
-    prediction_info = (perc_conservation_true, perc_conservation_false,
-                       perc_substitution_true, perc_substitution_false)
+    # prediction_info = (perc_conservation_true, perc_conservation_false,
+    #                    perc_substitution_true, perc_substitution_false)
 
     end = time.time()
     diff = end - start
     items_per_second = nb_example/diff
     print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
 
-    return score_brier_naive_bayes, list_unit_score_brier, nb_example, prediction_info
+    return score_brier_naive_bayes, list_unit_score_brier, nb_example  #, prediction_info
 
 
 

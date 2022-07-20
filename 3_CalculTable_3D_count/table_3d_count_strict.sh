@@ -5,12 +5,10 @@ mkdir $name_folder
 
 myArray=("o" "d")
 
-#for ((x=0; x<=9; x++)); 
-    #do
-    #pid_inf=$(( 10*$x ))
-    #pid_sup=$(( 10*$x + 10 ))
-    pid_inf=90
-    pid_sup=100
+for ((x=0; x<=9; x++)); 
+    do
+    pid_inf=$(( 10*$x ))
+    pid_sup=$(( 10*$x + 10 ))
     name_file="$pid_inf"_"$pid_sup"
     mkdir $name_folder/$name_file
 
@@ -23,4 +21,4 @@ myArray=("o" "d")
                 done;
         fi;
         done;
-    #done
+    done

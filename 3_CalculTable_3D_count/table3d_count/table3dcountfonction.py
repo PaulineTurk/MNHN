@@ -172,7 +172,7 @@ def table_3d_count_destination(seed, nb_seq,
 
 
 def multi_table_3d_count(path_folder_fasta, path_folder_pid,
-                         delay_num, RefSeq, 
+                         delay_num, RefSeq,
                          alphabet, pid_inf, pid_sup,
                          path_NeighborRes):
     """
@@ -209,16 +209,16 @@ def multi_table_3d_count(path_folder_fasta, path_folder_pid,
             len_seq = len(seed[0][1])
             if delay_num < 0:
                 index_range = np.arange(- delay_num, len_seq ,1)
-                start, end, step = -1, delay_num-1, -1
+                start_range, end_range, step = -1, delay_num-1, -1
             else:
                 index_range = np.arange(0, len_seq - delay_num, 1)
-                start, end, step = 1, delay_num +1, 1
+                start_range, end_range, step = 1, delay_num +1, 1
 
             triplet_count, nb_ex_train = dico_function[RefSeq](seed, nb_seq,
                                                                dico_pid_couple, pid_inf, pid_sup,
                                                                alphabet,
                                                                index_range,
-                                                               start, end, step,
+                                                               start_range, end_range, step,
                                                                triplet_count, nb_ex_train)
     end = time.time()
     diff = end - start
