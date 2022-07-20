@@ -13,7 +13,7 @@ file = Path(__file__).resolve()
 sys.path.append(file.parents[0])
 
 import brierNeighbour.selection_example as selection_example
-import brierNeighbour.
+import brierNeighbour.brier_check_convergent_loaded_cubes as brier
 
 
 
@@ -118,33 +118,22 @@ for context in list_context:
         
 
 
-
-
-        LIST_PSEUDO_COUNTER_3D = [0,
-                          pow(10, -3),
-                          pow(10, -1),
-                          pow(10, 0),
-                          pow(10, 1),
-                          pow(10, 5)]
-
-
         table_1d = np.load(f"{DATA_2D_PROBA}/{args.pid_inf}_{args.pid_sup}/freq_1d.npy", allow_pickle='TRUE').item()
 
 
         for index, table_3d in enumerate(list_cube_quarter_window_ol):
             print(f"PATH: {list_path_ol[index]}")
-            for pseudo_counter_3d in LIST_PSEUDO_COUNTER_3D:
-                pseudo_counter_3d = float(pseudo_counter_3d)
-                print(f"PSEUDO_COUNTER_3D: {pseudo_counter_3d}")
+
+            print(f"PSEUDO_COUNTER_3D: {args.pseudo_counter_3d}")
             
-                sum_cases = 0
-                for aa_c in ALPHABET:
-                    for aa_1 in ALPHABET:
-                        for aa_2 in ALPHABET:
-                            diff = abs(table_3d[aa_1][aa_2][aa_c] - table_1d[aa_c])
-                            #print(f"{aa_1},{aa_2}: {diff}")
-                            sum_cases += diff
-                print(sum_cases)
+            sum_cases = 0
+            for aa_c in ALPHABET:
+                for aa_1 in ALPHABET:
+                    for aa_2 in ALPHABET:
+                        diff = abs(table_3d[aa_1][aa_2][aa_c] - table_1d[aa_c])
+                        #print(f"{aa_1},{aa_2}: {diff}")
+                        sum_cases += diff
+            print(sum_cases)
 
 
 
