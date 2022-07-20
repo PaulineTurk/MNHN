@@ -17,7 +17,7 @@ for ((i=-10; i<=10; i++));
     if [ $i -ne 0 ]; then
         for j in ${myArray[@]};
             do
-            nohup python3 -u main_pseudo_counter_3d.py $pid_inf $pid_sup $i $j $w > $name_folder/"$i"_"$j".txt 2>&1 &
+            nohup python3 -u main_pseudo_counter_3d.py $pid_inf $pid_sup $i $j > $name_folder/"$i"_"$j".txt 2>&1 &
             done;
     fi;
     done

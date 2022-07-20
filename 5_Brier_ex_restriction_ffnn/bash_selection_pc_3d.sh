@@ -3,7 +3,7 @@
 name_folder=OUTPUT_SELECTION_PC_3D_test_$$
 mkdir $name_folder
 
-myPseudoCounter=(0 0.00001 0.0001 0.001 0.01 0.1 1.0 10.0)
+myPseudoCounter=(0 0.00001 0.0001 0.001 0.01 0.1 1.0 10.0 100000.0)
 # myMethod=('uni' 'multi')
 # myRef=('o' 'd')
 

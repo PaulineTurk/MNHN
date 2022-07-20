@@ -1,12 +1,11 @@
 
 # IMPORTS
 import numpy as np
-import time
+
 
 import sys  
 from pathlib import Path
 
-from pkg_resources import VersionConflict 
 file = Path(__file__).resolve()
 sys.path.append(file.parents[1])
 

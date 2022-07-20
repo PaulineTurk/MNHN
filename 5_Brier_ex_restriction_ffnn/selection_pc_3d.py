@@ -97,7 +97,7 @@ path_folder_seed = f"{DATA_MNHN}/{NAME_FASTA_TEST_FOLDER}"
 
 # PATH 2D_PROBA WITH PSEUDO_COUTER_2D
 path_table_2d_proba = f"{DATA_2D_PROBA}/{args.pid_inf}_{args.pid_sup}/proba_{PSEUDO_COUNTER_2D}.npy"
-# PATH 3D_PROBA WITH PSEUDO_COUTER_3D
+# PATH 3D_PROBA WITH PSEUDO_COUNTER_3D
 path_folder_table_3d_proba = f"{DATA_3D_PROBA}/{args.pid_inf}_{args.pid_sup}/{args.pseudo_counter_3d}"
 
 # PATH PRE-PROECESSING DICO
@@ -168,7 +168,7 @@ for context in list_context:
             headers = ('pseudo_counter_3d', 'relative_position', 'score_brier', 'nb_example')   # prob with the header
 
             if not file_exists:
-                writer.writeheader(headers)   # prob with headers
+                writer.writerow(headers)   # prob with headers
 
             data = args.pseudo_counter_3d, relative_position, score_brier, nb_example
             writer.writerow(data)
