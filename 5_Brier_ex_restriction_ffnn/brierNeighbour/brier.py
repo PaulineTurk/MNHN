@@ -290,3 +290,4 @@ def brier_score_no_context(list_example,
     print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
 
     return score_brier_naive_bayes, list_unit_score_brier, nb_example
+    
