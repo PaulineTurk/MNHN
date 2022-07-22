@@ -1,42 +1,22 @@
 # IMPORTS
 from itertools import groupby
-################################ 
 
 
 
 
-# conversion FASTA en DICO: {name_seq: list_char} (Biotite)
-
-
-
-# ADD A FUNCTION
-# pid_dico = np.load pid file
-# parcourir tous les couples de seq
-# if name diff
-# ajouter le tuple de couple que si pid in [pid_inf, pid_sup]
-# if list_couple_seq != []
-
-# call this function
-
-
-seed = {"seq1":["A", "B", "A", "-", "-", "D", "A", "A"],
-        "seq2":["A", "A", "-", "C", "-", "A", "A", "A"],
-        "seq3":["C", "A", "-", "C", "-", "A", "A", "A"],
-        "seq4":["-", "A", "-", "C", "-", "A", "A", "-"],
-        "seq5":["-", "-", "-", "-", "-", "-", "-", "-"],
-        "seq6":["A", "A", "A", "A", "A", "A", "A", "A"],
-        "seq7":["-", "-", "-", "A", "A", "A", "A", "A"]}
+# variable de code ...
+# accession
 
 
 
 alphabet = ["A", "B", "C"]
 
-def pre_treat_seed(seed:dict, alphabet: list): # , seed_treat
+def pre_treat_seed(accession, seed, alphabet: list): # , seed_treat
 
-    for name_seq in seed:
+    #seed = fasta.read ...(accession)
 
+    for name_seq, seq in seed:
         
-        seq = seed[name_seq]
         print(f"NAME: {name_seq}")
         print(f"SEQ: {seq}")
         list_in_alphabet_right = [char in alphabet for char in seq]
@@ -84,7 +64,9 @@ def pre_treat_seed(seed:dict, alphabet: list): # , seed_treat
                 
 
 
-def ex_valid_in_couple(dico_seed_info):
+def ex_valid_in_couple(seed):
+
+    for key, value in seed:
 
 
 
