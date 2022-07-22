@@ -11,9 +11,11 @@ from itertools import groupby
 
 alphabet = ["A", "B", "C"]
 
-def pre_treat_seed(accession, seed, alphabet: list): # , seed_treat
 
-    #seed = fasta.read ...(accession)
+# chargement du seed et son file pid à l'extérieur dans le main
+
+
+def pre_treat_seed(seed, alphabet: list): # , seed_treat
 
     for name_seq, seq in seed:
         
@@ -61,13 +63,22 @@ def pre_treat_seed(accession, seed, alphabet: list): # , seed_treat
         
         print(f"info_seq: {info_seq}")
 
+        # ajouter save dans dico
+
                 
 
 
-def ex_valid_in_couple(seed):
+def ex_valid_in_couple(seed, info_seq_dico, L):
 
-    for key, value in seed:
+    for name_seq_1, seq_1 in seed:
+        for name_seq_2, seq_2 in seed:
+            if name_seq_1 != name_seq_2:
+                list_1 = info_seq_dico[name_seq_1]
+                list_2 = info_seq_dico[name_seq_2]
+                for elem_1, elem_2 in zip(list_1, list_2):
+                    if all(elem_1[1] == True, elem_2[1] == True, elem_1[0] >= L, elem_2[0] >= L, elem_1[2] >= L, elem_2[2] >= L):
 
+                        pass
 
 
 
