@@ -5,6 +5,8 @@ TEST: Brier Score
 # IMPORTS
 import numpy as np
 import time
+import os
+import csv
 
 import sys  
 from pathlib import Path 
@@ -138,14 +140,10 @@ def brier_score(list_example,
         return None
 
     # INITIALISATIONS
-    score_brier_naive_bayes  = 0
+    # score_brier_naive_bayes  = 0
+    # score_brier_naive_bayes_non_contextuel  = 0
     list_unit_score_brier = []
-    # n_conservation = 0
-    # n_conservation_true = 0
-    # n_conservation_false = 0
-    # n_substitution = 0
-    # n_substitution_true = 0
-    # n_substitution_false = 0
+    list_unit_score_brier_non_contextuel = []
 
     # LOADING: 2D/3D-PROBA
     table_2d_proba = np.load(path_table_2d_proba, allow_pickle='TRUE').item()
@@ -202,52 +200,155 @@ def brier_score(list_example,
         # print(f"FINAL VECTOR NORMALIZED: {final_vector_normalized}")
         # print(f"COORDINATE SUM: {np.sum(final_vector_normalized)}")
 
+
         # BRIER SCORE / EXAMPLE
         score_brier_one_example = unit_brier_naive_bayes(final_vector_normalized, aa_2, alphabet)
         list_unit_score_brier.append(score_brier_one_example)
-        score_brier_naive_bayes += score_brier_one_example
-
-        # # PREDICTION CHECK
-        # aa_origine = aa_1
-        # aa_destination = aa_2
-        # final_vector_normalized = list(final_vector_normalized)
-        # max_proba = max(final_vector_normalized)
-        # index_max = final_vector_normalized.index(max_proba)
-        # aa_predicted = alphabet[index_max]
-
-        # if aa_predicted == aa_origine: # prediction of a conservation
-        #     n_conservation += 1
-        #     if aa_predicted == aa_destination:
-        #         n_conservation_true +=1
-        #     else:
-        #         n_conservation_false +=1
-        # else: # prediction of a substitution
-        #     n_substitution += 1
-        #     if aa_predicted == aa_destination:
-        #         n_substitution_true +=1
-        #     else:
-        #         n_substitution_false +=1
 
 
+        score_brier_non_contextuel_unit = unit_brier_naive_bayes(vect_distribution, aa_2, alphabet)
+        list_unit_score_brier_non_contextuel.append(score_brier_non_contextuel_unit)
 
-    nb_example = len(list_example)
-    if nb_example != 0:
-        score_brier_naive_bayes /= nb_example
-
-    # perc_conservation_true = 100*n_conservation_true/nb_example
-    # perc_conservation_false = 100*n_conservation_false/nb_example
-    # perc_substitution_true = 100*n_substitution_true/nb_example
-    # perc_substitution_false = 100*n_substitution_false/nb_example
-
-    # prediction_info = (perc_conservation_true, perc_conservation_false,
-    #                    perc_substitution_true, perc_substitution_false)
 
     end = time.time()
     diff = end - start
-    items_per_second = nb_example/diff
-    print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
+    print(f'BRIER TIME: {diff:.2f}s')
 
-    return score_brier_naive_bayes, list_unit_score_brier, nb_example  #, prediction_info
+
+    return list_unit_score_brier, list_unit_score_brier_non_contextuel
+
+
+
+
+
+
+
+
+
+def brier_score_correction_biais(list_example,
+                context_ol, context_or,
+                context_dl, context_dr,
+                alphabet,
+                path_table_3d_proba_folder, path_table_2d_proba,
+                method,
+                Max_position):
+
+    count_0 = 0
+    list_context = [context_ol, context_or, context_dl, context_dr]
+    for elem in list_context:
+        if elem == 0:
+            count_0 += 1
+    if count_0 < 3:
+        print("INVALID CONTEXT, ONE QUARTER CONTEXT MAX SHOULD BE NOT NULL")
+        return None
+
+    # INITIALISATIONS
+    # score_brier_naive_bayes  = 0
+    # score_brier_naive_bayes_non_contextuel  = 0
+    list_unit_score_brier = []
+    list_unit_score_brier_non_contextuel = []
+
+    # LOADING: 2D/3D-PROBA (je charge bcp trop de cubes, mais ce n'est pas grave pour le moment.................)
+    table_2d_proba = np.load(path_table_2d_proba, allow_pickle='TRUE').item()
+    list_cube_quarter_window_ol = table_3d_proba_loader(Max_position, "o", "left",
+                                                        path_table_3d_proba_folder)
+    list_cube_quarter_window_or = table_3d_proba_loader(Max_position, "o", "right",
+                                                        path_table_3d_proba_folder)
+    list_cube_quarter_window_dl = table_3d_proba_loader(Max_position, "d", "left",
+                                                        path_table_3d_proba_folder)
+    list_cube_quarter_window_dr = table_3d_proba_loader(Max_position, "d", "right",
+                                                        path_table_3d_proba_folder)
+
+    start = time.time()
+    for example in list_example:
+        total_list_vect = []
+        aa_1 = example[0]     # amino-acid ref origine
+        aa_2 = example[1]     # amino-acid ref destination
+        aa_c_ol = example[2]  # contextual amino-acids: origine_left
+        aa_c_or = example[3]  # contextual amino-acids: origine_right
+        aa_c_dl = example[4]  # contextual amino-acids: destination_left
+        aa_c_dr = example[5]  # contextual amino-acids: destination_right
+
+        # Non-contextual vector (a priori distribution)
+        vect_distribution = []
+        for aa in alphabet:
+            vect_distribution.append(table_2d_proba[aa_1][aa])
+
+        # Contextual vectors
+        # print("\nORIGINE-LEFT")
+        list_vect_ol = vecteur_from_table_3d_proba(aa_1, aa_c_ol, list_cube_quarter_window_ol, alphabet)
+        # print("\nORIGINE-RIGHT")
+        list_vect_or = vecteur_from_table_3d_proba(aa_1, aa_c_or, list_cube_quarter_window_or, alphabet)
+        # print("\nDESTINATION-LEFT")
+        list_vect_dl = vecteur_from_table_3d_proba(aa_1, aa_c_dl, list_cube_quarter_window_dl, alphabet)
+        # print("\nDESTINATION-RIGHT")
+        list_vect_dr = vecteur_from_table_3d_proba(aa_1, aa_c_dr, list_cube_quarter_window_dr, alphabet)
+
+
+
+
+
+        # VECTORS CONCATENATION
+
+
+
+        # if method =="multi": #    METHODE MULTI NON ENCORE CORRIGÉE .............................................
+        #     total_list_vect = [vect_distribution] + list_vect_ol + list_vect_or + list_vect_dl + list_vect_dr
+            # print(f"METHOD: {method}")
+            # print(f"ALL THE VECTORS: {total_list_vect}")
+
+
+
+
+
+
+
+
+        if method =="uni":
+            if context_ol != 0:
+                total_list_vect = [vect_distribution, list_vect_ol[context_ol], list_vect_or[-1], list_vect_dl[-1], list_vect_dr[-1]]
+            elif context_or != 0:
+                total_list_vect = [vect_distribution, list_vect_ol[-1], list_vect_or[context_or], list_vect_dl[-1], list_vect_dr[-1]]
+            elif context_dl != 0:
+                total_list_vect = [vect_distribution, list_vect_ol[-1], list_vect_or[-1], list_vect_dl[context_dl], list_vect_dr[-1]]
+            elif context_dr != 0:
+                total_list_vect = [vect_distribution, list_vect_ol[-1], list_vect_or[-1], list_vect_dl[-1], list_vect_dr[context_dr]]
+
+            else:
+                total_list_vect = [vect_distribution]
+
+        # print(f"TOTAL LIST: {total_list_vect}")
+
+        # VECTORS ELEMENT WISE PRODUCT
+        final_vector = np.prod(np.vstack(total_list_vect), axis=0)
+        # VECTOR NORMALIZATION
+        final_vector_normalized = final_vector/np.sum(final_vector)
+
+        # BRIER SCORE / EXAMPLE
+        score_brier_one_example = unit_brier_naive_bayes(final_vector_normalized, aa_2, alphabet)
+        list_unit_score_brier.append(score_brier_one_example)
+
+
+        score_brier_non_contextuel_unit = unit_brier_naive_bayes(vect_distribution, aa_2, alphabet)
+        list_unit_score_brier_non_contextuel.append(score_brier_non_contextuel_unit)
+
+
+    end = time.time()
+    diff = end - start
+    print(f'BRIER TIME: {diff:.2f}s')
+
+
+    return list_unit_score_brier, list_unit_score_brier_non_contextuel
+
+
+
+
+
+
+
+
+
+
 
 
 

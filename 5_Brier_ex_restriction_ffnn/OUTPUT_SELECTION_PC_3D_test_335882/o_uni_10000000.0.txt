@@ -1,0 +1,152 @@
+_______________________________________________________________________
+                     PSEUDO_COUNTER_3D SELECTION                       
+_______________________________________________________________________
+_________________________________
+  Preparation of the experiment  
+_________________________________
+PID_INF: 60
+PID_SUP: 70
+METHOD: uni
+LIST CONTEXT TESTED: [(5, 0, 0, 0), (4, 0, 0, 0), (3, 0, 0, 0), (2, 0, 0, 0), (1, 0, 0, 0), (0, 0, 0, 0), (0, 1, 0, 0), (0, 2, 0, 0), (0, 3, 0, 0), (0, 4, 0, 0), (0, 5, 0, 0)]
+MAX_RELATIVE_POSITION: 5
+N_TEST_PER_CONTEXT: 1
+N_EXAMPLES_PER_TEST: 100000
+PSEUDO_COUNTER_2D: 0.01
+PSEUDO_COUNTER_3D: 10000000.0
+_________________________________
+            Experiment           
+_________________________________
+
+__________________________
+CONTEXT: (5, 0, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.04s | 204126.97it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:29<00:00, 337.64it/s]
+SELECTION: time: 29.09 s | 0.00 it/s
+N_EXAMPLES: 54_550
+BRIER TIME: 9.63s
+
+__________________________
+CONTEXT: (4, 0, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.02s | 307669.84it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:31<00:00, 315.17it/s]
+SELECTION: time: 31.15 s | 0.00 it/s
+N_EXAMPLES: 60_249
+BRIER TIME: 10.22s
+
+__________________________
+CONTEXT: (3, 0, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.03s | 282310.03it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:30<00:00, 326.86it/s]
+SELECTION: time: 30.03 s | 0.00 it/s
+N_EXAMPLES: 67_154
+BRIER TIME: 10.20s
+
+__________________________
+CONTEXT: (2, 0, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.03s | 251562.87it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:30<00:00, 321.27it/s]
+SELECTION: time: 30.56 s | 0.00 it/s
+N_EXAMPLES: 75_335
+BRIER TIME: 10.07s
+
+__________________________
+CONTEXT: (1, 0, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.02s | 295066.35it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:29<00:00, 329.98it/s]
+SELECTION: time: 29.75 s | 0.00 it/s
+N_EXAMPLES: 86_044
+BRIER TIME: 10.38s
+
+__________________________
+CONTEXT: (0, 0, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.03s | 263744.52it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:28<00:00, 342.97it/s]
+SELECTION: time: 28.62 s | 0.00 it/s
+N_EXAMPLES: 99_987
+BRIER TIME: 11.98s
+
+__________________________
+CONTEXT: (0, 1, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.03s | 246652.54it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:30<00:00, 323.10it/s]
+SELECTION: time: 30.38 s | 0.00 it/s
+N_EXAMPLES: 86_026
+BRIER TIME: 10.92s
+
+__________________________
+CONTEXT: (0, 2, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.03s | 280124.51it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:29<00:00, 336.02it/s]
+SELECTION: time: 29.21 s | 0.00 it/s
+N_EXAMPLES: 75_370
+BRIER TIME: 10.33s
+
+__________________________
+CONTEXT: (0, 3, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.02s | 334146.31it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:29<00:00, 337.14it/s]
+SELECTION: time: 29.12 s | 0.00 it/s
+N_EXAMPLES: 67_025
+BRIER TIME: 9.99s
+
+__________________________
+CONTEXT: (0, 4, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.02s | 303516.37it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:28<00:00, 338.89it/s]
+SELECTION: time: 28.97 s | 0.00 it/s
+N_EXAMPLES: 60_310
+BRIER TIME: 10.19s
+
+__________________________
+CONTEXT: (0, 5, 0, 0)
+__________________________
+
+_____________
+TEST 1/1
+EXAMPLES NUMBER/SEED: time: 0.02s | 308370.07it/s
+Example selection:   0%|                                                   | 0/9816 [00:00<?, ?it/s]Example selection: 100%|███████████████████████████████████████| 9816/9816 [00:28<00:00, 338.81it/s]
+SELECTION: time: 28.97 s | 0.00 it/s
+N_EXAMPLES: 54_569
+BRIER TIME: 9.96s
+
+DONE in 447.7271 s

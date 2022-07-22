@@ -84,8 +84,8 @@ def pre_treat_seed(seed:dict, alphabet: list): # , seed_treat
                 
 
 
-def n_ex_valid(dico_seed_info):
-    
+def ex_valid_in_couple(dico_seed_info):
+
 
 
 

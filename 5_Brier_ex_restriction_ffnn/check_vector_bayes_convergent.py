@@ -5,6 +5,7 @@ Brier Score Experiment:
 # IMPORTS
 import argparse
 import numpy as np
+import csv
 
 
 import sys
@@ -40,7 +41,7 @@ DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/5_PC_3D_SELECTION"
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 NAME_FASTA_TEST_FOLDER = "Pfam_split/Pfam_test"
-MAX_RELATIVE_POSITION = 1
+MAX_RELATIVE_POSITION = 5
 N_TEST_PER_CONTEXT = 1
 N_EXAMPLES_PER_TEST = 2
 PSEUDO_COUNTER_2D = pow(10, -2)
@@ -103,7 +104,7 @@ for context in list_context:
 
     for nb_exemple_test in list_nb_example:
 
-        dico_example = selection_example.example_number_per_seed(path_file_dico_seed_normal, N_EXAMPLES_PER_TEST)
+        dico_example = selection_example.example_number_per_seed(path_file_dico_seed_normal, nb_exemple_test)
         list_example = selection_example.multi_random_example_selection(path_folder_seed, dico_example,
                                                                         path_folder_dico_seq,
                                                                         context_ol, context_or, context_dl, context_dr,
@@ -111,19 +112,30 @@ for context in list_context:
         
         table_1d = np.load(f"{DATA_2D_PROBA}/{args.pid_inf}_{args.pid_sup}/freq_1d.npy", allow_pickle='TRUE').item()
 
+
         score_brier, list_unit_score_brier, nb_example, vector_diff, list_cube_quarter_window_ol, list_path_ol = brier.brier_score_check_convergence(list_example,
                                                                context_ol, context_or, context_dl, context_dr,
                                                                ALPHABET,
                                                                path_folder_table_3d_proba, path_table_2d_proba,
                                                                args.method,
                                                                vector_diff,
-                                                               table_1d)
+                                                               table_1d,
+                                                               path_folder_table_3d_proba)
 
+
+        # with open (path_selection_pc_3d, 'a', encoding='UTF8', newline='') as f:
+        #     writer = csv.writer(f)
+        #     headers = ('pseudo_counter_3d', 'relative_position', 'score_brier', 'nb_example')   # prob with the header
+
+        #     if not file_exists:
+        #         writer.writerow(headers)   # prob with headers
+
+        #     data = args.pseudo_counter_3d, relative_position, score_brier, nb_example
+        #     writer.writerow(data)
 
 
 
         for index, table_3d in enumerate(list_cube_quarter_window_ol):
-            print(f"PATH: {list_path_ol[index]}")
 
             print(f"PSEUDO_COUNTER_3D: {args.pseudo_counter_3d}")
             
@@ -134,11 +146,14 @@ for context in list_context:
                         diff = abs(table_3d[aa_1][aa_2][aa_c] - table_1d[aa_c])
                         #print(f"{aa_1},{aa_2}: {diff}")
                         sum_cases += diff
-            print(sum_cases)
+                        
+            if sum_cases > 0.01:
+                print(f"PATH: {list_path_ol[index]}")
+                print(f"SOMME CASES 3D: {sum_cases}")
 
 
 
 
 
 
-    print(f"DIFF: {vector_diff/nb_example}")
+    print(f"DIFF MEAN VECTOR FOR BRIER: {vector_diff/nb_example}")

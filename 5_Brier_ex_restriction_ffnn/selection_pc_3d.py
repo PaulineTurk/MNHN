@@ -1,5 +1,6 @@
 """
 Brier Score Experiment:
+bash bash_selection_pc_3d.sh
 """
 
 # IMPORTS
@@ -7,6 +8,7 @@ import os
 import argparse
 import csv
 import time
+import numpy as np
 
 import sys
 from pathlib import Path
@@ -42,7 +44,7 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 NAME_FASTA_TEST_FOLDER = "Pfam_split/Pfam_test"
 MAX_RELATIVE_POSITION = 5
-N_TEST_PER_CONTEXT = 3
+N_TEST_PER_CONTEXT = 1
 N_EXAMPLES_PER_TEST = 100_000
 PSEUDO_COUNTER_2D = pow(10, -2)
 
@@ -132,17 +134,35 @@ for context in list_context:
         print("")
         print("_____________")
         print(f"TEST {test_number}/{N_TEST_PER_CONTEXT}")
-        dico_example = selection_example.example_number_per_seed(path_file_dico_seed_normal, N_EXAMPLES_PER_TEST)
+        dico_example = selection_example.example_number_per_seed(path_file_dico_seed_normal, nb_exemple_test)
         list_example = selection_example.multi_random_example_selection(path_folder_seed, dico_example,
                                                                         path_folder_dico_seq,
                                                                         context_ol, context_or, context_dl, context_dr,
                                                                         ALPHABET)
     
-        score_brier, list_unit_score_brier, nb_example = brier.brier_score(list_example,
+        list_unit_score_brier, list_unit_score_brier_non_contextuel = brier.brier_score(list_example,
                                                                context_ol, context_or, context_dl, context_dr,
                                                                ALPHABET,
                                                                path_folder_table_3d_proba, path_table_2d_proba,
                                                                args.method)
+
+
+        # TEST CONVERGENCE
+        name_csv = f"convergence_{args.pseudo_counter_3d}"
+        path_csv = f"{range_pid_experiment}/{name_csv}.csv"
+        file_exists = os.path.isfile(path_csv)
+
+        with open (path_csv, 'a', encoding='UTF8', newline='') as f:
+            writer = csv.writer(f)
+            headers = ('context', 'exemple', 'brier_unit', 'brier_unit_no_c')
+
+            if not file_exists:
+                writer.writerow(headers)
+
+            for score_brier_unit, score_brier_unit_no_context, ex in zip(list_unit_score_brier, list_unit_score_brier_non_contextuel, list_example):
+                data = context, ex,  score_brier_unit, score_brier_unit_no_context
+                writer.writerow(data)
+
 
         # WORKS ONLY OF ONE QUARTER WINDOW IS CONSIDERED
         if args.reference == "o" and context != (0,0,0,0):
@@ -158,19 +178,23 @@ for context in list_context:
         if context == (0,0,0,0):
             relative_position = 0
 
-        name_csv = f"{N_TEST_PER_CONTEXT}_{N_EXAMPLES_PER_TEST}_{args.method}_{args.reference}"
+        name_csv = f"{N_TEST_PER_CONTEXT}_{nb_exemple_test}_{args.method}_{args.reference}_{args.pseudo_counter_3d}"
         path_selection_pc_3d = f"{range_pid_experiment}/{name_csv}.csv"
         file_exists = os.path.isfile(path_selection_pc_3d)
 
         # REVIEW REGISTRATION
         with open (path_selection_pc_3d, 'a', encoding='UTF8', newline='') as f:
             writer = csv.writer(f)
-            headers = ('pseudo_counter_3d', 'relative_position', 'score_brier', 'nb_example')   # prob with the header
+            headers = ('pseudo_counter_3d', 'relative_position', 'score_brier', 'score_brier_ss_context', 'nb_example')
 
             if not file_exists:
-                writer.writerow(headers)   # prob with headers
+                writer.writerow(headers)
 
-            data = args.pseudo_counter_3d, relative_position, score_brier, nb_example
+            score_brier = np.mean(list_unit_score_brier)
+            score_brier_ss_context = np.mean(list_unit_score_brier_non_contextuel)
+            nb_example = len(list_unit_score_brier)
+
+            data = args.pseudo_counter_3d, relative_position, score_brier, score_brier_ss_context, nb_example
             writer.writerow(data)
 
 

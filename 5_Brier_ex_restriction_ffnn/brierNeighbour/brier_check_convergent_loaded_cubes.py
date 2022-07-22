@@ -5,6 +5,8 @@ TEST: Brier Score
 # IMPORTS
 import numpy as np
 import time
+import os
+import csv
 
 import sys  
 from pathlib import Path 
@@ -99,7 +101,8 @@ def brier_score_check_convergence(list_example,
                 path_table_3d_proba_folder, path_table_2d_proba,
                 method,
                 vector_diff,
-                table_1d):
+                table_1d,
+                path_save_csv):
 
     count_0 = 0
     list_context = [context_ol, context_or, context_dl, context_dr]
@@ -113,6 +116,8 @@ def brier_score_check_convergence(list_example,
     # INITIALISATIONS
     score_brier_naive_bayes  = 0
     list_unit_score_brier = []
+
+    score_brier_non_contextuel = 0
 
     # LOADING: 2D/3D-PROBA
     table_2d_proba = np.load(path_table_2d_proba, allow_pickle='TRUE').item()
@@ -128,6 +133,7 @@ def brier_score_check_convergence(list_example,
     start = time.time()
     for example in list_example:
         total_list_vect = []
+        print(f"\nEXAMPLE: {example}")
         aa_1 = example[0]     # amino-acid ref origine
         aa_2 = example[1]     # amino-acid ref destination
         aa_c_ol = example[2]  # contextual amino-acids: origine_left
@@ -152,9 +158,9 @@ def brier_score_check_convergence(list_example,
             sum_diff_vect_multiplied = 0
             for elem in vector:
                 sum_diff_vect_multiplied += abs(elem - table_1d[aa_c_ol[index]])
-            print(f"\nVECTOR: \n{vector}")
-            print(f"P(C) = {table_1d[aa_c_ol[index]]}")
-            print(sum_diff_vect_multiplied)
+            print(f"\nVECTOR TO MULTIPLY: \n{vector}")
+            print(f"P({aa_c_ol[index]}) = {table_1d[aa_c_ol[index]]}")
+            print(f"diff vect to multiply and P({aa_c_ol[index]}): {sum_diff_vect_multiplied}")
 
         # VECTORS CONCATENATION
         if method =="multi":
@@ -181,20 +187,48 @@ def brier_score_check_convergence(list_example,
             print(f"DIFF WITH P(J|I): {diff_final}")
             vector_diff += diff_final
 
+
         # BRIER SCORE / EXAMPLE
         score_brier_one_example = unit_brier_naive_bayes(final_vector_normalized, aa_2, alphabet)
         list_unit_score_brier.append(score_brier_one_example)
         score_brier_naive_bayes += score_brier_one_example
 
+        print(f"Score brier unit: {score_brier_one_example}")
+
+        score_brier_non_contextuel_unit = unit_brier_naive_bayes(vect_distribution, aa_2, alphabet)
+        score_brier_non_contextuel += score_brier_non_contextuel_unit
+        print(f"Score brier no context unit: {score_brier_non_contextuel_unit}")
+
+        # TEST CONVERGENCE
+        name_csv = "convergence"
+        path_csv = f"{path_save_csv}/{name_csv}.csv"
+        file_exists = os.path.isfile(path_csv)
+
+        with open (path_csv, 'a', encoding='UTF8', newline='') as f:
+            writer = csv.writer(f)
+            headers = ('context', 'brier_unit', 'brier_unit_no_c')
+
+            if not file_exists:
+                writer.writerow(headers)
+
+            data = list_context, score_brier_one_example, score_brier_non_contextuel_unit
+            writer.writerow(data)
+
 
     nb_example = len(list_example)
+    # verif non-ex
+    print(f"bon nombre d'ex: {len(list_example) == len(list_unit_score_brier)}")
+
     if nb_example != 0:
         score_brier_naive_bayes /= nb_example
+        score_brier_non_contextuel /= nb_example
 
     end = time.time()
     diff = end - start
     items_per_second = nb_example/diff
     print(f'BRIER SCORE: {score_brier_naive_bayes} | time {diff:.2f}s | {items_per_second:.2f}it/s')
+    print(f'BRIER SCORE NO CONTEXT: {score_brier_non_contextuel}')
+    
 
     return score_brier_naive_bayes, list_unit_score_brier, nb_example, vector_diff, list_cube_quarter_window_ol, list_path_ol  #, prediction_info
 
