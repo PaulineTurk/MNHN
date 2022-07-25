@@ -25,7 +25,7 @@ args = parser.parse_args()
 
 
 DATA = args.path_fasta_file
-DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT_MINI/2_5_EXAMPLES"
+DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES"
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 

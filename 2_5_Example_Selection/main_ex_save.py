@@ -27,12 +27,13 @@ args = parser.parse_args()
 
 
 DATA = args.path_fasta_file
-DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT_MINI/2_5_EXAMPLES"
+DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES"
 DATA_SEQ_INFO = f"{DATA_RESULT}/SEQ_INFO"
-DATA_PID = f"{file.parents[2]}/MNHN_RESULT_MINI/1_DATA/PID"
+DATA_PID = f"{file.parents[2]}/MNHN_RESULT/1_DATA/PID"
 
 L = 6
-
+PID_INF = 40
+PID_SUP = 50
 
 # FOLDER MANAGEMENT
 new_folder_example = f"{DATA_RESULT}/EXAMPLES_{L}"
@@ -49,5 +50,5 @@ seed = fastaReader.read_multi_fasta(DATA)
 info_seq_dico = np.load(f"{DATA_SEQ_INFO}/{accession_num}.npy", allow_pickle="TRUE").item()
 pid_file = np.load(f"{DATA_PID}/{accession_num}.pid.npy", allow_pickle="TRUE").item()
 function_ex_save.ex_save(seed, info_seq_dico, pid_file, L,
-                         csv_file)
+                         csv_file, PID_INF, PID_SUP)
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#listFASTA=/Users/pauline/Desktop/MNHN_RESULT/1_DATA/Pfam_split/Pfam_train/
-listFASTA=/Users/pauline/Desktop/MNHN_RESULT_MINI/1_DATA/Pfam_split/Pfam_train/
+listFASTA=/home/pauline/Bureau/MNHN_RESULT/1_DATA/Pfam_split/Pfam_train/
+#listFASTA=/Users/pauline/Desktop/MNHN_RESULT_MINI/1_DATA/Pfam_split/Pfam_train/
 
 start=`date +%s`
 
