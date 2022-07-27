@@ -17,7 +17,7 @@ def ex_save(seed, info_seq_dico, pid_file, L,
         header_context_or = [f"aa_or_{i}" for i in range(1, L+1)]
         header_context_dl = [f"aa_dl_{i}" for i in range(1, L+1)]
         header_context_dr = [f"aa_dr_{i}" for i in range(1, L+1)]
-        header_info = ["pid", "name_origin", "name_destination", "aa_origin", "aa_destination"]
+        header_info = ["pid", "aa_origin", "aa_destination"]
 
         header = header_info + header_context_ol + header_context_or + header_context_dl + header_context_dr
         writer.writerow(header)
@@ -38,7 +38,7 @@ def ex_save(seed, info_seq_dico, pid_file, L,
                                 context_or = [seq_1[i] for i in range(idx+1, idx+1+L, +1)]
                                 context_dl = [seq_2[i] for i in range(idx-1, idx-1-L, -1)]
                                 context_dr = [seq_2[i] for i in range(idx+1, idx+1+L, +1)]
-                                info = [pid, name_seq_1, name_seq_2, seq_1[idx], seq_2[idx]]
+                                info = [pid, seq_1[idx], seq_2[idx]]
 
                                 context = info + context_ol + context_or + context_dl + context_dr
 
