@@ -1,0 +1,6 @@
+nohup: les entrées sont ignorées
+accession_num: PF10774.12
+Traceback (most recent call last):
+  File "/home/pauline/Bureau/MNHN/4_DataTreatment_ExampleTest/ex_brier_selection.py", line 64, in <module>
+    decimal_part, integer_part = math.modf(float(N_EX_SEED_FLOAT))
+ValueError: could not convert string to float: '1.4304606690333545e-061.4304606690333545e-061.4304606690333545e-061.4304606690333545e-061.4304606690333545e-061.4304606690333545e-061.4304606690333545e-061.4304606690333545e-061.4304606690333545e-061.4304606690333545e-06'
