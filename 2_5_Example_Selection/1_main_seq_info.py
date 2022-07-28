@@ -1,6 +1,6 @@
 """
 Preprocessing of data selection:
-bash main_seq_info.sh > main_seq_info.out 2>&1 &
+bash 1_main_seq_info.sh > 1_main_seq_info.out 2>&1 &
 """
 
 # IMPORTS
@@ -32,8 +32,8 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
 
 
 # FOLDER MANAGEMENT
+# new_folder_dico_seq_info = f"{DATA_RESULT}/SEQ_INFO"
 new_folder_dico_seq_info = f"{DATA_RESULT}/SEQ_INFO"
-
 
 list_folder = [DATA_RESULT,
                new_folder_dico_seq_info]

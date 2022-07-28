@@ -8,6 +8,7 @@ import csv
 import numpy as np
 import random
 import math
+import pandas as pd
 
 import sys
 from pathlib import Path
@@ -16,7 +17,7 @@ sys.path.append(file.parents[0])
 
 import utils.folder as folder
 
-DATA = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EXAMPLES_6_40_50"
+DATA = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/test_concat"
 PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/frac_ex.csv"
 
 
@@ -37,7 +38,7 @@ n_files = len(dict_fraction)
 N_EX_TOTAL = 1_000
 L = 6
 
-FILE_EXAMPLES = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EX_BRIER_TRAIN.csv"
+FILE_EXAMPLES = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EX_BRIER_TRAIN_mini_fast_old.csv"
 
 start = time.time()
 
@@ -71,15 +72,23 @@ with open(FILE_EXAMPLES, 'w',
             N_EX_SEED_INT = int(integer_part + int(proba < decimal_part))
 
             with open(file, newline='') as csvfile:
-                # print(f"N_EX_SEED_INT: {N_EX_SEED_INT}")
                 reader = csv.reader(csvfile)
                 lines = [tuple(line) for line in reader]
                 # print(f"lines:  {lines}")
-                chosen_rows = random.choices(lines, k=N_EX_SEED_INT)   # header comptée?       FAUX
-                # print(f"chosen rows: {chosen_rows}")
-                #np.random.choice([1, 2, 3], size=10, replace=True)
+                chosen_rows = random.choices(lines, k=N_EX_SEED_INT)   # header peut etre selectionné, c pas bon ca !
+            #     # print(f"chosen rows: {chosen_rows}")
+                np.random.choice([1, 2, 3], size=10, replace=True)
                 for data in chosen_rows:
                     writer.writerow(data)
+
+
+            # with open(file, newline='') as csvfile:
+            #     df = pd.read_csv(csvfile)
+            #     n_lines = len(df)  # voir avec header
+            #     list_index = [i for i in range(n_lines-1)]  # verif headers ...
+            #     index_selected = random.choices(list_index, k = N_EX_SEED_INT)
+            #     for i in index_selected:
+            #         writer.writerow(tuple(df.iloc[i]))
 
         counter += 1
         print(round(100*counter/n_files, 2))

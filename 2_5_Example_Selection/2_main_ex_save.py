@@ -1,6 +1,6 @@
 """
 Preprocessing of data selection:
-bash main_ex_save.sh > main_ex_save.out 2>&1 &
+bash 2_main_ex_save.sh > 2_main_ex_save.out 2>&1 &
 """
 
 # IMPORTS
@@ -36,7 +36,7 @@ PID_INF = 40
 PID_SUP = 50
 
 # FOLDER MANAGEMENT
-new_folder_example = f"{DATA_RESULT}/EXAMPLES_{L}"
+new_folder_example = f"{DATA_RESULT}/EXAMPLES_{L}_{PID_INF}_{PID_SUP}"
 
 list_folder = [new_folder_example]
 for path_folder in list_folder:
