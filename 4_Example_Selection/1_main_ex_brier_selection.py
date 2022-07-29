@@ -1,15 +1,14 @@
 """SELECTION EX FOR BRIER EXPERIMENTS
-nohup python3 ex_brier_selection.py > selection_ex_brier.out 2>&1 &
+nohup python3 1_main_ex_brier_selection.py > 1_main_ex_brier_selection.out 2>&1 &
 """
 
 # IMPORTS
 import time
 import csv
-import numpy as np
 import random
 import math
-import pandas as pd
 from itertools import groupby
+import os
 
 import sys
 from pathlib import Path
@@ -18,12 +17,28 @@ sys.path.append(file.parents[0])
 
 import utils.folder as folder
 
-DATA = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EXAMPLES_6_40_50"
-PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/frac_ex.csv"
 
+# PARAMETERS
+L = 6
+PID_INF = 40
+PID_SUP = 50
+N_EX_TOTAL = 1_000_000
+
+DATA = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES/EXAMPLES_6_40_50_LIGHT"  # version light only used columns
+PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES/frac_ex.csv"
+DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLES"
+DATA_RESULT = f"{DATA_RESULT_GLOBAL}/{L}_{PID_INF}_{PID_SUP}"
+
+for path in [DATA_RESULT_GLOBAL, DATA_RESULT]:
+    os.makedirs(path, exist_ok='True')
+
+
+
+# PROGRAM
 
 start_dico = time.time()
-# convert to a dico (do it once for all?)
+
+# convert to a dict
 dict_fraction = {}
 with open(PATH_DICT_FRAC_SEED, newline='') as csv_frac:
     reader = csv.DictReader(csv_frac)
@@ -34,18 +49,13 @@ print("DICO")
 print(f"DONE IN: {round(end_dico - start_dico, 2)} s")
 
 
+
 n_files = len(dict_fraction)
-
-N_EX_TOTAL = 1000
-L = 6
-
-FILE_EXAMPLES = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EX_BRIER_TRAIN.csv"
+FILE_EXAMPLES = f"{DATA_RESULT}/EX_BRIER_TRAIN_1M.csv"
 
 start = time.time()
 
 files = [x for x in Path(DATA).iterdir()]
-
-
 counter = 0
 
 with open(FILE_EXAMPLES, 'w',
@@ -55,7 +65,8 @@ with open(FILE_EXAMPLES, 'w',
     header_context_or = [f"aa_or_{i}" for i in range(1, L+1)]
     header_context_dl = [f"aa_dl_{i}" for i in range(1, L+1)]
     header_context_dr = [f"aa_dr_{i}" for i in range(1, L+1)]
-    header_info = ["counter", "pid", "name_origin", "name_destination", "aa_origin", "aa_destination"]
+    #header_info = ["counter", "pid", "name_origin", "name_destination", "aa_origin", "aa_destination"]
+    header_info = ["aa_origin", "aa_destination"]
 
     header = header_info + header_context_ol + header_context_or + header_context_dl + header_context_dr
     writer.writerow(header)
@@ -85,12 +96,9 @@ with open(FILE_EXAMPLES, 'w',
                     count = 0 # count of examples selected in the current seed
                     index_row = 0
                     while count < N_EX_SEED_INT: # strictement ?
-                        # row = next(csvfile)
                         index_row += 1
                         if index_row == list_index_organised[i][0]:
                             data = reader[index_row].split(",")
-                            # data = str(row).split(",")
-                            # print(data)
                             for j in range(list_index_organised[i][1]):
                                 writer.writerow(data)
                             count += list_index_organised[i][1]

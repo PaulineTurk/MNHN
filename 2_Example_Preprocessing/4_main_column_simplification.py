@@ -4,7 +4,6 @@
 import os
 import os.path
 import argparse
-import pandas as pd
 import csv
 
 import sys

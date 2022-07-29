@@ -1,11 +1,0 @@
-_______________________________________________________________________
-                           PRE-PROCESSING                              
-                       EXAMPLE TEST SELECTION                          
-_______________________________________________________________________
-PID_INF: 90
-PID_SUP: 100
-N_MSA:  9816
-VALID MSA SELECTION:   0%|                                                 | 0/9816 [00:00<?, ?it/s]VALID MSA SELECTION: 100%|█████████████████████████████████████| 9816/9816 [00:37<00:00, 260.50it/s]
-
-N_VALID, N_INVALID SEED: 407, 9409
-TIME PRE-PROCESSING TEST EXAMPLES: 37.69s | 260.44it/s
