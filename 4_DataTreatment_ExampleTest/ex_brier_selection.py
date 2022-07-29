@@ -9,6 +9,7 @@ import numpy as np
 import random
 import math
 import pandas as pd
+from itertools import groupby
 
 import sys
 from pathlib import Path
@@ -17,7 +18,7 @@ sys.path.append(file.parents[0])
 
 import utils.folder as folder
 
-DATA = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/test_concat"
+DATA = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EXAMPLES_6_40_50"
 PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/frac_ex.csv"
 
 
@@ -27,7 +28,7 @@ dict_fraction = {}
 with open(PATH_DICT_FRAC_SEED, newline='') as csv_frac:
     reader = csv.DictReader(csv_frac)
     for row in reader:
-        dict_fraction[row["id_seed"]] = row["frac_ex"]
+        dict_fraction[row["id_seed"]] = (row["num_ex"],row["frac_ex"])
 end_dico = time.time()
 print("DICO")
 print(f"DONE IN: {round(end_dico - start_dico, 2)} s")
@@ -35,10 +36,10 @@ print(f"DONE IN: {round(end_dico - start_dico, 2)} s")
 
 n_files = len(dict_fraction)
 
-N_EX_TOTAL = 1_000
+N_EX_TOTAL = 1000
 L = 6
 
-FILE_EXAMPLES = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EX_BRIER_TRAIN_mini_fast_old.csv"
+FILE_EXAMPLES = f"{file.parents[2]}/MNHN_RESULT/2_5_EXAMPLES/EX_BRIER_TRAIN.csv"
 
 start = time.time()
 
@@ -54,7 +55,7 @@ with open(FILE_EXAMPLES, 'w',
     header_context_or = [f"aa_or_{i}" for i in range(1, L+1)]
     header_context_dl = [f"aa_dl_{i}" for i in range(1, L+1)]
     header_context_dr = [f"aa_dr_{i}" for i in range(1, L+1)]
-    header_info = ["pid", "name_origin", "name_destination", "aa_origin", "aa_destination"]
+    header_info = ["counter", "pid", "name_origin", "name_destination", "aa_origin", "aa_destination"]
 
     header = header_info + header_context_ol + header_context_or + header_context_dl + header_context_dr
     writer.writerow(header)
@@ -62,33 +63,39 @@ with open(FILE_EXAMPLES, 'w',
 
     for file in files:
         accession_num = folder.get_accession_number(file)
-        print(f"accession_num: {accession_num}")
-        fraction = float(dict_fraction[accession_num])
-        
-        if fraction != 0:
+        n_ex_in_seed_total = int(dict_fraction[accession_num][0])
+        if n_ex_in_seed_total != 0:
+            fraction = float(dict_fraction[accession_num][1])
             N_EX_SEED_FLOAT = fraction*N_EX_TOTAL
             decimal_part, integer_part = math.modf(float(N_EX_SEED_FLOAT))
             proba = random.uniform(0, 1)
             N_EX_SEED_INT = int(integer_part + int(proba < decimal_part))
 
+
             with open(file, newline='') as csvfile:
-                reader = csv.reader(csvfile)
-                lines = [tuple(line) for line in reader]
-                # print(f"lines:  {lines}")
-                chosen_rows = random.choices(lines, k=N_EX_SEED_INT)   # header peut etre selectionné, c pas bon ca !
-            #     # print(f"chosen rows: {chosen_rows}")
-                np.random.choice([1, 2, 3], size=10, replace=True)
-                for data in chosen_rows:
-                    writer.writerow(data)
+                reader = csvfile.read().splitlines()
 
-
-            # with open(file, newline='') as csvfile:
-            #     df = pd.read_csv(csvfile)
-            #     n_lines = len(df)  # voir avec header
-            #     list_index = [i for i in range(n_lines-1)]  # verif headers ...
-            #     index_selected = random.choices(list_index, k = N_EX_SEED_INT)
-            #     for i in index_selected:
-            #         writer.writerow(tuple(df.iloc[i]))
+                # n_lines pris avant
+                list_index = random.choices([i for i in range(1, n_ex_in_seed_total+1)], k=N_EX_SEED_INT) # first line headers
+                list_index.sort()
+                list_index_organised = [[k,len(list(v))] for k,v in groupby(list_index)]
+                if list_index_organised != []:
+        
+                    i = 0 # index in final_list_index
+                    count = 0 # count of examples selected in the current seed
+                    index_row = 0
+                    while count < N_EX_SEED_INT: # strictement ?
+                        # row = next(csvfile)
+                        index_row += 1
+                        if index_row == list_index_organised[i][0]:
+                            data = reader[index_row].split(",")
+                            # data = str(row).split(",")
+                            # print(data)
+                            for j in range(list_index_organised[i][1]):
+                                writer.writerow(data)
+                            count += list_index_organised[i][1]
+                            i += 1
+                    
 
         counter += 1
         print(round(100*counter/n_files, 2))

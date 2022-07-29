@@ -1,0 +1,26 @@
+
+path table_3d_count: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/COUNT/6_40_50/ol_1.npy
+N_EX_TRAIN: 690_500_234
+SUM_FREQ: 0.9999999999999996
+
+path table_3d_count: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/COUNT/6_40_50/ol_2.npy
+N_EX_TRAIN: 690_500_234
+SUM_FREQ: 1.0000000000000027
+
+path table_3d_count: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/COUNT/6_40_50/ol_3.npy
+N_EX_TRAIN: 690_500_234
+SUM_FREQ: 1.0000000000000042
+
+path table_3d_count: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/COUNT/6_40_50/ol_4.npy
+N_EX_TRAIN: 690_500_234
+SUM_FREQ: 1.0000000000000013
+
+path table_3d_count: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/COUNT/6_40_50/ol_5.npy
+N_EX_TRAIN: 690_500_234
+SUM_FREQ: 1.0000000000000018
+
+path table_3d_count: /home/pauline/Bureau/MNHN_RESULT/3_TABLE_3D/COUNT/6_40_50/ol_6.npy
+N_EX_TRAIN: 690_500_234
+SUM_FREQ: 0.9999999999999986
+
+DONE IN: 0.05 s

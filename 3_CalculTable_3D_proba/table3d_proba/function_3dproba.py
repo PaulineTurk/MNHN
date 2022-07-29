@@ -14,10 +14,10 @@ sys.path.append(file.parents[1])
 # FUNCTIONS
 
 
-# à tester
 def freq_3d(path_table_3d_count,
             path_save_table_3d_freq,
             alphabet):
+    print("")
     print(f"path table_3d_count: {path_table_3d_count}")
     table_3d_count = np.load(path_table_3d_count, allow_pickle='TRUE').item()
     # N_EXAMPLE_TRAIN COUNT
@@ -39,6 +39,7 @@ def freq_3d(path_table_3d_count,
 
     np.save(path_save_table_3d_freq, table_3d_freq)
 
+
 def sum_freq_3D(path_table_3d_freq, alphabet):
     table_3d_freq = np.load(path_table_3d_freq, allow_pickle='TRUE').item()
     sum_freq = 0
@@ -50,7 +51,6 @@ def sum_freq_3D(path_table_3d_freq, alphabet):
 
 
 
-# à tester
 def proba_3d(path_table_3d_freq,
              path_table_2d_proba_pc,
              path_table_1d_freq,

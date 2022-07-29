@@ -8,10 +8,6 @@ The objective is to evaluate the prediction of the mutation of an amino acid kno
 
 The dataset used is the multiple sequence alignments called "seed" from the Pfam database (Pfam-A.seed.gz from http://ftp.ebi.ac.uk/pub/databases/Pfam/current_release/)
 
-The proof of concept is realized by following two different implementations:
+The proof of concept is realized by the calculation of probabilistic substitution matrices with or without a contextual amino acid.
 
-> *IMPLEMENTATION 1*: calculation of probabilistic substitution matrices with or without a contextual amino acid.
->
-> *IMPLEMENTATION 2*: deep learning with a Feed Forward Neural Network.
-
-The user guide will be added when the project is fully completed.
+The user guide will be added when the project will be fully completed.

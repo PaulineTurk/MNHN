@@ -42,22 +42,13 @@ DATA_3D_FREQ = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D/FREQ"
 DATA_3D_PROBA = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D/PROBA"
 PSEUDO_COUNTER_2D = pow(10,-2)
 LIST_PSEUDO_COUNTER_3D = [0,
-                          pow(10, -5),
-                          pow(10, -4),
                           pow(10, -3),
                           pow(10, -2),
                           pow(10, -1),
                           pow(10, 0),
                           pow(10, 1),
                           pow(10, 2),
-                          pow(10, 3),
-                          pow(10, 4),
-                          pow(10, 5),
-                          pow(10, 6),
-                          pow(10, 7),
-                          pow(10, 8),
-                          pow(10, 9),
-                          pow(10, 10)]
+                          pow(10, 3)]
 
 
 print("_______________________________________________________________________")

@@ -1,0 +1,49 @@
+nohup: les entrées sont ignorées
+
+count_1d
+
+
+freq_1d
+
+
+freq_2d
+
+
+proba_pseudo_count
+
+
+0.0
+
+2D PROBA: time 0.001s
+
+0.001
+
+2D PROBA: time 0.0008s
+
+0.01
+
+2D PROBA: time 0.0008s
+
+0.1
+
+2D PROBA: time 0.0009s
+
+1.0
+
+2D PROBA: time 0.0008s
+
+10.0
+
+2D PROBA: time 0.0008s
+
+100.0
+
+2D PROBA: time 0.0008s
+
+1000.0
+
+2D PROBA: time 0.0008s
+
+score
+
+2D SCORE: time 0.0007 s
