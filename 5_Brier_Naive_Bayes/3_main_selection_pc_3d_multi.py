@@ -1,5 +1,5 @@
 """
-SELECTION PSEUDO_COUNTER 3D - UNI
+SELECTION PSEUDO_COUNTER 3D - MULTI
 """
 
 # IMPORTS
@@ -28,9 +28,9 @@ args = parser.parse_args()
 L = 6
 PID_INF = 40
 PID_SUP = 50
-#NAME_FILE_EXAMPLES = "EX_BRIER_TRAIN"
+# NAME_FILE_EXAMPLES = "EX_BRIER_TRAIN"
 NAME_FILE_EXAMPLES = "EX_BRIER_TRAIN_1M"
-NAME_EXPERIMENT = "EXP_1M_UNI"
+NAME_EXPERIMENT = "EXP_1M_MULTI"
 
 PSEUDO_COUNTER_2D = pow(10, -2)
 
@@ -97,32 +97,31 @@ for position in range(0, L+1):
 with open(path_examples, newline='') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
+        list_aa_context = []
         for position in range(0, L+1):
             aa_origin = row['aa_origin']
             aa_destination = row['aa_destination']
             if position != 0:
-                aa_context = row[f'aa_{args.direction}_{position}']
-            else:
-                aa_context = "None"
+                list_aa_context.append(row[f'aa_{args.direction}_{position}'])
 
             for pseudo_counter_3D in LIST_PSEUDO_COUNTER_3D:
                 pseudo_counter_3D = float(pseudo_counter_3D)
 
                 # GET THE VECTOR OF PROBABILITY
-                vect = brier.vecteur_from_table_3d_proba_uni(aa_origin,
-                                                            aa_context,
-                                                               dict_2d,
-                                                               dict_3d,
-                                                              position,
-                                                     pseudo_counter_3D,
-                                                              ALPHABET)
+                vect = brier.vecteur_from_table_3d_proba_multi(aa_origin,
+                                                         list_aa_context,
+                                                                 dict_2d,
+                                                                 dict_3d,
+                                                                position,
+                                                       pseudo_counter_3D,
+                                                                ALPHABET)
 
                 brier_unit = brier.unit_brier_naive_bayes(vect, aa_destination, ALPHABET)
                 dict_score[position][pseudo_counter_3D].append(brier_unit)
 
 # print(dict_score)
 
-np.save(f"{path_experiment}/SCORE_{args.direction}_uni", dict_score)
+np.save(f"{path_experiment}/SCORE_{args.direction}_multi", dict_score)
 
 
 end = time.time()
