@@ -1,0 +1,17 @@
+nohup: les entrées sont ignorées
+30/07/2022 17:48:41
+CLUSTERING_PID: 99
+non-redundant:   0%|          | 0/19632 [00:00<?, ?it/s]non-redundant:  35%|███▌      | 6898/19632 [01:00<01:51, 114.59it/s]non-redundant:  35%|███▌      | 6898/19632 [01:20<01:51, 114.59it/s]non-redundant:  69%|██████▉   | 13595/19632 [02:00<00:53, 112.82it/s]non-redundant:  69%|██████▉   | 13595/19632 [02:20<00:53, 112.82it/s]non-redundant: 100%|██████████| 19632/19632 [02:52<00:00, 113.54it/s]
+NON-REDUNDANCY: time 172.9178 s
+
+DESCRIPTION:
+N_MULTIPLE ALIGNMENTS: 19_632
+N_SEQ: 1_235_589
+N_CHARACTER: 346_322_278
+N_CHARACTER_INCLUDED: 192_394_317
+
+MEANS:
+MEAN_VALID_CHARACTERS_PER_SEQ: 155.71
+MEAN_N_SEQ_PER_SEED: 62.94
+
+DONE IN 295.6448 s

@@ -1,5 +1,5 @@
 """SELECTION EX FOR BRIER EXPERIMENTS
-nohup python3 1_main_ex_brier_selection.py > 1_main_ex_brier_selection.out 2>&1 &
+nohup python3 1_main_ex_brier_selection.py TEST > 1_TEST.out 2>&1 &
 """
 
 # IMPORTS
@@ -9,6 +9,8 @@ import random
 import math
 from itertools import groupby
 import os
+import argparse
+from datetime import datetime 
 
 import sys
 from pathlib import Path
@@ -19,14 +21,18 @@ import utils.folder as folder
 
 
 # PARAMETERS
+parser = argparse.ArgumentParser()
+parser.add_argument("train_test", help="'TRAIN' or 'TEST")
+args = parser.parse_args()
+
 L = 6
 PID_INF = 40
 PID_SUP = 50
 N_EX_TOTAL = 1_000_000
 
-DATA = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES/EXAMPLES_6_40_50_LIGHT"  # version light only used columns
-PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES/frac_ex.csv"
-DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLES"
+DATA = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES_{args.train_test}/EXAMPLES_6_40_50"
+PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES_{args.train_test}/frac_ex.csv"
+DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLES_{args.train_test}"
 DATA_RESULT = f"{DATA_RESULT_GLOBAL}/{L}_{PID_INF}_{PID_SUP}"
 
 for path in [DATA_RESULT_GLOBAL, DATA_RESULT]:
@@ -35,6 +41,10 @@ for path in [DATA_RESULT_GLOBAL, DATA_RESULT]:
 
 
 # PROGRAM
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+print(dt_string)
+
 
 start_dico = time.time()
 
@@ -51,7 +61,7 @@ print(f"DONE IN: {round(end_dico - start_dico, 2)} s")
 
 
 n_files = len(dict_fraction)
-FILE_EXAMPLES = f"{DATA_RESULT}/EX_BRIER_TRAIN_1M.csv"
+FILE_EXAMPLES = f"{DATA_RESULT}/EX_BRIER_{args.train_test}_1M.csv"
 
 start = time.time()
 

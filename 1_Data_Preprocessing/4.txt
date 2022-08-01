@@ -1,0 +1,7 @@
+nohup: les entrées sont ignorées
+30/07/2022 17:54:57
+DATA SPLIT TRAIN/TEST:
+TRAIN_PERCENTAGE: 50
+DATA SPLIT: time 1.8362 s
+
+DONE IN 1.8376 s

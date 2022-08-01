@@ -1,6 +1,5 @@
 """
-Preprocessing of data selection:
-bash 2_main_ex_save.sh > 2_main_ex_save.out 2>&1 &
+Preprocessing of data selection
 """
 
 # IMPORTS
@@ -15,7 +14,7 @@ from pathlib import Path
 file = Path(__file__).resolve()
 sys.path.append(file.parents[0])
 
-import data_exemple_test.function_ex_save as function_ex_save
+import example.function_ex_save as function_ex_save
 import utils.folder as folder
 import utils.fastaReader as fastaReader
 
@@ -23,24 +22,24 @@ import utils.fastaReader as fastaReader
 parser = argparse.ArgumentParser()
 parser.add_argument("path_fasta_file",
                      help="path of file to describe the seq info from", type=str)
+parser.add_argument("train_test", help="'TRAIN' or 'TEST")
 args = parser.parse_args()
-
-
-DATA = args.path_fasta_file
-DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES"
-DATA_SEQ_INFO = f"{DATA_RESULT}/SEQ_INFO"
-DATA_PID = f"{file.parents[2]}/MNHN_RESULT/1_DATA/PID"
 
 L = 6
 PID_INF = 40
 PID_SUP = 50
 
+## main folders
+DATA = args.path_fasta_file
+DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES_{args.train_test}"
+DATA_SEQ_INFO = f"{DATA_RESULT}/SEQ_INFO"
+DATA_PID = f"{file.parents[2]}/MNHN_RESULT/1_DATA/PID"
+
+
+
 # FOLDER MANAGEMENT
 new_folder_example = f"{DATA_RESULT}/EXAMPLES_{L}_{PID_INF}_{PID_SUP}"
-
-list_folder = [new_folder_example]
-for path_folder in list_folder:
-    os.makedirs(path_folder, exist_ok=True)
+os.makedirs(new_folder_example, exist_ok=True)
 
 
 # SELECTION EXAMPLE VALIDES

@@ -4,12 +4,9 @@ VIEW: SELECTION PSEUDO_COUNTER 2D
 
 # IMPORTS
 
-import os
 import sys
-import argparse
 from pathlib import Path
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
 
 

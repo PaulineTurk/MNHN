@@ -19,6 +19,6 @@ shutil.copyfile(args.path_original, args.path_target)
 df = pd.read_csv (args.path_target)
 
 total_num_ex = sum(df["num_ex"])
-print(f"N_EX_TOTAL: {total_num_ex}")
+print(f"N_EX_TOTAL: {'{:_}'.format(total_num_ex)}")
 df["frac_ex"] = df["num_ex"]/total_num_ex
 df.to_csv(args.path_target, index=False)

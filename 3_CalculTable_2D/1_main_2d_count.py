@@ -1,6 +1,6 @@
 """
 2D COUNT
-nohup python3 1_main_2d_count.py > 1_main_2d_count.out 2>&1 &
+nohup python3 1_main_2d_count.py > 1.out 2>&1 &
 """
 
 # IMPORTS
@@ -10,6 +10,7 @@ import os.path
 import time
 import csv
 import numpy as np
+from datetime import datetime
 
 import sys
 from pathlib import Path
@@ -20,6 +21,11 @@ sys.path.append(file.parents[0])
 
 
 # PARAMETERS
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+print(dt_string)
+
+
 PID_INF, PID_SUP = 40, 50
 L = 6
 

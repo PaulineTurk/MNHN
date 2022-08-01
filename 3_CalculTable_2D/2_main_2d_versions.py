@@ -1,10 +1,12 @@
 """
 2D_VERSIONS
-nohup python3 2_main_2d_versions.py > 2_main_2d_versions.out 2>&1 &
+nohup python3 2_main_2d_versions.py > 2.out 2>&1 &
 """
 
 # IMPORTS
 import numpy as np
+import time
+from datetime import datetime
 
 import sys
 from pathlib import Path
@@ -40,6 +42,12 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
 
 
 # PROGRAM
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+print(dt_string)
+
+start_total = time.time()
+start = time.time()
 
 print("")
 print(f"count_1d")
@@ -57,23 +65,25 @@ for aa_origin in ALPHABET:
     for aa_destination in ALPHABET:
         dict_count_1d[aa_origin] += dict_count_2d[aa_origin][aa_destination]
         total_aa += dict_count_2d[aa_origin][aa_destination]
-
+end = time.time()
+print(f"\nDONE IN: {round(end - start, 2)} s")
 np.save(f"{DATA_RESULT}/count_1d.npy", dict_count_1d)  # verif total
                                                        # verif nom .npy.npy
 
 
-
+start = time.time()
 print("")
 print(f"freq_1d")
 print("")
 dict_freq_1d = {}
 for aa in ALPHABET:
     dict_freq_1d[aa] = dict_count_1d[aa]/total_aa
-
+end = time.time()
+print(f"\nDONE IN: {round(end - start, 2)} s")
 np.save(f"{DATA_RESULT}/freq_1d.npy", dict_freq_1d)
 
 
-
+start = time.time()
 print("")
 print(f"freq_2d")
 print("")
@@ -82,7 +92,8 @@ for aa_origin in ALPHABET:
     dict_freq_2d[aa_origin] = {}
     for aa_destination in ALPHABET:
         dict_freq_2d[aa_origin][aa_destination] = dict_count_2d[aa_origin][aa_destination]/total_aa
-
+end = time.time()
+print(f"\nDONE IN: {round(end - start, 2)} s")
 np.save(f"{DATA_RESULT}/freq_2d.npy", dict_freq_2d)
 
 
@@ -113,3 +124,6 @@ function_table2d.score(path_freq_AA,
                       path_file_Result,
                       ALPHABET,
                       scale_factor=2)
+
+end = time.time()
+print(f"\nDONE IN: {round(end - start_total, 2)} s")

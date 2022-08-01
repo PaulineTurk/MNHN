@@ -1,6 +1,5 @@
 """
-PID:
-bash 2_main_pid.sh > 2_main_pid.out 2>&1 &
+PID
 """
 
 # IMPORTS
@@ -20,27 +19,28 @@ sys.path.append(file.parents[0])
 
 
 # PARAMETERS
-
 parser = argparse.ArgumentParser()
 parser.add_argument("path_fasta_file",
                      help="path of file to describe the seq info from")
 args = parser.parse_args()
 
 
-DATA_PID = f"{file.parents[2]}/EXP_DIMANCHE/PID"
-
+NAME_FOLDER_SOURCE = "MNHN_RESULT_FINAL"
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
+
+## main folders
+
+DATA_PID=  f"{file.parents[2]}/{NAME_FOLDER_SOURCE}/1_DATA/PID"
 
 
 
 
 # PROGRAM
 
+
 # general folder managment
-LIST_FOLDER = [DATA_PID]
-for path in LIST_FOLDER:
-    os.makedirs(path, exist_ok=True)
+os.makedirs(DATA_PID, exist_ok=True)
 
 accession_num = folder.get_accession_number(args.path_fasta_file)
 seed = fastaReader.read_multi_fasta(args.path_fasta_file)

@@ -3,11 +3,17 @@ nohup: les entrées sont ignorées
 count_1d
 
 
+DONE IN: 0.01 s
+
 freq_1d
 
 
+DONE IN: 0.0 s
+
 freq_2d
 
+
+DONE IN: 0.0 s
 
 proba_pseudo_count
 
@@ -18,11 +24,11 @@ proba_pseudo_count
 
 0.001
 
-2D PROBA: time 0.0008s
+2D PROBA: time 0.0009s
 
 0.01
 
-2D PROBA: time 0.0008s
+2D PROBA: time 0.0009s
 
 0.1
 
@@ -38,12 +44,14 @@ proba_pseudo_count
 
 100.0
 
-2D PROBA: time 0.0008s
+2D PROBA: time 0.0009s
 
 1000.0
 
-2D PROBA: time 0.0008s
+2D PROBA: time 0.0009s
 
 score
 
 2D SCORE: time 0.0007 s
+
+DONE IN: 0.01 s
