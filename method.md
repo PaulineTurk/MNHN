@@ -1,6 +1,6 @@
 # Method:
 
-## Preprocessing
+## Preprocessing ~ 1h 50min
 
 ### Step 1: Data-Preprocessing on Pfam ~ 1h
 
@@ -50,7 +50,7 @@ and with pid between 40 and 50%
 
 1. Store random examples TRAIN/TEST (repetition allowed) ~ 6min
 
-### Step 5: Pseudo-counter selection
+### Step 5: Pseudo-counter selection 
 
 > Brier with naive Bayes with each pseudo-counter tested
 
@@ -68,4 +68,4 @@ and with pid between 40 and 50%
 > pseudo-counters 2D and 3D fixed according to the results of step 5
 
 1. Brier Score test computing with one contextual amino acid (uni) + Visualisation ~ 5min (one test) + 
-1. Brier Score computing with multiple contextual amino acids (multi) + Visualisation
+1. Brier Score computing with multiple contextual amino acids (multi) + Visualisation ~ 7min (one test) +
