@@ -44,11 +44,11 @@ and with pid between 40 and 50%
 1. 3D frequencies ~ 0.04 s
 2. 3D probabilities with pseudo-counters ~ 0.34 s
 
-### Step 4: Example TRAIN selection ~ 6min
+### Step 4: Example TRAIN/TEST selection ~ 6min
 
 > 1 million examples selected
 
-1. Store random examples TRAIN (repetition allowed) ~ 6min
+1. Store random examples TRAIN/TEST (repetition allowed) ~ 6min
 
 ### Step 5: Pseudo-counter selection
 

@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# bash 1_main_ex_brier_selection.sh &
+
+
+
+name_folder=OUTPUT_CUBE_BRIER_TEST_$$
+mkdir $name_folder
+train_test="TEST"
+N_TEST=10
+
+for ((num_test=1; num_test<=$N_TEST; num_test++))
+    do
+    nohup python3 1_main_ex_brier_selection.py $train_test $num_test > $name_folder/"$train_test_$num_test".out 2>&1 &
+    done;
+
+
