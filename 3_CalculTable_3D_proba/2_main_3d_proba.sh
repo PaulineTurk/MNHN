@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# bash 2_main_3d_proba.sh > 2_main_3d_proba.out 2>&1 &
+# bash 2_main_3d_proba.sh > 2.out 2>&1 &
 
 echo "TIME START"
 date +'%d/%m/%Y %H:%M:%S'

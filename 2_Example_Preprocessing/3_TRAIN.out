@@ -1,0 +1,18 @@
+TIME START
+02/08/2022 13:46:01
+
+PID: 812648
+
+/home/pauline/Bureau/MNHN_RESULT/2_PRE_EXAMPLE_TRAIN/EXAMPLES_6_40_50/
+
+n_files: 17668
+COUNT EX PER SEED
+DONE IN: 199 s
+
+/home/pauline/Bureau/MNHN_RESULT/2_PRE_EXAMPLE_TRAIN/num_ex.csv
+/home/pauline/Bureau/MNHN_RESULT/2_PRE_EXAMPLE_TRAIN/frac_ex.csv
+nohup: les entrées sont ignorées
+N_EX_TOTAL: 1_386_460_674
+FRACTION EX PER SEED
+DONE IN: 1 s
+

@@ -1,5 +1,6 @@
 """SELECTION EX FOR BRIER EXPERIMENTS
-nohup python3 1_main_ex_brier_selection.py TEST > 1.out 2>&1 &
+nohup python3 1_main_ex_brier_selection.py TRAIN > 1_TRAIN.out 2>&1 &
+nohup python3 1_main_ex_brier_selection.py TEST > 1_TEST.out 2>&1 &
 """
 
 # IMPORTS
@@ -30,9 +31,9 @@ PID_INF = 40
 PID_SUP = 50
 N_EX_TOTAL = 1_000_000
 
-DATA = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES_{args.train_test}/EXAMPLES_6_40_50"
-PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES_{args.train_test}/frac_ex.csv"
-DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLES_{args.train_test}"
+DATA = f"{file.parents[2]}/MNHN_RESULT/2_PRE_EXAMPLE_{args.train_test}/EXAMPLES_6_40_50"
+PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_PRE_EXAMPLE_{args.train_test}/frac_ex.csv"
+DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLE_{args.train_test}"
 DATA_RESULT = f"{DATA_RESULT_GLOBAL}/{L}_{PID_INF}_{PID_SUP}"
 
 for path in [DATA_RESULT_GLOBAL, DATA_RESULT]:

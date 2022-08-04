@@ -125,3 +125,13 @@ def multi_non_redundancy_correction(path_folder_fasta: str,
                         file_corrected.write(line)
     end = time.time()
     print(f"NON-REDUNDANCY: time {'{:_}'.format(round(end - start, 4))} s")
+
+
+def nbreSeed(path_folder_fasta):
+    files_in_path_folder_fasta = Path(path_folder_fasta).iterdir()
+    count = 0
+    for path_file_fasta in files_in_path_folder_fasta:
+        len_seed = len(fastaReader.read_multi_fasta(path_file_fasta))
+        if len_seed <= 1:
+            count += 1       
+    print("\nTotal non informative seeds:", count)

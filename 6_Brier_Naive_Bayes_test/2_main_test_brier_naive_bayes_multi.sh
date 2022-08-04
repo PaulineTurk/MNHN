@@ -19,11 +19,6 @@ Direction=(ol or dl dr)
 
 for j in ${Direction[@]};
     do
-    echo "TIME START"
-    date +'%d/%m/%Y %H:%M:%S'
-    echo
-    echo "PID:" $$
-    echo
     nohup python3 2_main_test_brier_naive_bayes_multi.py $j > $name_folder/"$j".txt 2>&1 &
     done;
 

@@ -1,5 +1,5 @@
 """
-2D_VIEW
+2D_VIEW:
 nohup python3 3_main_view_2d.py > 3.out 2>&1 &
 """
 

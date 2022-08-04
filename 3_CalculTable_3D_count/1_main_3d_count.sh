@@ -20,6 +20,7 @@ for direction in ${listDirection[@]};
     nohup python3 1_main_3d_count.py $direction > $name_folder/"$direction".out 2>&1 &
     done;
 
+wait
 end=`date +%s`
 runtime=$((end-start))
 echo

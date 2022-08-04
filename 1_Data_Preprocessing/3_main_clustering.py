@@ -25,7 +25,7 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 
 ## main folders
-DATA =  f"{file.parents[2]}/MNHN_RESULT_FINAL/1_DATA"
+DATA =  f"{file.parents[2]}/MNHN_RESULT/1_DATA"
 NAME_FASTA_FOLDER_UPPER = "Pfam_Upper"
 NAME_PID_FOLDER = "PID"
 NAME_CLUSTER_FOLDER = "Pfam_nonRedondant"
@@ -42,7 +42,7 @@ print(dt_string)
 
 start = time.time()
 
-print(f"CLUSTERING_PID: {CLUSTERING_PID}")
+print(f"\nCLUSTERING_PID: {CLUSTERING_PID}")
 
 path_folder_fasta_upper = f"{DATA}/{NAME_FASTA_FOLDER_UPPER}"
 path_folder_pid = f"{DATA}/{NAME_PID_FOLDER}"
@@ -60,9 +60,14 @@ description.data_count(path_folder_fasta_nonRedondant, ALPHABET,
                        path_character_included_percentage)
 
 description.bar_plot_data_description(path_folder_fasta_nonRedondant,
-                                    path_character_percentage, "ALL CHARACTERS")
+                                    path_character_percentage, "CARACTÈRE")
 description.bar_plot_data_description(path_folder_fasta_nonRedondant,
-                    path_character_included_percentage , "STANDARD AMINO-ACIDS")
+                    path_character_included_percentage , "ACIDE AMINÉ STANDRAD")
+
+
+## check non-informative seed
+redundancy.nbreSeed(path_folder_fasta_nonRedondant)
+
 
 
 end = time.time()

@@ -25,7 +25,7 @@ parser.add_argument("path_fasta_file",
 args = parser.parse_args()
 
 
-NAME_FOLDER_SOURCE = "MNHN_RESULT_FINAL"
+NAME_FOLDER_SOURCE = "MNHN_RESULT"
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
 

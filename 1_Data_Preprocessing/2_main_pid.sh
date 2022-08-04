@@ -2,7 +2,8 @@
 
 # bash 2_main_pid.sh > 2.out 2>&1 &
 
-listFASTA=/home/pauline/Bureau/MNHN_RESULT_FINAL/1_DATA/Pfam_FASTA/
+listFASTA=/home/pauline/Bureau/MNHN_RESULT/1_DATA/Pfam_FASTA/
+
 echo "TIME START"
 date +'%d/%m/%Y %H:%M:%S'
 

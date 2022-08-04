@@ -1,8 +1,9 @@
 nohup: les entrées sont ignorées
-30/07/2022 17:48:41
+04/08/2022 12:25:56
+
 CLUSTERING_PID: 99
-non-redundant:   0%|          | 0/19632 [00:00<?, ?it/s]non-redundant:  35%|███▌      | 6898/19632 [01:00<01:51, 114.59it/s]non-redundant:  35%|███▌      | 6898/19632 [01:20<01:51, 114.59it/s]non-redundant:  69%|██████▉   | 13595/19632 [02:00<00:53, 112.82it/s]non-redundant:  69%|██████▉   | 13595/19632 [02:20<00:53, 112.82it/s]non-redundant: 100%|██████████| 19632/19632 [02:52<00:00, 113.54it/s]
-NON-REDUNDANCY: time 172.9178 s
+non-redundant:   0%|          | 0/19632 [00:00<?, ?it/s]non-redundant:  29%|██▉       | 5650/19632 [01:00<02:28, 93.89it/s]non-redundant:  29%|██▉       | 5650/19632 [01:20<02:28, 93.89it/s]non-redundant:  36%|███▌      | 7051/19632 [02:00<04:00, 52.26it/s]non-redundant:  36%|███▌      | 7051/19632 [02:20<04:00, 52.26it/s]non-redundant:  43%|████▎     | 8353/19632 [03:00<04:54, 38.34it/s]non-redundant:  43%|████▎     | 8353/19632 [03:20<04:54, 38.34it/s]non-redundant:  49%|████▉     | 9714/19632 [04:00<05:08, 32.17it/s]non-redundant:  49%|████▉     | 9714/19632 [04:20<05:08, 32.17it/s]non-redundant:  57%|█████▋    | 11107/19632 [05:00<04:54, 28.94it/s]non-redundant:  57%|█████▋    | 11107/19632 [05:20<04:54, 28.94it/s]non-redundant:  64%|██████▎   | 12477/19632 [06:00<04:26, 26.86it/s]non-redundant:  64%|██████▎   | 12477/19632 [06:20<04:26, 26.86it/s]non-redundant:  71%|███████   | 13851/19632 [07:00<03:46, 25.55it/s]non-redundant:  71%|███████   | 13851/19632 [07:20<03:46, 25.55it/s]non-redundant:  77%|███████▋  | 15139/19632 [08:00<03:05, 24.25it/s]non-redundant:  77%|███████▋  | 15139/19632 [08:20<03:05, 24.25it/s]non-redundant:  84%|████████▍ | 16452/19632 [09:00<02:15, 23.51it/s]non-redundant:  84%|████████▍ | 16452/19632 [09:20<02:15, 23.51it/s]non-redundant:  91%|█████████ | 17872/19632 [10:00<01:14, 23.55it/s]non-redundant:  91%|█████████ | 17872/19632 [10:20<01:14, 23.55it/s]non-redundant:  99%|█████████▊| 19386/19632 [11:00<00:10, 24.07it/s]non-redundant: 100%|██████████| 19632/19632 [11:18<00:00, 28.93it/s]
+NON-REDUNDANCY: time 678.621 s
 
 DESCRIPTION:
 N_MULTIPLE ALIGNMENTS: 19_632
@@ -14,4 +15,6 @@ MEANS:
 MEAN_VALID_CHARACTERS_PER_SEQ: 155.71
 MEAN_N_SEQ_PER_SEED: 62.94
 
-DONE IN 295.6448 s
+Total non informative seeds: 749
+
+DONE IN 807.6095 s

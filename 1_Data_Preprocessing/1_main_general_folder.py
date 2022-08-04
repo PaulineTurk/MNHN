@@ -1,6 +1,6 @@
 """
-FOLDER GENERAL PRE-PROCESSING
-nohup python3 1_main_general_folder.py > 1.out 2>&1
+FOLDER GENERAL PRE-PROCESSING:
+nohup python3 1_main_general_folder.py > 1.out 2>&1 &
 """
 
 # IMPORTS
@@ -22,8 +22,7 @@ sys.path.append(file.parents[0])
 
 # PARAMETERS
 
-# NAME_FOLDER_SOURCE = "MNHN_RESULT"
-NAME_FOLDER_SOURCE = "MNHN_RESULT_FINAL"
+NAME_FOLDER_SOURCE = "MNHN_RESULT"
 
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
@@ -34,7 +33,6 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
 
 FOLDER_SOURCE =  f"{file.parents[2]}/{NAME_FOLDER_SOURCE}"
 DATA =  f"{FOLDER_SOURCE}/1_DATA"
-
 NAME_MULTI_STOCKHOLM_FILE = "Pfam-A.seed"
 NAME_MONO_STOCKHOLM_FOLDER = "Pfam_Stockholm"
 NAME_FASTA_FOLDER = "Pfam_FASTA"
@@ -74,9 +72,9 @@ description.data_count(path_folder_fasta, ALPHABET,
                        path_character_included_percentage)
 
 description.bar_plot_data_description(path_folder_fasta,
-                                    path_character_percentage, "ALL CHARACTERS")
+                                    path_character_percentage, "CARACTÈRE")
 description.bar_plot_data_description(path_folder_fasta,
-                    path_character_included_percentage , "STANDARD AMINO-ACIDS")
+                    path_character_included_percentage , "ACIDE AMINÉ STANDARD")
 
 
 

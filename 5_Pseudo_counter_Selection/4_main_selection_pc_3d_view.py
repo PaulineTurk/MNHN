@@ -20,8 +20,8 @@ EXPERIMENT_NAME = "EXP_1M_UNI"
 DATA = f"{file.parents[2]}/MNHN_RESULT/5_PC_3D_SELECTION/{EXPERIMENT_NAME}"
 
 L = 6
-origin_destination = "origine"
-# origin_destination = "destination"
+#origin_destination = "origine"
+origin_destination = "destination"
 uni_multi = "uni"
 # uni_multi = "multi"
 

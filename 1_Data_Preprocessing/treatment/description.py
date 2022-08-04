@@ -90,19 +90,19 @@ def bar_plot_data_description(path_folder_to_describe: str,  path_percentage_des
         path_folder_to_describe (str): path of the folder to describe
         path_percentage_description (str): path of the dicitonary
                                            of each character percentage
-        entity_name (str): "STANDARD AMINO-ACIDS" OR "ALL CHARACTERS"
+        entity_name (str): "ACIDE AMINÉ STANDARD" OR "CARACTÈRE"
     """
     data_percentage = np.load(path_percentage_description, allow_pickle=True).item()
     data_percentage_sorted = dict(sorted(data_percentage.items(), key=lambda item: item[1], reverse=True))
 
     plt.bar(list(data_percentage_sorted.keys()), data_percentage_sorted.values(), color='g')
     plt.xlabel(entity_name)
-    plt.ylabel('PERCENTAGE')
+    plt.ylabel('POURCENTAGE')
 
     dir_image = os.path.dirname(path_folder_to_describe)
     name_dir = os.path.basename(path_folder_to_describe)
 
-    title_graph = f"{entity_name} percentage in {name_dir}"
+    title_graph = f"Pourcentage de chaque {entity_name} dans \n{name_dir}"
     title_graph_object = f"{dir_image}/{title_graph}"
 
     plt.title(title_graph)

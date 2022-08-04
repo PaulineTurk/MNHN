@@ -9,6 +9,7 @@ import numpy as np
 import csv
 import time
 import argparse
+from datetime import datetime
 
 import sys
 from pathlib import Path
@@ -44,7 +45,7 @@ DATA_2D_PROBA = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_2D/{L}_{PID_INF}_{PID_SU
 # PATH FOR 3D_PROBA
 DATA_3D_PROBA = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D/PROBA/{L}_{PID_INF}_{PID_SUP}"
 # PATH FOR THE PRE-PROCESSED DATA TEST EXAMPLES
-DATA_EXEMPLES = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLES_{TRAIN_TEST}/{L}_{PID_INF}_{PID_SUP}"
+DATA_EXEMPLES = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLE_{TRAIN_TEST}/{L}_{PID_INF}_{PID_SUP}"
 # PATH FOR THE RESULTS
 DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/6_TEST_BRIER_NAIVE_BAYES"
 
@@ -62,6 +63,10 @@ path_experiment = f"{DATA_RESULT}/{NAME_EXPERIMENT}"
 os.makedirs(path_experiment, exist_ok=True)
 
 ## EXAMPLES
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+print(dt_string)
+
 path_examples = f"{DATA_EXEMPLES}/{NAME_FILE_EXAMPLES}.csv"
 
 

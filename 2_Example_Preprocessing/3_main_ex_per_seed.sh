@@ -15,7 +15,7 @@ train_test="TEST"
 
 # COUNT EX PER SEED
 start=`date +%s`
-global_path=/home/pauline/Bureau/MNHN_RESULT/2_EXAMPLES_$train_test
+global_path=/home/pauline/Bureau/MNHN_RESULT/2_PRE_EXAMPLE_$train_test
 folder_name=EXAMPLES_6_40_50
 new_csv_name=num_ex
 
@@ -46,8 +46,8 @@ echo
 
 # FRACTION EX PER SEED
 start=`date +%s`
-path_original=/home/pauline/Bureau/MNHN_RESULT/2_EXAMPLES_$train_test/num_ex.csv
-path_target=/home/pauline/Bureau/MNHN_RESULT/2_EXAMPLES_$train_test/frac_ex.csv
+path_original=/home/pauline/Bureau/MNHN_RESULT/2_PRE_EXAMPLE_$train_test/num_ex.csv
+path_target=/home/pauline/Bureau/MNHN_RESULT/2_PRE_EXAMPLE_$train_test/frac_ex.csv
 
 echo $path_original
 echo $path_target

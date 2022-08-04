@@ -1,6 +1,6 @@
 """
 DATA PRE-PROCESSING:
-nohup python3 4_main_data_split.py > 4.txt 2>&1 &
+nohup python3 4_main_data_split.py > 4.out 2>&1 &
 """
 
 # IMPORTS
@@ -19,10 +19,10 @@ sys.path.append(file.parents[0])
 
 
 # PARAMETERS
-TRAIN_PERCENTAGE = 50
+TRAIN_PERCENTAGE = 90
 
 ## main folders
-DATA =  f"{file.parents[2]}/MNHN_RESULT_FINAL/1_DATA"
+DATA =  f"{file.parents[2]}/MNHN_RESULT/1_DATA"
 NAME_CLUSTER_FOLDER = "Pfam_nonRedondant"
 NAME_SPLIT_DATA_FOLDER = "Pfam_split"
 
@@ -37,7 +37,7 @@ print(dt_string)
 
 start = time.time()
 
-print("DATA SPLIT TRAIN/TEST:")
+print("\nDATA SPLIT TRAIN/TEST:")
 
 path_folder_fasta_nonRedondant = f"{DATA}/{NAME_CLUSTER_FOLDER}"
 

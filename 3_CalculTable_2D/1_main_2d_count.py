@@ -21,15 +21,10 @@ sys.path.append(file.parents[0])
 
 
 # PARAMETERS
-now = datetime.now()
-dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
-print(dt_string)
-
-
 PID_INF, PID_SUP = 40, 50
 L = 6
 
-DATA = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES/EXAMPLES_{L}_{PID_INF}_{PID_SUP}"
+DATA = f"{file.parents[2]}/MNHN_RESULT/2_PRE_EXAMPLE_TRAIN/EXAMPLES_{L}_{PID_INF}_{PID_SUP}"
 
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
@@ -42,6 +37,10 @@ os.makedirs(DATA_RESULT, exist_ok=True)
 
 
 # PROGRAM
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+print(dt_string)
+
 
 files = [x for x in Path(DATA).iterdir()]
 n_files = len(files)

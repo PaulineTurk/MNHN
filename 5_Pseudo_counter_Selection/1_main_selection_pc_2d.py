@@ -1,5 +1,6 @@
 """
 SELECTION PSEUDO_COUNTER 2D
+nohup python3 1_main_selection_pc_2d.py > 1.out 2>&1 &
 """
 
 # IMPORTS
@@ -8,6 +9,7 @@ import os.path
 import numpy as np
 import csv
 import time
+from datetime import datetime
 
 import sys
 from pathlib import Path
@@ -25,7 +27,6 @@ import brierNeighbour.brier as brier
 L = 6
 PID_INF = 40
 PID_SUP = 50
-#NAME_FILE_EXAMPLES = "EX_BRIER_TRAIN"
 NAME_FILE_EXAMPLES = "EX_BRIER_TRAIN_1M"
 NAME_EXPERIMENT = "EXP_1M"
 
@@ -42,7 +43,7 @@ LIST_PSEUDO_COUNTER_2D = [0,
 # PATH FOR 2D_PROBA
 DATA_2D_PROBA = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_2D/{L}_{PID_INF}_{PID_SUP}"
 # PATH FOR THE PRE-PROCESSED DATA TEST EXAMPLES
-DATA_EXEMPLES = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLES/{L}_{PID_INF}_{PID_SUP}"
+DATA_EXEMPLES = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLE_TRAIN/{L}_{PID_INF}_{PID_SUP}"
 # PATH FOR THE RESULTS
 DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/5_PC_2D_SELECTION"
 
@@ -53,6 +54,9 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
 
 
 # PROGRAM
+now = datetime.now()
+dt_string = now.strftime("%d/%m/%Y %H:%M:%S")
+print(dt_string)
 
 # FOLDER MANAGMENT
 os.makedirs(DATA_RESULT, exist_ok=True)

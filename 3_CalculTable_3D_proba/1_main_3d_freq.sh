@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# bash 1_main_3d_freq.sh > 1_main_3d_freq.out 2>&1 &
+# bash 1_main_3d_freq.sh > 1.out 2>&1 &
 
 echo "TIME START"
 date +'%d/%m/%Y %H:%M:%S'

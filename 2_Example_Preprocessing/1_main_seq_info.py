@@ -28,7 +28,7 @@ ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
 
 ## main folders
 DATA = args.path_fasta_file
-DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_EXAMPLES_{args.train_test}"
+DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/2_PRE_EXAMPLE_{args.train_test}"
 
 
 

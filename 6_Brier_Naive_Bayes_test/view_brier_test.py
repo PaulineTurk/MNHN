@@ -16,15 +16,14 @@ sys.path.append(file.parents[0])
 
 # PARAMETERS
 
-# EXPERIMENT_NAME = "EXP_1M_UNI"
-EXPERIMENT_NAME = "EXP_1M_MULTI"
+EXPERIMENT_NAME = "EXP_1M_UNI"
 DATA = f"{file.parents[2]}/MNHN_RESULT/6_TEST_BRIER_NAIVE_BAYES/{EXPERIMENT_NAME}"
 
 L = 6
 origin_destination = "origine"
 # origin_destination = "destination"
-# uni_multi = "uni"
-uni_multi = "multi"
+uni_multi = "uni"
+# uni_multi = "multi"
 
 # PSEUDO_COUNTER_3D = pow(10, -2)
     

@@ -1,5 +1,5 @@
 """
-2D_VERSIONS
+2D_VERSIONS:
 nohup python3 2_main_2d_versions.py > 2.out 2>&1 &
 """
 
