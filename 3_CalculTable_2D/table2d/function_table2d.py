@@ -81,14 +81,24 @@ def table_2d_heatmap(matrix, path_folder_Result, title, size_annot = 3):
     """
     Save the heatmap of the matrix in path_folder_Result
     """
+    plt.figure(figsize=(8, 6))
     heatmap_matrix = np.transpose(pd.DataFrame.from_dict(matrix))
-    heatmap = sb.heatmap(heatmap_matrix, annot = True, annot_kws = {"size": size_annot}, fmt = '.2g')
+    heatmap = sb.heatmap(heatmap_matrix, annot = True, annot_kws = {"size": size_annot}, fmt = '.2g',
+                         cmap= "mako", #  cmap="viridis",  # Choose a squential colormap
+                square=True,     # Force square cells
+                linewidth=0.1,  # Add gridlines
+
+                linecolor="white")# Adjust gridline color
+
+
     plt.yticks(rotation=0)
     heatmap_figure = heatmap.get_figure()
     plt.title(title, loc='center', wrap=True)
+    plt.xlabel("ACIDE AMINÉE DE DESTINATION", fontsize = 10) # x-axis label with fontsize 15
+    plt.ylabel("ACIDE AMINÉE D'ORIGINE", fontsize = 10) # y-axis label with fontsize 15
     plt.close()
     path_save_fig = f"{path_folder_Result}/{title}.png"
-    heatmap_figure.savefig(path_save_fig, dpi=400)
+    heatmap_figure.savefig(path_save_fig, dpi=600)
 
 
 

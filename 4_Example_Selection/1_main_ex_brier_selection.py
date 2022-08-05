@@ -1,6 +1,7 @@
 """SELECTION EX FOR BRIER EXPERIMENTS
 nohup python3 1_main_ex_brier_selection.py TRAIN > 1_TRAIN.out 2>&1 &
 nohup python3 1_main_ex_brier_selection.py TEST > 1_TEST.out 2>&1 &
+nohup python3 1_main_ex_brier_selection.py TEST > 1_TEST_10M.out 2>&1 &
 """
 
 # IMPORTS
@@ -29,11 +30,11 @@ args = parser.parse_args()
 L = 6
 PID_INF = 40
 PID_SUP = 50
-N_EX_TOTAL = 1_000_000
+N_EX_TOTAL = 10_000_000
 
 DATA = f"{file.parents[2]}/MNHN_RESULT/2_PRE_EXAMPLE_{args.train_test}/EXAMPLES_6_40_50"
 PATH_DICT_FRAC_SEED =  f"{file.parents[2]}/MNHN_RESULT/2_PRE_EXAMPLE_{args.train_test}/frac_ex.csv"
-DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLE_{args.train_test}"
+DATA_RESULT_GLOBAL = f"{file.parents[2]}/MNHN_RESULT/4_EXAMPLE_{args.train_test}_10M"
 DATA_RESULT = f"{DATA_RESULT_GLOBAL}/{L}_{PID_INF}_{PID_SUP}"
 
 for path in [DATA_RESULT_GLOBAL, DATA_RESULT]:
@@ -62,7 +63,7 @@ print(f"DONE IN: {round(end_dico - start_dico, 2)} s")
 
 
 n_files = len(dict_fraction)
-FILE_EXAMPLES = f"{DATA_RESULT}/EX_BRIER_{args.train_test}_1M.csv"
+FILE_EXAMPLES = f"{DATA_RESULT}/EX_BRIER_{args.train_test}_10M.csv"
 
 start = time.time()
 

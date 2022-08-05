@@ -77,8 +77,8 @@ for pseudo_counter_2d in LIST_PSEUDO_COUNTER_2D:
     table_2d_proba =  np.load(f"{DATA_RESULT}/proba_{pseudo_counter_2d}.npy", allow_pickle='TRUE').item()
     function_table2d.table_2d_visualisation(table_2d_proba)
     function_table2d.sum_line(table_2d_proba)
-    title_heatmap = f"Heatmap de la table_2d de probabilités conditionnelles [{PID_INF},{PID_SUP}] calculée sur Pfam TRAIN\n pseudo_counter_2d: {pseudo_counter_2d}"
-    function_table2d.table_2d_heatmap(table_2d_proba, path_res_graph, title_heatmap, size_annot = 3)
+    title_heatmap = f"Heatmap de la table 2D de probabilités conditionnelles calculée sur Pfam d'entraînement\n avec PID dans [{PID_INF},{PID_SUP}[  et pseudo-compte 2D: {pseudo_counter_2d}"
+    function_table2d.table_2d_heatmap(table_2d_proba, path_res_graph, title_heatmap, size_annot = 4.5)
 
 end = time.time()
 print(f"\nDONE IN: {round(end - start, 2)} s")

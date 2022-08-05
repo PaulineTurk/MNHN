@@ -103,3 +103,15 @@ def unit_brier_naive_bayes(vect, aa_destination, alphabet):
     for index, aa in enumerate(alphabet):
         unit_brier += (vect[index] - int(aa_destination == aa))**2
     return unit_brier
+
+
+def pseudo_counter_generator(pseudo_counter_min,
+                             pseudo_counter_max):
+    LIST_PSEUDO_COUNTER_2_POW = []
+
+    pseudo_counter = pseudo_counter_min
+    while pseudo_counter <= pseudo_counter_max:
+        LIST_PSEUDO_COUNTER_2_POW.append(pseudo_counter)
+        pseudo_counter = pseudo_counter*2
+        
+    return LIST_PSEUDO_COUNTER_2_POW

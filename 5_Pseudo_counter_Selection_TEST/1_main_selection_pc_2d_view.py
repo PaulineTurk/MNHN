@@ -37,11 +37,11 @@ for pseudo_counter_2D in list_pseudo_counter_2D:
 # VIEW
 plt.figure(figsize=(8, 6), dpi=80)
 plt.plot(list_pseudo_counter_2D, list_mean_score_Brier)
-plt.xlabel("PSEUDO-COUNTER 2D", fontsize=13)
+plt.xlabel("PSEUDO-COMPTE 2D", fontsize=13)
 plt.xscale('log')
-plt.ylabel('BRIER SCORE', fontsize=13)
+plt.ylabel('SCORE DE BRIER', fontsize=13)
 plt.grid(color='lightgrey', linestyle='--', linewidth=0.5)
-title_fig = "Selection du pseudo-compte des tables_2d \nsur 1M d'exemples TEST"
+title_fig = "Sélection du pseudo-compte des tables 2D \nsur 1M d'exemples TEST"
 plt.title(title_fig , loc='center', fontsize=20)
 title_fig = "PC_2D"
 plt.savefig(f"{DATA}/{title_fig}.png")

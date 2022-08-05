@@ -113,3 +113,15 @@ def sum_plate(table_3d_proba):
             for aa_c in table_3d_proba[aa_o][aa_d]:
                 sum_plate += table_3d_proba[aa_o][aa_d][aa_c]
         print(f"{aa_o}, {sum_plate}")
+
+
+def pseudo_counter_generator(pseudo_counter_min,
+                             pseudo_counter_max):
+    LIST_PSEUDO_COUNTER_2_POW = []
+
+    pseudo_counter = pseudo_counter_min
+    while pseudo_counter <= pseudo_counter_max:
+        LIST_PSEUDO_COUNTER_2_POW.append(pseudo_counter)
+        pseudo_counter = pseudo_counter*2
+        
+    return LIST_PSEUDO_COUNTER_2_POW

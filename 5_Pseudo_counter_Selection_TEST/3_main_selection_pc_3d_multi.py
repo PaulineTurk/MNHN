@@ -43,6 +43,11 @@ LIST_PSEUDO_COUNTER_3D = [0,
                           pow(10,  3)]
 
 
+pseudo_counter_min = pow(10, -1)
+pseudo_counter_max = 10
+LIST_PSEUDO_COUNTER_3D = LIST_PSEUDO_COUNTER_3D + brier.pseudo_counter_generator(pseudo_counter_min,
+                                                                                 pseudo_counter_max)
+
 # PATH FOR 2D_PROBA
 DATA_2D_PROBA = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_2D/{L}_{PID_INF}_{PID_SUP}"
 # PATH FOR 3D_PROBA
@@ -54,6 +59,7 @@ DATA_RESULT = f"{file.parents[2]}/MNHN_RESULT/5_PC_3D_SELECTION_TEST"
 
 ALPHABET = ["A", "R", "N", "D", "C", "Q", "E", "G", "H", "I",
             "L", "K", "M", "F", "P", "S", "T", "W", "Y", "V"]
+
 
 
 

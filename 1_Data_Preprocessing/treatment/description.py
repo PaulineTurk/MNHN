@@ -3,7 +3,7 @@
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-
+from brokenaxes import brokenaxes
 
 import sys  
 from pathlib import Path 

@@ -14,6 +14,7 @@ import itertools
 file = Path(__file__).resolve()
 sys.path.append(file.parents[0])
 
+import brierNeighbour.brier as brier
 
 # PARAMETERS
 # EXPERIMENT_NAME = "EXP_1M_UNI"
@@ -27,14 +28,26 @@ L = 6
 uni_multi = "multi"
 
 
-LIST_PSEUDO_COUNTER_3D = [0,
-                          pow(10, -3),
-                          pow(10, -2),
-                          pow(10, -1),
-                          pow(10,  0),
-                          pow(10,  1),
-                          pow(10,  2),
-                          pow(10,  3)]
+# LIST_PSEUDO_COUNTER_3D = [0,
+#                           pow(10, -3),
+#                           pow(10, -2),
+#                           pow(10, -1),
+#                           pow(10,  0),
+#                           pow(10,  1),
+#                           pow(10,  2),
+#                           pow(10,  3)]
+
+LIST_PSEUDO_COUNTER_3D = [pow(10,  0),
+                          pow(10,  1)]
+
+
+pseudo_counter_min = pow(10, -1)
+pseudo_counter_max = 10
+LIST_PSEUDO_COUNTER_3D = LIST_PSEUDO_COUNTER_3D + brier.pseudo_counter_generator(pseudo_counter_min,
+                                                                                 pseudo_counter_max)
+
+LIST_PSEUDO_COUNTER_3D.sort()
+
 
 # PROGRAM
 import matplotlib as mpl

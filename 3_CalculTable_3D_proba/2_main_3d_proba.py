@@ -41,14 +41,19 @@ DATA_3D_FREQ = f"{file.parents[2]}/MNHN_RESULT/3_TABLE_3D/FREQ/{L}_{PID_INF}_{PI
 
 PSEUDO_COUNTER_2D = pow(10, -2)
 
-LIST_PSEUDO_COUNTER_3D = [0,
-                          pow(10, -3),
-                          pow(10, -2),
-                          pow(10, -1),
-                          pow(10, 0),
-                          pow(10, 1),
-                          pow(10, 2),
-                          pow(10, 3)]
+# LIST_PSEUDO_COUNTER_3D = [0,
+#                           pow(10, -3),
+#                           pow(10, -2),
+#                           pow(10, -1),
+#                           pow(10, 0),
+#                           pow(10, 1),
+#                           pow(10, 2),
+#                           pow(10, 3)]
+
+pseudo_counter_min = pow(10, -1)
+pseudo_counter_max = 10
+LIST_PSEUDO_COUNTER_3D = function_3dproba.pseudo_counter_generator(pseudo_counter_min,
+                                                                   pseudo_counter_max)
 
 
 # PROGRAM

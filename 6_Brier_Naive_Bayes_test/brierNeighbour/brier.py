@@ -85,6 +85,43 @@ def vecteur_from_table_3d_proba_multi(aa_origine,
 
 
 
+def vecteur_from_table_3d_proba_full(aa_origine,
+                                    list_aa_context,
+                                    dict_2d,
+                                    dict_3d,
+                                    position,
+                                    pseudo_counter_3D,
+                                    alphabet):
+
+    vect_distribution = []
+    for aa in alphabet:
+        vect_distribution.append(dict_2d[aa_origine][aa])
+        
+    if list_aa_context == []:
+        return vect_distribution
+                
+    else:
+        total_list_vect = [vect_distribution]
+        for i in range(1, position+1):
+            j = 0
+            for direction in ["ol", "or", "dl", "dr"]:
+                table_3d = dict_3d[(direction,i)][pseudo_counter_3D]
+                vect = []
+                for aa in alphabet:
+                    vect.append(table_3d[aa_origine][aa][list_aa_context[4*(i-1)+j]]) # cycle over the 4 directions
+                j += 1
+            
+                total_list_vect.append(vect)
+
+        # COORDINATE WISE PRODUCT
+        final_vector = np.prod(np.vstack(total_list_vect), axis=0)
+        # print(f"FINAL VECTOR: {final_vector}")
+
+        # VECTOR NORMALIZATION
+        final_vector_normalized = final_vector/np.sum(final_vector)
+        return final_vector_normalized
+
+
 
 
 def unit_brier_naive_bayes(vect, aa_destination, alphabet):
